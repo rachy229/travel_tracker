@@ -10,3 +10,9 @@ function* getLodging() {
         console.log('error in getLodging', error)
     }
 }
+
+function* lodgingSaga() {
+    yield takeLatest('GET_LODGING', getLodging);
+};
+
+export default lodgingSaga;

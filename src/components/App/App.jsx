@@ -23,6 +23,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 
 //form componenets
 import LodgingForm from '../LodgingForm/LodgingForm';
+import TripDashboard from '../TripDashboard/TripDashboard';
 
 import './App.css';
 
@@ -117,6 +118,10 @@ function App() {
 
           <ProtectedRoute exact path="/lodging">
             <LodgingForm />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/dashboard">
+            <TripDashboard />
           </ProtectedRoute>
 
           {/* If none of the other routes matched, we will show a 404. */}

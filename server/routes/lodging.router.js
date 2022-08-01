@@ -4,9 +4,9 @@ const router = express.Router();
 
 
 router.get('/', (req, res) => {
-    let queryText = `SELECT * FROM "lodging" ORDERBY "date" DESC;`;
+    let queryText = `SELECT * FROM "lodging";`;
     pool.query(queryText)
-    .them(result => {
+    .then(result => {
         res.send(result.rows);
     })
     .catch(error => {

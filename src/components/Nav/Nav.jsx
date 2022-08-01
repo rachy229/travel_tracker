@@ -37,6 +37,10 @@ function Nav() {
             <Link className="navLink" to="/lodging">
               Lodging Form
             </Link>
+
+            <Link className="navLink" to="/dashboard">
+              Dashboard!
+            </Link>
           </>
         )}
 
