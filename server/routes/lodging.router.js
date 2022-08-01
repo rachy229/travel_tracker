@@ -17,11 +17,18 @@ router.get('/', (req, res) => {
     })
 });
 
-/**
- * POST route template
- */
+
 router.post('/', (req, res) => {
-  // POST route code here
+    const { date, place, details, lat, lng} = req.body
+    let queryText = `INSERT INTO "lodging" 
+        ("date", "place", "details", "latitude", "longitude")
+        VALUES ($1, $2, $3, $4, $5);`;
+    pool.query(queryText, [date, place, details, lat, lng])
+    .then(() => {
+        res.sendStatus(200);
+    }).catch(error => {
+        console.log('error in lodging router.post', error);
+    })
 });
 
 module.exports = router;
