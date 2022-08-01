@@ -4,11 +4,11 @@ import axios from 'axios';
 function* getLodging() {
     try{
         const response = yield axios.get('/api/lodging');
-        const lodgingArray = response.data;
-        yield console.log('lodgingArray in getLodging', lodgingArray);
+        yield console.log('response.data in getLodging', response.data);
+        yield put({ type: 'SET_LODGING', payload: response.data });
     }
     catch(error) {
-        console.log('error in getLodging', error)
+        console.log('error in getLodging', error);
     }
 }
 

@@ -16,6 +16,16 @@ function TripDashboard() {
     return(
         <div>
             <h1>This is the dashboard!!</h1>
+            {lodgingArray.map(lodgingItem => (
+                <div>
+                    <h4>Date: {lodgingItem.date}</h4>
+                    <h4>Place: {lodgingItem.place}</h4>
+                    <h4>Details: {lodgingItem.details}</h4>
+                </div>
+
+            )
+
+            )}
         </div>
     )
 }

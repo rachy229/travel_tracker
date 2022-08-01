@@ -1,4 +1,6 @@
-const lodging = (state, [], action) => {
+const lodgingReducer = (state = [], action) => {
+
+    console.log('action in lodgingReducer', action);
     switch (action.type) {
         case 'SET_LODGING':
             return action.payload;
@@ -7,4 +9,4 @@ const lodging = (state, [], action) => {
     }
 }
 
-export default lodging;
+export default lodgingReducer;
