@@ -13,7 +13,7 @@ function LodgingForm() {
     const [details, setDetails] = useState('');
 
     const handleSubmit = () => {
-        dispatch({type: 'SET_LODGING', payload: {date, place, details, lat, lng}});
+        dispatch({type: 'POST_LODGING', payload: {date, place, details, lat, lng}});
         
         //clear inputs
         setDate('');

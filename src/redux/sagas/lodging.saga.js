@@ -12,9 +12,10 @@ function* getLodging() {
     }
 }
 
-function* postLodging() {
+function* postLodging(action) {
     try{
-        
+        yield axios.post('/api/lodging', action.payload);
+        yield put({type: 'GET_LODGING'})
     }
     catch(error){
         console.log('error in postLodging', error);
@@ -23,6 +24,7 @@ function* postLodging() {
 
 function* lodgingSaga() {
     yield takeLatest('GET_LODGING', getLodging);
+    yield takeLatest('POST_LODGING', postLodging);
 };
 
 export default lodgingSaga;

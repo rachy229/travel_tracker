@@ -20,6 +20,7 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
     const { date, place, details, lat, lng} = req.body
+    console.log('req.body in lodging router.post', req.body);
     let queryText = `INSERT INTO "lodging" 
         ("date", "place", "details", "latitude", "longitude")
         VALUES ($1, $2, $3, $4, $5);`;
