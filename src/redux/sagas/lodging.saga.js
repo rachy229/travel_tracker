@@ -3,7 +3,8 @@ import axios from 'axios';
 
 function* getLodging() {
     try{
-        const lodgingArray = yield axios.get('/api/lodging');
+        const response = yield axios.get('/api/lodging');
+        const lodgingArray = response.data;
         yield console.log('lodgingArray in getLodging', lodgingArray);
     }
     catch(error) {
