@@ -33,6 +33,10 @@ function Nav() {
             </Link>
 
             <LogOutButton className="navLink" />
+
+            <Link className="navLink" to="/lodging">
+              Lodging Form
+            </Link>
           </>
         )}
 

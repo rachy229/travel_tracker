@@ -4,6 +4,7 @@ import {
   Redirect,
   Route,
   Switch,
+  Link
 } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,6 +20,9 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+
+//form componenets
+import LodgingForm from '../LodgingForm/LodgingForm';
 
 import './App.css';
 
@@ -38,6 +42,7 @@ function App() {
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />
+
 
           {/* Visiting localhost:3000/about will show the about page. */}
           <Route
@@ -110,10 +115,15 @@ function App() {
             }
           </Route>
 
+          <ProtectedRoute exact path="/lodging">
+            <LodgingForm />
+          </ProtectedRoute>
+
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
             <h1>404</h1>
           </Route>
+
         </Switch>
         <Footer />
       </div>
