@@ -12,6 +12,15 @@ function* getLodging() {
     }
 }
 
+function* postLodging() {
+    try{
+        
+    }
+    catch(error){
+        console.log('error in postLodging', error);
+    }
+}
+
 function* lodgingSaga() {
     yield takeLatest('GET_LODGING', getLodging);
 };
