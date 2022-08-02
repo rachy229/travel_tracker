@@ -12,8 +12,20 @@ function* getFlights() {
     }
 }
 
+function* postFlight(action) {
+    try{
+        yield axios.post('/api/flight', action.payload);
+        yield put({type: 'GET_FLIGHTS'})
+    }
+    catch(error){
+        console.log('error in postFlight', error);
+    }
+}
+
 function* flightSaga() {
     yield takeLatest('GET_FLIGHTS', getFlights);
+    yield takeLatest('POST_FLIGHT', postFlight);
+
 };
 
 export default flightSaga;

@@ -15,4 +15,17 @@ router.get('/', (req, res) => {
     })
 });
 
+router.post('/', (req, res) => {
+    const { date, airline, departure_time, arrival_time, flight_number} = req.body
+    let queryText = `INSERT INTO "flight" 
+        ("date", "airline", "departure_time", "arrival_time", "flight_number")
+        VALUES ($1, $2, $3, $4, $5);`;
+    pool.query(queryText, [date, airline, departure_time, arrival_time, flight_number])
+    .then(() => {
+        res.sendStatus(200);
+    }).catch(error => {
+        console.log('error in flight router.post', error);
+    })
+});
+
 module.exports = router;
