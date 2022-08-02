@@ -1,4 +1,5 @@
 import { all } from 'redux-saga/effects';
+import hikeSaga from './hike.saga';
 import lodgingSaga from './lodging.saga';
 import loginSaga from './login.saga';
 import registrationSaga from './registration.saga';
@@ -16,6 +17,7 @@ export default function* rootSaga() {
     loginSaga(), // login saga is now registered
     registrationSaga(),
     userSaga(),
-    lodgingSaga()
+    lodgingSaga(),
+    hikeSaga()
   ]);
 }
