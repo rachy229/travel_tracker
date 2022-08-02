@@ -30,7 +30,7 @@ function LodgingForm() {
             <h1>This is the lodging form</h1>
             <form onSubmit={handleSubmit}>
                 <h4>Date:</h4>
-                <input placeholder="date" value={date} onChange={(event) => setDate(event.target.value)} />
+                <input type="date" placeholder="date" value={date} onChange={(event) => setDate(event.target.value)} />
 
                 <h4>Place:</h4>
                 <input placeholder="place" value={place} onChange={(event) => setPlace(event.target.value)} />
