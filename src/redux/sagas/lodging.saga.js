@@ -12,6 +12,16 @@ function* getLodging() {
     }
 }
 
+function* getThisLodging(action) {
+    try{
+        const response = yield axios.get(`/api/lodging/${action.payload}`);
+        yield console.log('response.data in getThisLodging', response.data);
+    }
+    catch(error) {
+        console.log('error in getThisLodging', error);
+    }
+}
+
 function* postLodging(action) {
     try{
         yield axios.post('/api/lodging', action.payload);
@@ -46,6 +56,7 @@ function* deleteLodging(action) {
 
 function* lodgingSaga() {
     yield takeLatest('GET_LODGING', getLodging);
+    yield takeLatest('GET_THIS_LODGING', getThisLodging);
     yield takeLatest('POST_LODGING', postLodging);
     yield takeLatest('EDIT_LODGING', editLodging);
     yield takeLatest('DELETE_LODGING', deleteLodging);

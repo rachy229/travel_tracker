@@ -1,10 +1,12 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 function TripDashboard() {
 
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const lodgingArray = useSelector(store => store.lodging);
     console.log('lodgingArray in TripDashboard',lodgingArray);
@@ -12,6 +14,11 @@ function TripDashboard() {
     const handleDelete = (id) => {
         console.log('id in handleDelete', id)
         dispatch({type: 'DELETE_LODGING', payload: id})
+    }
+
+    const handleEdit = (id) => {
+        console.log('id in handleEdit', id)
+        dispatch({type: 'GET_THIS_LODGING', payload: id})
     }
 
     useEffect(() => {
