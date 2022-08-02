@@ -32,4 +32,19 @@ router.post('/', (req, res) => {
     })
 });
 
+router.delete('/:id', (req, res) => {
+    const id = req.params.id;
+    const queryText = `DELETE FROM "lodging" WHERE "id" = $1`;
+    pool
+    .query(queryText, [id])
+    .then(() => {
+        res.sendStatus(201);
+    })
+    .catch((error) => {
+        console.log('error in lodging router.delete', error);
+        res.sendStatus(500);
+    })
+    
+})
+
 module.exports = router;
