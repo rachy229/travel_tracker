@@ -25,6 +25,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import LodgingForm from '../LodgingForm/LodgingForm';
 import TripDashboard from '../TripDashboard/TripDashboard';
 import HikeForm from '../HikeForm/HikeForm';
+import FlightForm from '../FlightForm/FlightForm';
 
 import './App.css';
 import EditLodging from '../EditLodging/EditLodging';
@@ -124,6 +125,10 @@ function App() {
 
           <ProtectedRoute exact path="/hike">
             <HikeForm />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/flight">
+            <FlightForm />
           </ProtectedRoute>
 
           <ProtectedRoute exact path="/dashboard">

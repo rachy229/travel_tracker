@@ -1,4 +1,5 @@
 import { all } from 'redux-saga/effects';
+import flightSaga from './flight.saga';
 import hikeSaga from './hike.saga';
 import lodgingSaga from './lodging.saga';
 import loginSaga from './login.saga';
@@ -18,6 +19,7 @@ export default function* rootSaga() {
     registrationSaga(),
     userSaga(),
     lodgingSaga(),
-    hikeSaga()
+    hikeSaga(),
+    flightSaga()
   ]);
 }

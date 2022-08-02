@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
     let queryText = `SELECT * FROM "lodging";`;
     pool.query(queryText)
     .then(result => {
-        console.log('result.rows in lodgingRouter.get', result.rows)
+        // console.log('result.rows in lodgingRouter.get', result.rows)
         res.send(result.rows);
     })
     .catch(error => {
@@ -22,7 +22,7 @@ router.get('/:id', (req, res) => {
     const queryText = `SELECT * FROM "lodging" WHERE "id" = $1;`;
     pool.query(queryText, [id])
     .then(result => {
-        console.log('result.rows in lodgingRouter.get /:id', result.rows)
+        // console.log('result.rows in lodgingRouter.get /:id', result.rows)
         res.send(result.rows);
     })
     .catch(error => {
@@ -34,7 +34,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
     const { date, place, details, lat, lng} = req.body
-    console.log('req.body in lodging router.post', req.body);
+    // console.log('req.body in lodging router.post', req.body);
     let queryText = `INSERT INTO "lodging" 
         ("date", "place", "details", "latitude", "longitude")
         VALUES ($1, $2, $3, $4, $5);`;
