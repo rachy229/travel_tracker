@@ -42,6 +42,10 @@ function Nav() {
               Hike Form
             </Link>
 
+            <Link className="navLink" to="/flight">
+              Flight Form
+            </Link>
+
             <Link className="navLink" to="/dashboard">
               Dashboard!
             </Link>
