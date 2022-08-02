@@ -11,7 +11,7 @@ function HikeForm() {
     const [details, setDetails] = useState('');
 
     const handleSubmit = () => {
-        dispatch({type: 'POST_HIKE', payload: {date, place, details, lat, lng}});
+        dispatch({type: 'POST_HIKE', payload: {date, place, details}});
         
         //clear inputs
         setDate('');

@@ -3,6 +3,7 @@ import errors from './errors.reducer';
 import user from './user.reducer';
 import lodging from './lodging.reducer';
 import specificLodging from './specific.lodging.reducer';
+import hike from './hike.reducer';
 
 
 // rootReducer is the primary reducer for our entire project
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in
   lodging,
-  specificLodging
+  specificLodging,
+  hike
 });
 
 export default rootReducer;
