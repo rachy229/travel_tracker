@@ -38,6 +38,10 @@ function Nav() {
               Lodging Form
             </Link>
 
+            <Link className="navLink" to="/hike">
+              Hike Form
+            </Link>
+
             <Link className="navLink" to="/dashboard">
               Dashboard!
             </Link>
