@@ -22,9 +22,23 @@ function* postLodging(action) {
     }
 }
 
+function* editLodging(id) {
+    try{
+        yield axios.put('/api/lodging', id)
+        yield put({type: 'GET_LODGING'})
+    }
+    catch(error){
+        console.log('error in editLodging', error)
+    }
+}
+
+
+
 function* lodgingSaga() {
     yield takeLatest('GET_LODGING', getLodging);
     yield takeLatest('POST_LODGING', postLodging);
+    yield takeLatest('EDIT_LODGING', editLodging);
+
 };
 
 export default lodgingSaga;

@@ -21,6 +21,8 @@ function TripDashboard() {
                     <h4>Date: {lodgingItem.date}</h4>
                     <h4>Place: {lodgingItem.place}</h4>
                     <h4>Details: {lodgingItem.details}</h4>
+                    <button onClick={() => editLodging(lodgingItem.id)}>Edit</button>
+                    <button onClick={() => deleteLodging(lodgingItem.id)}>Delete</button>
                 </div>
 
             )
