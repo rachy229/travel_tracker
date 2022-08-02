@@ -26,18 +26,30 @@ function* editLodging(id) {
     try{
         yield axios.put('/api/lodging', id)
         yield put({type: 'GET_LODGING'})
+        console.log('id in editLodging', id)
     }
     catch(error){
         console.log('error in editLodging', error)
     }
 }
 
-
+function* deleteLodging(action) {
+    try{
+        yield axios.delete(`/api/lodging/${action.payload}`)
+        yield put({type: 'GET_LODGING'})
+        console.log('action.payload in deleteLodging', action.payload)
+    }
+    catch(error) {
+        console.log('error in deleteLodging', error)
+    }
+}
 
 function* lodgingSaga() {
     yield takeLatest('GET_LODGING', getLodging);
     yield takeLatest('POST_LODGING', postLodging);
     yield takeLatest('EDIT_LODGING', editLodging);
+    yield takeLatest('DELETE_LODGING', deleteLodging);
+
 
 };
 

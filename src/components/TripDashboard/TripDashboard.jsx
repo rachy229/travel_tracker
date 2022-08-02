@@ -9,6 +9,11 @@ function TripDashboard() {
     const lodgingArray = useSelector(store => store.lodging);
     console.log('lodgingArray in TripDashboard',lodgingArray);
 
+    const handleDelete = (id) => {
+        console.log('id in handleDelete', id)
+        dispatch({type: 'DELETE_LODGING', payload: id})
+    }
+
     useEffect(() => {
         dispatch({ type: 'GET_LODGING'})
     }, [])
@@ -21,8 +26,8 @@ function TripDashboard() {
                     <h4>Date: {lodgingItem.date}</h4>
                     <h4>Place: {lodgingItem.place}</h4>
                     <h4>Details: {lodgingItem.details}</h4>
-                    <button onClick={() => editLodging(lodgingItem.id)}>Edit</button>
-                    <button onClick={() => deleteLodging(lodgingItem.id)}>Delete</button>
+                    <button onClick={() => handleEdit(lodgingItem.id)}>Edit</button>
+                    <button onClick={() => handleDelete(lodgingItem.id)}>Delete</button>
                 </div>
 
             )
