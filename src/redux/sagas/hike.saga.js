@@ -12,8 +12,20 @@ function* getHikes() {
     }
 }
 
+function* postHike(action) {
+    try{
+        yield axios.post('/api/hike', action.payload);
+        yield put({type: 'GET_HIKES'})
+    }
+    catch(error){
+        console.log('error in postHike', error);
+    }
+}
+
 function* hikeSaga() {
     yield takeLatest('GET_HIKES', getHikes);
+    yield takeLatest('POST_HIKE', postHike);
+
 };
 
 export default hikeSaga;
