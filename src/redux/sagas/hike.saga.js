@@ -22,9 +22,22 @@ function* postHike(action) {
     }
 }
 
+function* deleteHike(action) {
+    try{
+        yield axios.delete(`/api/hike/${action.payload}`)
+        yield put({type: 'GET_HIKES'})
+        console.log('action.payload in deleteHike', action.payload)
+    }
+    catch(error) {
+        console.log('error in deleteHike', error)
+    }
+}
+
 function* hikeSaga() {
     yield takeLatest('GET_HIKES', getHikes);
     yield takeLatest('POST_HIKE', postHike);
+    yield takeLatest('DELETE_HIKE', deleteHike);
+
 
 };
 
