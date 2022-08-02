@@ -22,9 +22,21 @@ function* postFlight(action) {
     }
 }
 
+function* deleteFlight(action) {
+    try{
+        yield axios.delete(`/api/flight/${action.payload}`)
+        yield put({type: 'GET_FLIGHTS'})
+        console.log('action.payload in deleteFlight', action.payload)
+    }
+    catch(error) {
+        console.log('error in deleteFlight', error)
+    }
+}
+
 function* flightSaga() {
     yield takeLatest('GET_FLIGHTS', getFlights);
     yield takeLatest('POST_FLIGHT', postFlight);
+    yield takeLatest('DELETE_FLIGHT', deleteFlight);
 
 };
 

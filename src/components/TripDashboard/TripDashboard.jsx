@@ -29,6 +29,11 @@ function TripDashboard() {
         dispatch({type: 'DELETE_HIKE', payload: id})
     }
 
+    const handleFlightDelete = (id) => {
+        // console.log('id in handleHikeDelete', id)
+        dispatch({type: 'DELETE_FLIGHT', payload: id})
+    }
+
 
     //EDIT HANDLE CLICKS
     const handleLodgingEdit = (id) => {
@@ -38,6 +43,13 @@ function TripDashboard() {
         history.push('/edit-lodging')
     }
     const handleHikeEdit = (id) => {
+        // console.log('id in handleEdit', id)
+        // // dispatch({type: 'GET_THIS_HIKE', payload: id})
+        // dispatch({type: 'THIS_HIKE_ID', payload: id})
+        // history.push('/edit-hike')
+    }
+
+    const handleFlightEdit = (id) => {
         // console.log('id in handleEdit', id)
         // // dispatch({type: 'GET_THIS_HIKE', payload: id})
         // dispatch({type: 'THIS_HIKE_ID', payload: id})
@@ -82,8 +94,8 @@ function TripDashboard() {
                     <h4>Arrival Time: {flight.arrival_time}</h4>
                     <h4>Departure Time: {flight.departure_time}</h4>
                     <h4>Flight Number: {flight.flight_number}</h4>
-                    <button onClick={() => handleHikeEdit(hike.id)}>Edit</button>
-                    <button onClick={() => handleHikeDelete(hike.id)}>Delete</button>
+                    <button onClick={() => handleFlightEdit(flight.id)}>Edit</button>
+                    <button onClick={() => handleFlightDelete(flight.id)}>Delete</button>
                 </div>
                 )
             )}
