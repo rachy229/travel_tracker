@@ -1,3 +1,5 @@
+import { combineReducers } from 'redux';
+
 const lodgingReducer = (state = [], action) => {
 
     console.log('action.payload in lodgingReducer', action.payload);
@@ -11,4 +13,7 @@ const lodgingReducer = (state = [], action) => {
     }
 }
 
-export default lodgingReducer;
+
+export default (
+    lodgingReducer
+);

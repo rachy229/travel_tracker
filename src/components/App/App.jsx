@@ -26,6 +26,7 @@ import LodgingForm from '../LodgingForm/LodgingForm';
 import TripDashboard from '../TripDashboard/TripDashboard';
 
 import './App.css';
+import EditLodging from '../EditLodging/EditLodging';
 
 function App() {
   const dispatch = useDispatch();
@@ -122,6 +123,10 @@ function App() {
 
           <ProtectedRoute exact path="/dashboard">
             <TripDashboard />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/edit-lodging">
+            <EditLodging />
           </ProtectedRoute>
 
           {/* If none of the other routes matched, we will show a 404. */}

@@ -18,7 +18,9 @@ function TripDashboard() {
 
     const handleEdit = (id) => {
         console.log('id in handleEdit', id)
-        dispatch({type: 'GET_THIS_LODGING', payload: id})
+        // dispatch({type: 'GET_THIS_LODGING', payload: id})
+        dispatch({type: 'THIS_LODGING_ID', payload: id})
+        history.push('/edit-lodging')
     }
 
     useEffect(() => {
