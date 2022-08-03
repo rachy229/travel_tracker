@@ -5,6 +5,7 @@ import lodging from './lodging.reducer';
 import specificLodging from './specific.lodging.reducer';
 import hike from './hike.reducer';
 import flight from './flight.reducer';
+import other from './other.reducer';
 
 
 // rootReducer is the primary reducer for our entire project
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
   lodging,
   specificLodging,
   hike,
-  flight
+  flight,
+  other
 });
 
 export default rootReducer;

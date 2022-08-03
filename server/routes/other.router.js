@@ -3,14 +3,13 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    let queryText = `SELECT * FROM "hike";`;
+    let queryText = `SELECT * FROM "other";`;
     pool.query(queryText)
     .then(result => {
-        // console.log('result.rows in hikeRouter.get', result.rows)
         res.send(result.rows);
     })
     .catch(error => {
-        console.log('error in hike router.get', error);
+        console.log('error in other router.get', error);
         res.sendStatus(500);
     })
 });
@@ -18,27 +17,27 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     const { date, place, details} = req.body
     // console.log('req.body in hike router.post', req.body);
-    let queryText = `INSERT INTO "hike" 
+    let queryText = `INSERT INTO "other" 
         ("date", "place", "details")
         VALUES ($1, $2, $3);`;
     pool.query(queryText, [date, place, details])
     .then(() => {
         res.sendStatus(200);
     }).catch(error => {
-        console.log('error in hike router.post', error);
+        console.log('error in other router.post', error);
     })
 });
 
 router.delete('/:id', (req, res) => {
     const id = req.params.id;
-    const queryText = `DELETE FROM "hike" WHERE "id" = $1`;
+    const queryText = `DELETE FROM "other" WHERE "id" = $1`;
     pool
     .query(queryText, [id])
     .then(() => {
         res.sendStatus(201);
     })
     .catch((error) => {
-        console.log('error in hike router.delete', error);
+        console.log('error in other router.delete', error);
         res.sendStatus(500);
     })
     

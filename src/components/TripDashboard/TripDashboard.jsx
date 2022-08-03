@@ -15,8 +15,9 @@ function TripDashboard() {
     // console.log('hikesArray in TripDashboard', hikesArray);
 
     const flightsArray = useSelector(store => store.flight);
-    console.log('flightsArray in TripDashboard', flightsArray);
+    // console.log('flightsArray in TripDashboard', flightsArray);
 
+    const otherArray = useSelector(store => store.other);
 
     //DELETE HANDLE CLICKS
     const handleLodgingDelete = (id) => {
@@ -32,6 +33,10 @@ function TripDashboard() {
     const handleFlightDelete = (id) => {
         // console.log('id in handleHikeDelete', id)
         dispatch({type: 'DELETE_FLIGHT', payload: id})
+    }
+
+    const handleOtherDelete = (id) => {
+        dispatch({type: 'DELETE_OTHER', payload: id})
     }
 
 
@@ -56,10 +61,18 @@ function TripDashboard() {
         // history.push('/edit-hike')
     }
 
+    const handleOtherEdit = (id) => {
+        // console.log('id in handleEdit', id)
+        // // dispatch({type: 'GET_THIS_HIKE', payload: id})
+        // dispatch({type: 'THIS_HIKE_ID', payload: id})
+        // history.push('/edit-hike')
+    }
+
     useEffect(() => {
         dispatch({ type: 'GET_LODGING'})
         dispatch({type: 'GET_HIKES'})
         dispatch({type: 'GET_FLIGHTS'})
+        dispatch({type: 'GET_OTHER'})
     }, [])
 
     return(
@@ -96,6 +109,17 @@ function TripDashboard() {
                     <h4>Flight Number: {flight.flight_number}</h4>
                     <button onClick={() => handleFlightEdit(flight.id)}>Edit</button>
                     <button onClick={() => handleFlightDelete(flight.id)}>Delete</button>
+                </div>
+                )
+            )}
+
+            {otherArray.map(other => (
+                <div key={other.id}>
+                    <h4>Date: {other.date}</h4>
+                    <h4>Place: {other.place}</h4>
+                    <h4>Details: {other.details}</h4>
+                    <button onClick={() => handleOtherEdit(other.id)}>Edit</button>
+                    <button onClick={() => handleOtherDelete(other.id)}>Delete</button>
                 </div>
                 )
             )}

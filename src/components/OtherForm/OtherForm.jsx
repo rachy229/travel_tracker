@@ -39,4 +39,4 @@ function OtherForm() {
 
 }
 
-export default HikeForm;
+export default OtherForm;

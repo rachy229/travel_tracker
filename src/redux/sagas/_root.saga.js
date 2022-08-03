@@ -3,6 +3,7 @@ import flightSaga from './flight.saga';
 import hikeSaga from './hike.saga';
 import lodgingSaga from './lodging.saga';
 import loginSaga from './login.saga';
+import otherSaga from './other.saga';
 import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
 
@@ -20,6 +21,7 @@ export default function* rootSaga() {
     userSaga(),
     lodgingSaga(),
     hikeSaga(),
-    flightSaga()
+    flightSaga(),
+    otherSaga()
   ]);
 }
