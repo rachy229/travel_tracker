@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     const { startDate, endDate, place} = req.body
     let queryText = `INSERT INTO "trip" 
-        ("start_date", "end_date", "place")
+        ("start_date", "end_date", "location")
         VALUES ($1, $2, $3);`;
     pool.query(queryText, [startDate, endDate, place])
     .then(() => {

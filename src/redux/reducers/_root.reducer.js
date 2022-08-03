@@ -22,7 +22,8 @@ const rootReducer = combineReducers({
   specificLodging,
   hike,
   flight,
-  other
+  other,
+  trip
 });
 
 export default rootReducer;
