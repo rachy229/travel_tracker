@@ -22,10 +22,21 @@ function* postOther(action) {
     }
 }
 
+function* deleteOther(action) {
+    try{
+        yield axios.delete(`/api/other/${action.payload}`)
+        yield put({type: 'GET_OTHER'})
+        console.log('action.payload in deleteOther', action.payload)
+    }
+    catch(error) {
+        console.log('error in deleteOther', error)
+    }
+}
+
 function* otherSaga() {
     yield takeLatest('GET_OTHER', getOther);
     yield takeLatest('POST_OTHER', postOther);
-    // yield takeLatest('DELETE_HIKE', deleteHike);
+    yield takeLatest('DELETE_OTHER', deleteOther);
 
 
 };
