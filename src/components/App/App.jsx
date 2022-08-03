@@ -30,6 +30,7 @@ import OtherForm from '../OtherForm/OtherForm';
 
 import './App.css';
 import EditLodging from '../EditLodging/EditLodging';
+import AddNewItem from '../AddNewItem/AddNewItem';
 
 function App() {
   const dispatch = useDispatch();
@@ -119,6 +120,10 @@ function App() {
               <LandingPage />
             }
           </Route>
+
+          <ProtectedRoute exact path="/new">
+            <AddNewItem />
+          </ProtectedRoute>
 
           <ProtectedRoute exact path="/lodging">
             <LodgingForm />
