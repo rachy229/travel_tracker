@@ -13,6 +13,9 @@ function FlightForm() {
     const [flightNum, setFlightNum] = useState('');
 
     const handleSubmit = () => {
+        console.log('departure in handleSubmit', departure);
+        console.log('arrival in handleSubmit', arrival);
+
         dispatch({type: 'POST_FLIGHT', payload: {date, airline, departure, arrival, flightNum}});
         
         //clear inputs
@@ -34,10 +37,10 @@ function FlightForm() {
             <input placeholder="Airline" value={airline} onChange={(event) => setAirline(event.target.value)} />
 
             <h4>Departure Time:</h4>
-            <input placeholder="Departure Time" value={departure} onChange={(event) => setDeparture(event.target.value)} />
+            <input type="time" value={departure} onChange={(event) => setDeparture(event.target.value)} />
 
             <h4>Arrival Time:</h4>
-            <input placeholder="Arrival Time" value={arrival} onChange={(event) => setArrival(event.target.value)} />
+            <input type="time" value={arrival} onChange={(event) => setArrival(event.target.value)} />
 
             <h4>Flight Number:</h4>
             <input placeholder="Flight Number" value={flightNum} onChange={(event) => setFlightNum(event.target.value)} />
