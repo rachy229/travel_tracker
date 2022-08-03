@@ -33,12 +33,12 @@ router.get('/:id', (req, res) => {
 
 
 router.post('/', (req, res) => {
-    const { date, place, details, lat, lng} = req.body
+    const { date, place, details, lat, lng, tripId} = req.body
     // console.log('req.body in lodging router.post', req.body);
     let queryText = `INSERT INTO "lodging" 
-        ("date", "place", "details", "latitude", "longitude")
-        VALUES ($1, $2, $3, $4, $5);`;
-    pool.query(queryText, [date, place, details, lat, lng])
+        ("date", "place", "details", "latitude", "longitude", "trip_id")
+        VALUES ($1, $2, $3, $4, $5, $6);`;
+    pool.query(queryText, [date, place, details, lat, lng, tripId])
     .then(() => {
         res.sendStatus(200);
     }).catch(error => {
