@@ -12,9 +12,19 @@ function* getOther() {
     }
 }
 
+function* postOther(action) {
+    try{
+        yield axios.post('/api/other', action.payload);
+        yield put({type: 'GET_OTHER'})
+    }
+    catch(error){
+        console.log('error in postOther', error);
+    }
+}
+
 function* otherSaga() {
     yield takeLatest('GET_OTHER', getOther);
-    // yield takeLatest('POST_HIKE', postHike);
+    yield takeLatest('POST_OTHER', postOther);
     // yield takeLatest('DELETE_HIKE', deleteHike);
 
 
