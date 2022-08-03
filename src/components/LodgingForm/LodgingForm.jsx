@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 function LodgingForm() {
 
     const dispatch = useDispatch();
+    const history = useHistory();
 
     //input local states
     const [date, setDate] = useState('');
@@ -27,6 +29,10 @@ function LodgingForm() {
 
     return(
         <div>
+            {/* go back to the add new item page */}
+            <button onClick={() => history.push('/new')}>Back</button>
+
+
             <h1>This is the lodging form</h1>
             <form onSubmit={handleSubmit}>
                 <h4>Date:</h4>
