@@ -16,6 +16,7 @@ function UserPage() {
       <LogOutButton className="btn" />
 
       <button onClick={() => history.push('/new')}>Add Something New!</button>
+      <button onClick={() => history.push('/trips')}>See the Trips!</button>
     </div>
   );
 }

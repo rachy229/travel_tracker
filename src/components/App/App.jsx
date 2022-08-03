@@ -31,6 +31,8 @@ import OtherForm from '../OtherForm/OtherForm';
 import './App.css';
 import EditLodging from '../EditLodging/EditLodging';
 import AddNewItem from '../AddNewItem/AddNewItem';
+import TripList from '../TripList/TripList';
+import TripForm from '../TripForm/TripForm';
 
 function App() {
   const dispatch = useDispatch();
@@ -120,6 +122,14 @@ function App() {
               <LandingPage />
             }
           </Route>
+
+          <ProtectedRoute exact path="/trips">
+            <TripList />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/new-trip">
+            <TripForm />
+          </ProtectedRoute>
 
           <ProtectedRoute exact path="/new">
             <AddNewItem />
