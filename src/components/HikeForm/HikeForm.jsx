@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
@@ -7,13 +8,16 @@ function HikeForm() {
     const dispatch = useDispatch();
     const history = useHistory();
 
+    const tripId = useSelector(store => store.trip.tripId);
+    console.log('tripId in HikeForm', tripId);
+
     //input local states
     const [date, setDate] = useState('');
     const [place, setPlace] = useState('');
     const [details, setDetails] = useState('');
 
     const handleSubmit = () => {
-        dispatch({type: 'POST_HIKE', payload: {date, place, details}});
+        dispatch({type: 'POST_HIKE', payload: {date, place, details, tripId}});
         
         //clear inputs
         setDate('');

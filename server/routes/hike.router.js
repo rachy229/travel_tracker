@@ -16,12 +16,12 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    const { date, place, details} = req.body
+    const { date, place, details, tripId} = req.body
     // console.log('req.body in hike router.post', req.body);
     let queryText = `INSERT INTO "hike" 
-        ("date", "place", "details")
-        VALUES ($1, $2, $3);`;
-    pool.query(queryText, [date, place, details])
+        ("date", "place", "details", "trip_id")
+        VALUES ($1, $2, $3, $4);`;
+    pool.query(queryText, [date, place, details, tripId])
     .then(() => {
         res.sendStatus(200);
     }).catch(error => {

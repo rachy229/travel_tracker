@@ -9,7 +9,7 @@ function TripList() {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const tripArray = useSelector(store => store.trip);
+    const tripArray = useSelector(store => store.trip.tripReducer);
     console.log('tripArray', tripArray);
 
     const handleDelete = (id) => {
@@ -18,6 +18,8 @@ function TripList() {
 
     const handleTripClick = (id) => {
         console.log('trip id in handleTripClick', id)
+        history.push(`/dashboard/${id}`)
+        dispatch({type: 'SET_TRIP_ID', payload: id})
     }
 
     useEffect(() => {

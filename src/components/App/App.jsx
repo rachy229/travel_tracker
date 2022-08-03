@@ -151,7 +151,11 @@ function App() {
             <OtherForm />
           </ProtectedRoute>
 
-          <ProtectedRoute exact path="/dashboard">
+          {/* <ProtectedRoute exact path="/dashboard">
+            <TripDashboard />
+          </ProtectedRoute> */}
+
+          <ProtectedRoute exact path="/dashboard/:id">
             <TripDashboard />
           </ProtectedRoute>
 
