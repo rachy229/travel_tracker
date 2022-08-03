@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
@@ -6,6 +7,8 @@ function FlightForm() {
 
     const dispatch = useDispatch();
     const history = useHistory();
+
+    const tripId = useSelector(store => store.trip.tripId);
 
     //input local states
     const [date, setDate] = useState('');
@@ -18,7 +21,7 @@ function FlightForm() {
         console.log('departure in handleSubmit', departure);
         console.log('arrival in handleSubmit', arrival);
 
-        dispatch({type: 'POST_FLIGHT', payload: {date, airline, departure, arrival, flightNum}});
+        dispatch({type: 'POST_FLIGHT', payload: {date, airline, departure, arrival, flightNum, tripId}});
         
         //clear inputs
         setDate('');

@@ -16,13 +16,13 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    const { date, airline, departure, arrival, flightNum} = req.body
-    console.log('req.body in flight router', req.body)
-    console.log('departure_time, arrival_time, flight_number om flight router',departure, arrival, flightNum)
+    const { date, airline, departure, arrival, flightNum, tripId} = req.body
+    // console.log('req.body in flight router', req.body)
+    // console.log('departure_time, arrival_time, flight_number om flight router',departure, arrival, flightNum)
     let queryText = `INSERT INTO "flight" 
-        ("date", "airline", "departure_time", "arrival_time", "flight_number")
-        VALUES ($1, $2, $3, $4, $5);`;
-    pool.query(queryText, [date, airline, departure, arrival, flightNum])
+        ("date", "airline", "departure_time", "arrival_time", "flight_number", "trip_id")
+        VALUES ($1, $2, $3, $4, $5, $6);`;
+    pool.query(queryText, [date, airline, departure, arrival, flightNum, tripId])
     .then(() => {
         res.sendStatus(200);
     }).catch(error => {
