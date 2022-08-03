@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 function FlightForm() {
 
     const dispatch = useDispatch();
+    const history = useHistory();
 
     //input local states
     const [date, setDate] = useState('');
@@ -28,6 +30,9 @@ function FlightForm() {
 
     return(
         <div>
+            {/* go back to the add new item page */}
+            <button onClick={() => history.push('/new')}>Back</button>
+
         <h1>Add A New Flight!</h1>
         <form onSubmit={handleSubmit}>
             <h4>Date:</h4>
