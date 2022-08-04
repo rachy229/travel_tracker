@@ -33,26 +33,26 @@ function Nav() {
             </Link>
 
             <LogOutButton className="navLink" />
-
+{/* 
             <Link className="navLink" to="/lodging">
               Lodging Form
-            </Link>
+            </Link> */}
 
-            <Link className="navLink" to="/hike">
+            {/* <Link className="navLink" to="/hike">
               Hike Form
-            </Link>
+            </Link> */}
 
-            <Link className="navLink" to="/flight">
+            {/* <Link className="navLink" to="/flight">
               Flight Form
-            </Link>
+            </Link> */}
 
-            <Link className="navLink" to="/other">
+            {/* <Link className="navLink" to="/other">
               Other Form
-            </Link>
-
+            </Link> */}
+{/* 
             <Link className="navLink" to="/dashboard">
               Dashboard!
-            </Link>
+            </Link> */}
           </>
         )}
 
