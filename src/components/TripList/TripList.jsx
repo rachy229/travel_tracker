@@ -21,6 +21,8 @@ function TripList() {
     }
 
     const handleEdit = (trip) => {
+        dispatch({type: 'SET_EDIT_TRIP', payload: trip})
+        
         history.push(`/edit-trip/${trip.id}`)
     }
 
