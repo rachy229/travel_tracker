@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 function LodgingForm() {
 
     const dispatch = useDispatch();
     const history = useHistory();
+
+    const tripId = useSelector(store => store.trip.tripId);
+
 
     //input local states
     const [date, setDate] = useState('');
@@ -15,7 +18,7 @@ function LodgingForm() {
     const [details, setDetails] = useState('');
 
     const handleSubmit = () => {
-        dispatch({type: 'POST_LODGING', payload: {date, place, details, lat, lng}});
+        dispatch({type: 'POST_LODGING', payload: {date, place, details, lat, lng, tripId}});
         
         //clear inputs
         setDate('');

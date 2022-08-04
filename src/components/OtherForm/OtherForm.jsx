@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 function OtherForm() {
@@ -7,13 +7,15 @@ function OtherForm() {
     const dispatch = useDispatch();
     const history = useHistory();
 
+    const tripId = useSelector(store => store.trip.tripId);
+
     //input local states
     const [date, setDate] = useState('');
     const [place, setPlace] = useState('');
     const [details, setDetails] = useState('');
 
     const handleSubmit = () => {
-        dispatch({type: 'POST_OTHER', payload: {date, place, details}});
+        dispatch({type: 'POST_OTHER', payload: {date, place, details, tripId}});
         
         //clear inputs
         setDate('');

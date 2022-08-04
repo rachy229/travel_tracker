@@ -5,6 +5,7 @@ import lodgingSaga from './lodging.saga';
 import loginSaga from './login.saga';
 import otherSaga from './other.saga';
 import registrationSaga from './registration.saga';
+import tripSaga from './trip.saga';
 import userSaga from './user.saga';
 
 // rootSaga is the primary saga.
@@ -22,6 +23,7 @@ export default function* rootSaga() {
     lodgingSaga(),
     hikeSaga(),
     flightSaga(),
-    otherSaga()
+    otherSaga(),
+    tripSaga()
   ]);
 }

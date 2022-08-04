@@ -1,9 +1,9 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
-function* getFlights() {
+function* getFlights(action) {
     try{
-        const response = yield axios.get('/api/flight');
+        const response = yield axios.get(`/api/flight/${action.payload}`);
         yield console.log('response.data in getFlights', response.data);
         yield put({ type: 'SET_FLIGHTS', payload: response.data });
     }

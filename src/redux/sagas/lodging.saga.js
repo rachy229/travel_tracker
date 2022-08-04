@@ -1,9 +1,9 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
-function* getLodging() {
+function* getLodging(action) {
     try{
-        const response = yield axios.get('/api/lodging');
+        const response = yield axios.get(`/api/lodging/${action.payload}`);
         yield console.log('response.data in getLodging', response.data);
         yield put({ type: 'SET_LODGING', payload: response.data });
     }

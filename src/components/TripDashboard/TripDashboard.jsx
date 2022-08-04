@@ -19,6 +19,9 @@ function TripDashboard() {
 
     const otherArray = useSelector(store => store.other);
 
+    const tripId = useSelector(store => store.trip.tripId);
+    console.log('tripId in TripDashboard', tripId);
+
     //DELETE HANDLE CLICKS
     const handleLodgingDelete = (id) => {
         // console.log('id in handleLodgingDelete', id)
@@ -68,16 +71,24 @@ function TripDashboard() {
         // history.push('/edit-hike')
     }
 
+    const handleAddNewClick = (tripId) => {
+        history.push(`/new`)
+    }
+
     useEffect(() => {
-        dispatch({ type: 'GET_LODGING'})
-        dispatch({type: 'GET_HIKES'})
-        dispatch({type: 'GET_FLIGHTS'})
-        dispatch({type: 'GET_OTHER'})
+        dispatch({ type: 'GET_LODGING', payload: tripId})
+        dispatch({type: 'GET_HIKES', payload: tripId})
+        dispatch({type: 'GET_FLIGHTS', payload: tripId})
+        dispatch({type: 'GET_OTHER', payload: tripId})
     }, [])
 
     return(
         <div>
+            <button onClick={() => history.push('/trips')}>Back</button>
             <h1>This is the dashboard!!</h1>
+
+            <button onClick={handleAddNewClick}>Add Something New!</button>
+
             {lodgingArray.map(lodgingItem => (
                 <div key={lodgingItem.id}>
                     <h4>Date: {lodgingItem.date}</h4>

@@ -2,8 +2,9 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    let queryText = `SELECT * FROM "other";`;
+router.get('/:id', (req, res) => {
+    const id = req.params.id
+    let queryText = `SELECT * FROM "other" WHERE "trip_id" = ${id};`;
     pool.query(queryText)
     .then(result => {
         res.send(result.rows);
@@ -15,12 +16,12 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    const { date, place, details} = req.body
+    const { date, place, details, tripId} = req.body
     // console.log('req.body in hike router.post', req.body);
     let queryText = `INSERT INTO "other" 
-        ("date", "place", "details")
-        VALUES ($1, $2, $3);`;
-    pool.query(queryText, [date, place, details])
+        ("date", "place", "details", "trip_id")
+        VALUES ($1, $2, $3, $4);`;
+    pool.query(queryText, [date, place, details, tripId])
     .then(() => {
         res.sendStatus(200);
     }).catch(error => {

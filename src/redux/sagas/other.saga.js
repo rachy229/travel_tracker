@@ -1,9 +1,9 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
-function* getOther() {
+function* getOther(action) {
     try{
-        const response = yield axios.get('/api/other');
+        const response = yield axios.get(`/api/other/${action.payload}`);
         yield console.log('response.data in getOther', response.data);
         yield put({ type: 'SET_OTHER', payload: response.data });
     }
