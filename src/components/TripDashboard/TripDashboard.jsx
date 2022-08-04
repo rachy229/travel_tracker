@@ -76,10 +76,10 @@ function TripDashboard() {
     }
 
     useEffect(() => {
-        dispatch({ type: 'GET_LODGING'})
+        dispatch({ type: 'GET_LODGING', payload: tripId})
         dispatch({type: 'GET_HIKES', payload: tripId})
-        dispatch({type: 'GET_FLIGHTS'})
-        dispatch({type: 'GET_OTHER'})
+        dispatch({type: 'GET_FLIGHTS', payload: tripId})
+        dispatch({type: 'GET_OTHER', payload: tripId})
     }, [])
 
     return(

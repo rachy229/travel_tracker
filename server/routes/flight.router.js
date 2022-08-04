@@ -2,8 +2,9 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    let queryText = `SELECT * FROM "flight";`;
+router.get('/:id', (req, res) => {
+    const id = req.params.id;
+    let queryText = `SELECT * FROM "flight" WHERE "trip_id" = ${id};`;
     pool.query(queryText)
     .then(result => {
         // console.log('result.rows in flightRouter.get', result.rows)
