@@ -12,10 +12,10 @@ function TripList() {
     const tripArray = useSelector(store => store.trip.tripReducer);
     console.log('tripArray', tripArray);
 
-    const handleDelete = (id) => {
-        let result = confirm("Are you sure you want to delete this trip?")
+    const handleDelete = (trip) => {
+        let result = confirm(`Delete your trip to ${trip.location}?`)
             if (result) {
-                dispatch({type: 'DELETE_TRIP', payload: id})
+                dispatch({type: 'DELETE_TRIP', payload: trip.id})
                 // history.push('/trips')
             }
     }
@@ -46,12 +46,12 @@ function TripList() {
 
 
                 {tripArray.map(trip => (
-                    <div>
-                        <div key={trip.id} onClick={() => handleTripClick(trip)}>
+                    <div key={trip.id} >
+                        <div onClick={() => handleTripClick(trip)}>
                             <h2>{trip.location}</h2> 
                             <h4>{trip.start} - {trip.end}</h4>
                         </div>
-                        <button type="delete" onClick={() => handleDelete(trip.id)}>Delete</button>
+                        <button type="delete" onClick={() => handleDelete(trip)}>Delete</button>
                     </div>
                     )
                 )}
