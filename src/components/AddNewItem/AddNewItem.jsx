@@ -23,6 +23,7 @@ function AddNewItem() {
     return(
 
         <div>
+            <button onClick={() => history.push('/dashboard/:id')}>Back</button>
             <TripHeader />
 
             <h2>Add Something!</h2>
