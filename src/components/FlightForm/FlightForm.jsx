@@ -22,6 +22,9 @@ function FlightForm() {
         console.log('arrival in handleSubmit', arrival);
 
         dispatch({type: 'POST_FLIGHT', payload: {date, airline, departure, arrival, flightNum, tripId}});
+
+        //send back to the dashboard
+        history.push(`/dashboard/:id`)
         
         //clear inputs
         setDate('');

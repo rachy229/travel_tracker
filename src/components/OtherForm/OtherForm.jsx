@@ -16,6 +16,9 @@ function OtherForm() {
 
     const handleSubmit = () => {
         dispatch({type: 'POST_OTHER', payload: {date, place, details, tripId}});
+
+        //send back to the dashboard
+        history.push(`/dashboard/:id`)
         
         //clear inputs
         setDate('');

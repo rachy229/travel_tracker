@@ -19,6 +19,9 @@ function LodgingForm() {
 
     const handleSubmit = () => {
         dispatch({type: 'POST_LODGING', payload: {date, place, details, lat, lng, tripId}});
+
+        //send back to the dashboard
+        history.push(`/dashboard/:id`)
         
         //clear inputs
         setDate('');
