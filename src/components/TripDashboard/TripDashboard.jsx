@@ -8,14 +8,14 @@ function TripDashboard() {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const lodgingArray = useSelector(store => store.lodging);
+    // const lodgingArray = useSelector(store => store.lodging);
     // console.log('lodgingArray in TripDashboard',lodgingArray);
 
     // const hikesArray = useSelector(store => store.hike);
     // // console.log('hikesArray in TripDashboard', hikesArray);
 
-    const flightsArray = useSelector(store => store.flight);
-    // console.log('flightsArray in TripDashboard', flightsArray);
+    // const flightsArray = useSelector(store => store.flight);
+    // // console.log('flightsArray in TripDashboard', flightsArray);
 
     const otherArray = useSelector(store => store.other);
 
@@ -23,20 +23,20 @@ function TripDashboard() {
     console.log('tripId in TripDashboard', tripId);
 
     //DELETE HANDLE CLICKS
-    const handleLodgingDelete = (id) => {
-        // console.log('id in handleLodgingDelete', id)
-        dispatch({type: 'DELETE_LODGING', payload: id})
-    }
+    // const handleLodgingDelete = (id) => {
+    //     // console.log('id in handleLodgingDelete', id)
+    //     dispatch({type: 'DELETE_LODGING', payload: id})
+    // }
 
     // const handleHikeDelete = (id) => {
     //     // console.log('id in handleHikeDelete', id)
     //     dispatch({type: 'DELETE_HIKE', payload: id})
     // }
 
-    const handleFlightDelete = (id) => {
-        // console.log('id in handleHikeDelete', id)
-        dispatch({type: 'DELETE_FLIGHT', payload: id})
-    }
+    // const handleFlightDelete = (id) => {
+    //     // console.log('id in handleHikeDelete', id)
+    //     dispatch({type: 'DELETE_FLIGHT', payload: id})
+    // }
 
     const handleOtherDelete = (id) => {
         dispatch({type: 'DELETE_OTHER', payload: id})
@@ -44,12 +44,12 @@ function TripDashboard() {
 
 
     //EDIT HANDLE CLICKS
-    const handleLodgingEdit = (id) => {
-        console.log('id in handleEdit', id)
-        // dispatch({type: 'GET_THIS_LODGING', payload: id})
-        dispatch({type: 'THIS_LODGING_ID', payload: id})
-        history.push('/edit-lodging')
-    }
+    // const handleLodgingEdit = (id) => {
+    //     console.log('id in handleEdit', id)
+    //     // dispatch({type: 'GET_THIS_LODGING', payload: id})
+    //     dispatch({type: 'THIS_LODGING_ID', payload: id})
+    //     history.push('/edit-lodging')
+    // }
     // const handleHikeEdit = (id) => {
     //     // console.log('id in handleEdit', id)
     //     // // dispatch({type: 'GET_THIS_HIKE', payload: id})
@@ -57,12 +57,12 @@ function TripDashboard() {
     //     // history.push('/edit-hike')
     // }
 
-    const handleFlightEdit = (id) => {
-        // console.log('id in handleEdit', id)
-        // // dispatch({type: 'GET_THIS_HIKE', payload: id})
-        // dispatch({type: 'THIS_HIKE_ID', payload: id})
-        // history.push('/edit-hike')
-    }
+    // const handleFlightEdit = (id) => {
+    //     // console.log('id in handleEdit', id)
+    //     // // dispatch({type: 'GET_THIS_HIKE', payload: id})
+    //     // dispatch({type: 'THIS_HIKE_ID', payload: id})
+    //     // history.push('/edit-hike')
+    // }
 
     const handleOtherEdit = (id) => {
         // console.log('id in handleEdit', id)
@@ -94,10 +94,18 @@ function TripDashboard() {
                 Hikes
             </Link>
 
+            <Link className="navLink" to="/flight-dashboard/:id">
+                Flights
+            </Link>
+
+            <Link className="navLink" to="/lodging-dashboard/:id">
+                Lodging
+            </Link>
+
             </div>
 
 
-            {lodgingArray.map(lodgingItem => (
+            {/* {lodgingArray.map(lodgingItem => (
                 <div key={lodgingItem.id}>
                     <h4>Date: {lodgingItem.date}</h4>
                     <h4>Place: {lodgingItem.place}</h4>
@@ -106,7 +114,7 @@ function TripDashboard() {
                     <button onClick={() => handleLodgingDelete(lodgingItem.id)}>Delete</button>
                 </div>
                 )
-            )}
+            )} */}
 
             {/* {hikesArray.map(hike => (
                 <div key={hike.id}>
@@ -119,7 +127,7 @@ function TripDashboard() {
                 )
             )} */}
 
-                {flightsArray.map(flight => (
+                {/* {flightsArray.map(flight => (
                 <div key={flight.id}>
                     <h4>Date: {flight.date}</h4>
                     <h4>Airline: {flight.airline}</h4>
@@ -130,7 +138,7 @@ function TripDashboard() {
                     <button onClick={() => handleFlightDelete(flight.id)}>Delete</button>
                 </div>
                 )
-            )}
+            )} */}
 
             {otherArray.map(other => (
                 <div key={other.id}>
