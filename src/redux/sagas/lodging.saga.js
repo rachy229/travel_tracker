@@ -3,6 +3,7 @@ import axios from 'axios';
 
 function* getLodging(action) {
     try{
+        yield console.log('action in getLodging', action.payload)
         const response = yield axios.get(`/api/lodging/${action.payload}`);
         yield console.log('response.data in getLodging', response.data);
         yield put({ type: 'SET_LODGING', payload: response.data });
@@ -26,6 +27,7 @@ function* postLodging(action) {
     try{
         yield axios.post('/api/lodging', action.payload);
         yield put({type: 'GET_LODGING', payload: action.payload.tripId})
+        console.log('action.payload in postLodging', action.payload)
     }
     catch(error){
         console.log('error in postLodging', error);
@@ -45,9 +47,9 @@ function* editLodging(id) {
 
 function* deleteLodging(action) {
     try{
-        yield axios.delete(`/api/lodging/${action.payload}`)
+        yield axios.delete(`/api/lodging/${action.payload.id}`)
         yield put({type: 'GET_LODGING', payload: action.payload.tripId})
-        console.log('action.payload in deleteLodging', action.payload)
+        yield console.log('action.payload in deleteLodging', action.payload)
     }
     catch(error) {
         console.log('error in deleteLodging', error)

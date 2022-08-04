@@ -12,6 +12,8 @@ function TripDashboard() {
     const thisTrip = useSelector(store => store.trip.thisTrip);
     console.log('thisTrip in TripDashboard', thisTrip);
 
+    const tripId = useSelector(store => store.trip.tripId);
+
     return(
         <div>
 
@@ -26,7 +28,7 @@ function TripDashboard() {
                     Hikes
                 </Link>
 
-                <Link className="navLink" to="/flight-dashboard/:id">
+                <Link className="navLink" to="`/flight-dashboard/:id">
                     Flights
                 </Link>
 
