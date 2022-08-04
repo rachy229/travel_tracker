@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
+import TripHeader from "../TripHeader/TripHeader";
 
 function TripDashboard() {
 
@@ -13,8 +14,8 @@ function TripDashboard() {
 
     return(
         <div>
-            <h1>Trip to {thisTrip.location}</h1>
-            <h3>{thisTrip.start} - {thisTrip.end}</h3>
+
+            <TripHeader />
 
             <button onClick={() => history.push('/trips')}>Back</button>
 

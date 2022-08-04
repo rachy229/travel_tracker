@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import TripHeader from '../TripHeader/TripHeader';
 
 function HikeForm() {
 
@@ -30,6 +31,8 @@ function HikeForm() {
 
     return(
         <div>
+            <TripHeader />
+
             {/* go back to the add new item page */}
             <button onClick={() => history.push('/new')}>Back</button>
 

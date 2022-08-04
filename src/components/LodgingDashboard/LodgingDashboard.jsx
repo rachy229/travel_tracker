@@ -39,7 +39,7 @@ function LodgingDashboard() {
 
             {lodgingArray.map(lodgingItem => (
                 <div key={lodgingItem.id}>
-                    <h4>Date: {lodgingItem.date}</h4>
+                    <h4>Date: {lodgingItem.pretty_date}</h4>
                     <h4>Place: {lodgingItem.place}</h4>
                     <h4>Details: {lodgingItem.details}</h4>
                     <button onClick={() => handleLodgingEdit(lodgingItem.id)}>Edit</button>
