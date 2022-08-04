@@ -15,7 +15,8 @@ function* getFlights(action) {
 function* postFlight(action) {
     try{
         yield axios.post('/api/flight', action.payload);
-        yield put({type: 'GET_FLIGHTS'})
+        yield put({type: 'GET_FLIGHTS', payload: action.payload.tripId})
+        yield console.log('action.payload in postFlight', action.payload)
     }
     catch(error){
         console.log('error in postFlight', error);
@@ -24,8 +25,8 @@ function* postFlight(action) {
 
 function* deleteFlight(action) {
     try{
-        yield axios.delete(`/api/flight/${action.payload}`)
-        yield put({type: 'GET_FLIGHTS'})
+        yield axios.delete(`/api/flight/${action.payload.id}`)
+        yield put({type: 'GET_FLIGHTS', payload: action.payload.tripId})
         console.log('action.payload in deleteFlight', action.payload)
     }
     catch(error) {

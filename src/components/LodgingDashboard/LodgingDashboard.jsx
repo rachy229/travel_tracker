@@ -14,11 +14,11 @@ function LodgingDashboard() {
     const lodgingArray = useSelector(store => store.lodging);
 
     const tripId = useSelector(store => store.trip.tripId);
-    
+    console.log('trip id in LodgingDashboard', tripId)
 
-    const handleLodgingDelete = (id) => {
-        // console.log('id in handleLodgingDelete', id)
-        dispatch({type: 'DELETE_LODGING', payload: id})
+    const handleLodgingDelete = (id, tripId) => {
+        console.log('tripId in handleLodgingDelete', tripId)
+        dispatch({type: 'DELETE_LODGING', payload: {id, tripId}})
     }
 
     const handleLodgingEdit = (id) => {
@@ -43,7 +43,7 @@ function LodgingDashboard() {
                     <h4>Place: {lodgingItem.place}</h4>
                     <h4>Details: {lodgingItem.details}</h4>
                     <button onClick={() => handleLodgingEdit(lodgingItem.id)}>Edit</button>
-                    <button onClick={() => handleLodgingDelete(lodgingItem.id)}>Delete</button>
+                    <button onClick={() => handleLodgingDelete(lodgingItem.id, tripId)}>Delete</button>
                 </div>
                 )
             )}

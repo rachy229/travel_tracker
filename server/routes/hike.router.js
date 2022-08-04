@@ -4,14 +4,15 @@ const router = express.Router();
 
 router.get('/:id', (req, res) => {
     const id = req.params.id;
+    console.log('id in hike get', id)
     let queryText = `SELECT *, 
     to_char("date", 'Mon DD, YYYY') AS "pretty_date" 
     FROM "hike" WHERE "trip_id" = ${id} ORDER BY "date" DESC;`;
-    // console.log('req.params in hike router.get', req.params);
-    // console.log('id in hike router.get', id);
+    console.log('req.params in hike router.get', req.params);
+    console.log('id in hike router.get', id);
     pool.query(queryText)
     .then(result => {
-        // console.log('result.rows in hikeRouter.get', result.rows)
+        console.log('result.rows in hikeRouter.get', result.rows)
         res.send(result.rows);
     })
     .catch(error => {
@@ -22,7 +23,8 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
     const { date, place, details, tripId} = req.body
-    // console.log('req.body in hike router.post', req.body);
+    console.log('req.body in hike post', req.body);
+    console.log('date, place, details, tripId in hike router.post', date, place, details, tripId);
     let queryText = `INSERT INTO "hike" 
         ("date", "place", "details", "trip_id")
         VALUES ($1, $2, $3, $4);`;

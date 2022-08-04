@@ -15,8 +15,8 @@ function OtherDashboard() {
     const tripId = useSelector(store => store.trip.tripId);
 
 
-    const handleOtherDelete = (id) => {
-        dispatch({type: 'DELETE_OTHER', payload: id})
+    const handleOtherDelete = (id, tripId) => {
+        dispatch({type: 'DELETE_OTHER', payload: {id, tripId}})
     }
 
     const handleOtherEdit = (id) => {
@@ -41,7 +41,7 @@ function OtherDashboard() {
                     <h4>Place: {other.place}</h4>
                     <h4>Details: {other.details}</h4>
                     <button onClick={() => handleOtherEdit(other.id)}>Edit</button>
-                    <button onClick={() => handleOtherDelete(other.id)}>Delete</button>
+                    <button onClick={() => handleOtherDelete(other.id, tripId)}>Delete</button>
                 </div>
                 )
             )}

@@ -15,9 +15,9 @@ function FlightDashboard() {
     const tripId = useSelector(store => store.trip.tripId);
 
 
-    const handleFlightDelete = (id) => {
+    const handleFlightDelete = (id, tripId) => {
         // console.log('id in handleHikeDelete', id)
-        dispatch({type: 'DELETE_FLIGHT', payload: id})
+        dispatch({type: 'DELETE_FLIGHT', payload: {id, tripId}})
     }
 
     const handleFlightEdit = (id) => {
@@ -43,7 +43,7 @@ function FlightDashboard() {
                     <h4>Departure Time: {flight.departure_time}</h4>
                     <h4>Flight Number: {flight.flight_number}</h4>
                     <button onClick={() => handleFlightEdit(flight.id)}>Edit</button>
-                    <button onClick={() => handleFlightDelete(flight.id)}>Delete</button>
+                    <button onClick={() => handleFlightDelete(flight.id, tripId)}>Delete</button>
                 </div>
                 )
             )}

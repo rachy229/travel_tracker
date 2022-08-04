@@ -12,6 +12,8 @@ function TripDashboard() {
     const thisTrip = useSelector(store => store.trip.thisTrip);
     console.log('thisTrip in TripDashboard', thisTrip);
 
+    const tripId = useSelector(store => store.trip.tripId);
+
     return(
         <div>
 

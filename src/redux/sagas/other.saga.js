@@ -15,7 +15,7 @@ function* getOther(action) {
 function* postOther(action) {
     try{
         yield axios.post('/api/other', action.payload);
-        yield put({type: 'GET_OTHER'})
+        yield put({type: 'GET_OTHER', payload: action.payload.tripId})
     }
     catch(error){
         console.log('error in postOther', error);
@@ -24,9 +24,9 @@ function* postOther(action) {
 
 function* deleteOther(action) {
     try{
-        yield axios.delete(`/api/other/${action.payload}`)
-        yield put({type: 'GET_OTHER'})
-        console.log('action.payload in deleteOther', action.payload)
+        yield axios.delete(`/api/other/${action.payload.id}`)
+        yield put({type: 'GET_OTHER', payload: action.payload.tripId})
+        console.log('action.payload in deleteOther', action.payload.tripId)
     }
     catch(error) {
         console.log('error in deleteOther', error)
