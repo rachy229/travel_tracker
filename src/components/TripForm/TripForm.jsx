@@ -1,4 +1,5 @@
     import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
     import { useDispatch } from 'react-redux';
     import { useHistory } from 'react-router-dom';
 
@@ -7,6 +8,8 @@ function TripForm() {
     const dispatch = useDispatch();
     const history = useHistory();
 
+    const tripId = useSelector(store => store.trip.tripId);
+
     //input local states
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
@@ -14,6 +17,8 @@ function TripForm() {
 
     const handleSubmit = () => {
         dispatch({type: 'POST_TRIP', payload: {startDate, endDate, place}});
+
+        history.push(`/trips`)
         
         //clear inputs
         setStartDate('');

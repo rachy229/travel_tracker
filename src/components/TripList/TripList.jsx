@@ -13,12 +13,18 @@ function TripList() {
     console.log('tripArray', tripArray);
 
     const handleDelete = (id) => {
-        dispatch({type: 'DELETE_TRIP', payload: id})
+        let result = confirm("Are you sure you want to delete this trip?")
+            if (result) {
+                dispatch({type: 'DELETE_TRIP', payload: id})
+                // history.push('/trips')
+            }
     }
 
     const handleTripClick = (trip) => {
         console.log('trip in handleTripClick', trip)
+
         history.push(`/dashboard/${trip.id}`)
+
         dispatch({type: 'SET_TRIP_ID', payload: trip.id})
         dispatch({type: 'SELECT_TRIP', payload: trip})
     }
@@ -27,17 +33,25 @@ function TripList() {
         dispatch({type: 'GET_TRIPS'});
     }, [])
 
+    // const handleNewTrip = () => {
+    //     history.push('/new-trip')
+    // }
+
     return(
         <div>
             <h1>Trips!</h1>
-            <button onClick={() => history.push('/new-trip')}>Create A New Trip</button>
+            <div onClick={() => history.push('/new-trip')}>
+                <button>Create A New Trip</button>
+            </div>
 
 
                 {tripArray.map(trip => (
-                    <div key={trip.id} onClick={() => handleTripClick(trip)}>
-                        <h2>{trip.location}</h2> 
-                        <h4>{trip.start} - {trip.end}</h4>
-                        <button onClick={() => handleDelete(trip.id)}>Delete</button>
+                    <div>
+                        <div key={trip.id} onClick={() => handleTripClick(trip)}>
+                            <h2>{trip.location}</h2> 
+                            <h4>{trip.start} - {trip.end}</h4>
+                        </div>
+                        <button type="delete" onClick={() => handleDelete(trip.id)}>Delete</button>
                     </div>
                     )
                 )}
