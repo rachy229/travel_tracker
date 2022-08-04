@@ -30,6 +30,7 @@ import OtherForm from '../OtherForm/OtherForm';
 //dashboard componenets
 import TripDashboard from '../TripDashboard/TripDashboard';
 import HikeDashboard from '../HikeDashboard/HikeDashboard';
+import FlightDashboard from '../FlightDashboard/FlightDashboard';
 
 import './App.css';
 import EditLodging from '../EditLodging/EditLodging';
@@ -164,6 +165,10 @@ function App() {
 
           <ProtectedRoute exact path="/hike-dashboard/:id">
             <HikeDashboard />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/flight-dashboard/:id">
+            <FlightDashboard />
           </ProtectedRoute>
 
           <ProtectedRoute exact path="/edit-lodging">

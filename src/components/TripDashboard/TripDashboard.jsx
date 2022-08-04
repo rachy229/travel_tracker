@@ -14,8 +14,8 @@ function TripDashboard() {
     // const hikesArray = useSelector(store => store.hike);
     // // console.log('hikesArray in TripDashboard', hikesArray);
 
-    const flightsArray = useSelector(store => store.flight);
-    // console.log('flightsArray in TripDashboard', flightsArray);
+    // const flightsArray = useSelector(store => store.flight);
+    // // console.log('flightsArray in TripDashboard', flightsArray);
 
     const otherArray = useSelector(store => store.other);
 
@@ -33,10 +33,10 @@ function TripDashboard() {
     //     dispatch({type: 'DELETE_HIKE', payload: id})
     // }
 
-    const handleFlightDelete = (id) => {
-        // console.log('id in handleHikeDelete', id)
-        dispatch({type: 'DELETE_FLIGHT', payload: id})
-    }
+    // const handleFlightDelete = (id) => {
+    //     // console.log('id in handleHikeDelete', id)
+    //     dispatch({type: 'DELETE_FLIGHT', payload: id})
+    // }
 
     const handleOtherDelete = (id) => {
         dispatch({type: 'DELETE_OTHER', payload: id})
@@ -57,12 +57,12 @@ function TripDashboard() {
     //     // history.push('/edit-hike')
     // }
 
-    const handleFlightEdit = (id) => {
-        // console.log('id in handleEdit', id)
-        // // dispatch({type: 'GET_THIS_HIKE', payload: id})
-        // dispatch({type: 'THIS_HIKE_ID', payload: id})
-        // history.push('/edit-hike')
-    }
+    // const handleFlightEdit = (id) => {
+    //     // console.log('id in handleEdit', id)
+    //     // // dispatch({type: 'GET_THIS_HIKE', payload: id})
+    //     // dispatch({type: 'THIS_HIKE_ID', payload: id})
+    //     // history.push('/edit-hike')
+    // }
 
     const handleOtherEdit = (id) => {
         // console.log('id in handleEdit', id)
@@ -94,6 +94,10 @@ function TripDashboard() {
                 Hikes
             </Link>
 
+            <Link className="navLink" to="/flight-dashboard/:id">
+                Flights
+            </Link>
+
             </div>
 
 
@@ -119,7 +123,7 @@ function TripDashboard() {
                 )
             )} */}
 
-                {flightsArray.map(flight => (
+                {/* {flightsArray.map(flight => (
                 <div key={flight.id}>
                     <h4>Date: {flight.date}</h4>
                     <h4>Airline: {flight.airline}</h4>
@@ -130,7 +134,7 @@ function TripDashboard() {
                     <button onClick={() => handleFlightDelete(flight.id)}>Delete</button>
                 </div>
                 )
-            )}
+            )} */}
 
             {otherArray.map(other => (
                 <div key={other.id}>
