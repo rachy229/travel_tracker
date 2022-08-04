@@ -41,6 +41,8 @@ import AddNewItem from '../AddNewItem/AddNewItem';
 import TripList from '../TripList/TripList';
 import TripForm from '../TripForm/TripForm';
 
+import EditTrip from '../EditTrip/EditTrip';
+
 function App() {
   const dispatch = useDispatch();
 
@@ -136,6 +138,10 @@ function App() {
 
           <ProtectedRoute exact path="/new-trip">
             <TripForm />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/edit-trip/:id">
+            <EditTrip />
           </ProtectedRoute>
 
           <ProtectedRoute exact path="/new">
