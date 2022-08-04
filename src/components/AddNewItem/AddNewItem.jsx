@@ -1,4 +1,5 @@
 import { useHistory } from "react-router-dom"
+import TripHeader from "../TripHeader/TripHeader";
 
 function AddNewItem() {
 
@@ -20,8 +21,11 @@ function AddNewItem() {
         history.push('/other');
     }
     return(
+
         <div>
-            <h1>Add Something!</h1>
+            <TripHeader />
+
+            <h2>Add Something!</h2>
             <button onClick={goToHike}>Hike</button>
             <button onClick={goToLodging}>Lodging</button>
             <button onClick={goToFlight}>Flight</button>

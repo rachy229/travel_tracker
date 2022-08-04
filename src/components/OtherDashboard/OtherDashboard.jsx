@@ -37,7 +37,7 @@ function OtherDashboard() {
 
             {otherArray.map(other => (
                 <div key={other.id}>
-                    <h4>Date: {other.date}</h4>
+                    <h4>Date: {other.pretty_date}</h4>
                     <h4>Place: {other.place}</h4>
                     <h4>Details: {other.details}</h4>
                     <button onClick={() => handleOtherEdit(other.id)}>Edit</button>

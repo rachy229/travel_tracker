@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import TripHeader from '../TripHeader/TripHeader';
 
 function OtherForm() {
 
@@ -28,6 +29,8 @@ function OtherForm() {
 
     return(
         <div>
+            <TripHeader />
+
             {/* go back to the add new item page */}
             <button onClick={() => history.push('/new')}>Back</button>
 

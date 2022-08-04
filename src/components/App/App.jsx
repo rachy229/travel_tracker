@@ -33,6 +33,7 @@ import HikeDashboard from '../HikeDashboard/HikeDashboard';
 import FlightDashboard from '../FlightDashboard/FlightDashboard';
 import LodgingDashboard from '../LodgingDashboard/LodgingDashboard';
 import OtherDashboard from '../OtherDashboard/OtherDashboard';
+import TripHeader from '../TripHeader/TripHeader';
 
 import './App.css';
 import EditLodging from '../EditLodging/EditLodging';
