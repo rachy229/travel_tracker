@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 function TripDashboard() {
 
@@ -88,6 +88,11 @@ function TripDashboard() {
             <h1>This is the dashboard!!</h1>
 
             <button onClick={handleAddNewClick}>Add Something New!</button>
+            <div className="nav">
+            <Link className="navLink" to="/user">
+                Hikes
+            </Link>
+            </div>
 
             {lodgingArray.map(lodgingItem => (
                 <div key={lodgingItem.id}>
