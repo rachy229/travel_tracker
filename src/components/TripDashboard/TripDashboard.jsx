@@ -28,7 +28,7 @@ function TripDashboard() {
                     Hikes
                 </Link>
 
-                <Link className="navLink" to="`/flight-dashboard/:id">
+                <Link className="navLink" to="/flight-dashboard/:id">
                     Flights
                 </Link>
 
