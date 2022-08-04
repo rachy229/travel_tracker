@@ -23,10 +23,13 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 
 //form componenets
 import LodgingForm from '../LodgingForm/LodgingForm';
-import TripDashboard from '../TripDashboard/TripDashboard';
 import HikeForm from '../HikeForm/HikeForm';
 import FlightForm from '../FlightForm/FlightForm';
 import OtherForm from '../OtherForm/OtherForm';
+
+//dashboard componenets
+import TripDashboard from '../TripDashboard/TripDashboard';
+import HikeDashboard from '../HikeDashboard/HikeDashboard';
 
 import './App.css';
 import EditLodging from '../EditLodging/EditLodging';
@@ -157,6 +160,10 @@ function App() {
 
           <ProtectedRoute exact path="/dashboard/:id">
             <TripDashboard />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/hike-dashboard/:id">
+            <HikeDashboard />
           </ProtectedRoute>
 
           <ProtectedRoute exact path="/edit-lodging">
