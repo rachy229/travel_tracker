@@ -21,7 +21,7 @@ function HikeForm() {
         dispatch({type: 'POST_HIKE', payload: {date, place, details, tripId}});
 
         //send back to the dashboard
-        history.push(`/dashboard/:id`)
+        history.push(`/hike-dashboard/${tripId}`)
         
         //clear inputs
         setDate('');

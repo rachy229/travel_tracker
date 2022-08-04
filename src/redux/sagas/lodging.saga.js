@@ -25,7 +25,7 @@ function* getThisLodging(action) {
 function* postLodging(action) {
     try{
         yield axios.post('/api/lodging', action.payload);
-        yield put({type: 'GET_LODGING'})
+        yield put({type: 'GET_LODGING', payload: action.payload.tripId})
     }
     catch(error){
         console.log('error in postLodging', error);
@@ -46,7 +46,7 @@ function* editLodging(id) {
 function* deleteLodging(action) {
     try{
         yield axios.delete(`/api/lodging/${action.payload}`)
-        yield put({type: 'GET_LODGING'})
+        yield put({type: 'GET_LODGING', payload: action.payload.tripId})
         console.log('action.payload in deleteLodging', action.payload)
     }
     catch(error) {

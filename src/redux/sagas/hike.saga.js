@@ -1,5 +1,6 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 function* getHikes(action) {
     try{
@@ -16,7 +17,9 @@ function* getHikes(action) {
 function* postHike(action) {
     try{
         yield axios.post('/api/hike', action.payload);
-        yield put({type: 'GET_HIKES'})
+        yield console.log('action.payload in postHike', action.payload);
+        yield put({type: 'GET_HIKES', payload: action.payload.tripId})
+        yield console.log('action.payload.tripId in postHike', action.payload.tripId)
     }
     catch(error){
         console.log('error in postHike', error);

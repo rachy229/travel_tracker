@@ -22,7 +22,7 @@ function LodgingForm() {
         dispatch({type: 'POST_LODGING', payload: {date, place, details, lat, lng, tripId}});
 
         //send back to the dashboard
-        history.push(`/dashboard/:id`)
+        history.push(`/lodging-dashboard/${tripId}`)
         
         //clear inputs
         setDate('');
