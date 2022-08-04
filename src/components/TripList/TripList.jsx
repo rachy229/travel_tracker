@@ -16,10 +16,11 @@ function TripList() {
         dispatch({type: 'DELETE_TRIP', payload: id})
     }
 
-    const handleTripClick = (id) => {
-        console.log('trip id in handleTripClick', id)
-        history.push(`/dashboard/${id}`)
-        dispatch({type: 'SET_TRIP_ID', payload: id})
+    const handleTripClick = (trip) => {
+        console.log('trip in handleTripClick', trip)
+        history.push(`/dashboard/${trip.id}`)
+        dispatch({type: 'SET_TRIP_ID', payload: trip.id})
+        dispatch({type: 'SELECT_TRIP', payload: trip})
     }
 
     useEffect(() => {
@@ -33,9 +34,9 @@ function TripList() {
 
 
                 {tripArray.map(trip => (
-                    <div key={trip.id} onClick={() => handleTripClick(trip.id)}>
+                    <div key={trip.id} onClick={() => handleTripClick(trip)}>
                         <h2>{trip.location}</h2> 
-                        <h4>{trip.start_date} - {trip.end_date}</h4>
+                        <h4>{trip.start} - {trip.end}</h4>
                         <button onClick={() => handleDelete(trip.id)}>Delete</button>
                     </div>
                     )

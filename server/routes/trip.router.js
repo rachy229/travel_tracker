@@ -3,7 +3,9 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    let queryText = `SELECT * FROM "trip";`;
+    let queryText = `SELECT id, location, 
+    to_char("start_date", 'Mon DD, YYYY') AS "start", 
+    to_char("end_date", 'Mon DD, YYYY') AS "end" from "trip";`;
     pool.query(queryText)
     .then(result => {
         res.send(result.rows);

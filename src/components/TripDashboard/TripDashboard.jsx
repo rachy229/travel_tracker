@@ -8,11 +8,15 @@ function TripDashboard() {
     const dispatch = useDispatch();
     const history = useHistory();
 
+    const thisTrip = useSelector(store => store.trip.thisTrip);
+    console.log('thisTrip in TripDashboard', thisTrip);
 
     return(
         <div>
+            <h1>Trip to {thisTrip.location}</h1>
+            <h3>{thisTrip.start} - {thisTrip.end}</h3>
+
             <button onClick={() => history.push('/trips')}>Back</button>
-            <h1>This is the dashboard!!</h1>
 
             <button onClick={() => history.push('/new')}>Add Something New!</button>
 
