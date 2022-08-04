@@ -4,6 +4,7 @@ const router = express.Router();
 
 router.get('/:id', (req, res) => {
     const id = req.params.id
+    console.log('req.params in other router get')
     let queryText = `SELECT *, to_char("date", 'Mon DD, YYYY') AS "pretty_date"
     FROM "other" WHERE "trip_id" = ${id} ORDER BY "date" DESC;`;
     pool.query(queryText)
@@ -32,6 +33,7 @@ router.post('/', (req, res) => {
 
 router.delete('/:id', (req, res) => {
     const id = req.params.id;
+    console.log('id in other router delete', id)
     const queryText = `DELETE FROM "other" WHERE "id" = $1`;
     pool
     .query(queryText, [id])
