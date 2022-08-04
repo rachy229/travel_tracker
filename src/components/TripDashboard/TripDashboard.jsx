@@ -17,10 +17,10 @@ function TripDashboard() {
     // const flightsArray = useSelector(store => store.flight);
     // // console.log('flightsArray in TripDashboard', flightsArray);
 
-    const otherArray = useSelector(store => store.other);
+    // const otherArray = useSelector(store => store.other);
 
-    const tripId = useSelector(store => store.trip.tripId);
-    console.log('tripId in TripDashboard', tripId);
+    // const tripId = useSelector(store => store.trip.tripId);
+    // console.log('tripId in TripDashboard', tripId);
 
     //DELETE HANDLE CLICKS
     // const handleLodgingDelete = (id) => {
@@ -38,9 +38,9 @@ function TripDashboard() {
     //     dispatch({type: 'DELETE_FLIGHT', payload: id})
     // }
 
-    const handleOtherDelete = (id) => {
-        dispatch({type: 'DELETE_OTHER', payload: id})
-    }
+    // const handleOtherDelete = (id) => {
+    //     dispatch({type: 'DELETE_OTHER', payload: id})
+    // }
 
 
     //EDIT HANDLE CLICKS
@@ -64,16 +64,16 @@ function TripDashboard() {
     //     // history.push('/edit-hike')
     // }
 
-    const handleOtherEdit = (id) => {
-        // console.log('id in handleEdit', id)
-        // // dispatch({type: 'GET_THIS_HIKE', payload: id})
-        // dispatch({type: 'THIS_HIKE_ID', payload: id})
-        // history.push('/edit-hike')
-    }
+    // const handleOtherEdit = (id) => {
+    //     // console.log('id in handleEdit', id)
+    //     // // dispatch({type: 'GET_THIS_HIKE', payload: id})
+    //     // dispatch({type: 'THIS_HIKE_ID', payload: id})
+    //     // history.push('/edit-hike')
+    // }
 
-    const handleAddNewClick = (tripId) => {
-        history.push(`/new`)
-    }
+    // const handleAddNewClick = (tripId) => {
+    //     history.push(`/new`)
+    // }
 
     // useEffect(() => {
     //     dispatch({ type: 'GET_LODGING', payload: tripId})
@@ -87,7 +87,7 @@ function TripDashboard() {
             <button onClick={() => history.push('/trips')}>Back</button>
             <h1>This is the dashboard!!</h1>
 
-            <button onClick={handleAddNewClick}>Add Something New!</button>
+            <button onClick={() => history.push('/new')}>Add Something New!</button>
             <div className="nav">
 
             <Link className="navLink" to="/hike-dashboard/:id">
@@ -100,6 +100,10 @@ function TripDashboard() {
 
             <Link className="navLink" to="/lodging-dashboard/:id">
                 Lodging
+            </Link>
+
+            <Link className="navLink" to="/other-dashboard/:id">
+                Other
             </Link>
 
             </div>
@@ -140,7 +144,7 @@ function TripDashboard() {
                 )
             )} */}
 
-            {otherArray.map(other => (
+            {/* {otherArray.map(other => (
                 <div key={other.id}>
                     <h4>Date: {other.date}</h4>
                     <h4>Place: {other.place}</h4>
@@ -149,7 +153,7 @@ function TripDashboard() {
                     <button onClick={() => handleOtherDelete(other.id)}>Delete</button>
                 </div>
                 )
-            )}
+            )} */}
         </div>
     )
 }

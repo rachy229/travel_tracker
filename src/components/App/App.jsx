@@ -32,6 +32,7 @@ import TripDashboard from '../TripDashboard/TripDashboard';
 import HikeDashboard from '../HikeDashboard/HikeDashboard';
 import FlightDashboard from '../FlightDashboard/FlightDashboard';
 import LodgingDashboard from '../LodgingDashboard/LodgingDashboard';
+import OtherDashboard from '../OtherDashboard/OtherDashboard';
 
 import './App.css';
 import EditLodging from '../EditLodging/EditLodging';
@@ -174,6 +175,10 @@ function App() {
 
           <ProtectedRoute exact path="/flight-dashboard/:id">
             <FlightDashboard />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/other-dashboard/:id">
+            <OtherDashboard />
           </ProtectedRoute>
 
           <ProtectedRoute exact path="/edit-lodging">
