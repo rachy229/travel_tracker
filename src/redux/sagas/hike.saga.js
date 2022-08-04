@@ -28,9 +28,9 @@ function* postHike(action) {
 
 function* deleteHike(action) {
     try{
-        yield axios.delete(`/api/hike/${action.payload}`)
-        yield put({type: 'GET_HIKES'})
-        console.log('action.payload in deleteHike', action.payload)
+        yield axios.delete(`/api/hike/${action.payload.id}`)
+        yield put({type: 'GET_HIKES', payload: action.payload.tripId})
+        yield console.log('action.payload in deleteHike', action.payload)
     }
     catch(error) {
         console.log('error in deleteHike', error)

@@ -14,9 +14,9 @@ function HikeDashboard() {
     const tripId = useSelector(store => store.trip.tripId);
 
 
-    const handleHikeDelete = (id) => {
+    const handleHikeDelete = (id, tripId) => {
         // console.log('id in handleHikeDelete', id)
-        dispatch({type: 'DELETE_HIKE', payload: id})
+        dispatch({type: 'DELETE_HIKE', payload: {id, tripId}})
     }
 
     const handleHikeEdit = (id) => {
@@ -48,7 +48,7 @@ function HikeDashboard() {
                     <h4>Place: {hike.place}</h4>
                     <h4>Details: {hike.details}</h4>
                     <button onClick={() => handleHikeEdit(hike.id)}>Edit</button>
-                    <button onClick={() => handleHikeDelete(hike.id)}>Delete</button>
+                    <button onClick={() => handleHikeDelete(hike.id, tripId)}>Delete</button>
                 </div>
                 )
             )}
