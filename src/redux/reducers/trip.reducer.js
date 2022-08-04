@@ -18,7 +18,17 @@ const tripId = (state = {}, action) => {
     }
 }
 
+const thisTrip = (state = {}, action) => {
+    switch (action.type) {
+        case 'SELECT_TRIP':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
 export default combineReducers({
     tripReducer,
-    tripId
+    tripId,
+    thisTrip
 });
