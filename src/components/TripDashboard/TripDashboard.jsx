@@ -8,7 +8,7 @@ function TripDashboard() {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const lodgingArray = useSelector(store => store.lodging);
+    // const lodgingArray = useSelector(store => store.lodging);
     // console.log('lodgingArray in TripDashboard',lodgingArray);
 
     // const hikesArray = useSelector(store => store.hike);
@@ -23,10 +23,10 @@ function TripDashboard() {
     console.log('tripId in TripDashboard', tripId);
 
     //DELETE HANDLE CLICKS
-    const handleLodgingDelete = (id) => {
-        // console.log('id in handleLodgingDelete', id)
-        dispatch({type: 'DELETE_LODGING', payload: id})
-    }
+    // const handleLodgingDelete = (id) => {
+    //     // console.log('id in handleLodgingDelete', id)
+    //     dispatch({type: 'DELETE_LODGING', payload: id})
+    // }
 
     // const handleHikeDelete = (id) => {
     //     // console.log('id in handleHikeDelete', id)
@@ -44,12 +44,12 @@ function TripDashboard() {
 
 
     //EDIT HANDLE CLICKS
-    const handleLodgingEdit = (id) => {
-        console.log('id in handleEdit', id)
-        // dispatch({type: 'GET_THIS_LODGING', payload: id})
-        dispatch({type: 'THIS_LODGING_ID', payload: id})
-        history.push('/edit-lodging')
-    }
+    // const handleLodgingEdit = (id) => {
+    //     console.log('id in handleEdit', id)
+    //     // dispatch({type: 'GET_THIS_LODGING', payload: id})
+    //     dispatch({type: 'THIS_LODGING_ID', payload: id})
+    //     history.push('/edit-lodging')
+    // }
     // const handleHikeEdit = (id) => {
     //     // console.log('id in handleEdit', id)
     //     // // dispatch({type: 'GET_THIS_HIKE', payload: id})
@@ -98,10 +98,14 @@ function TripDashboard() {
                 Flights
             </Link>
 
+            <Link className="navLink" to="/lodging-dashboard/:id">
+                Lodging
+            </Link>
+
             </div>
 
 
-            {lodgingArray.map(lodgingItem => (
+            {/* {lodgingArray.map(lodgingItem => (
                 <div key={lodgingItem.id}>
                     <h4>Date: {lodgingItem.date}</h4>
                     <h4>Place: {lodgingItem.place}</h4>
@@ -110,7 +114,7 @@ function TripDashboard() {
                     <button onClick={() => handleLodgingDelete(lodgingItem.id)}>Delete</button>
                 </div>
                 )
-            )}
+            )} */}
 
             {/* {hikesArray.map(hike => (
                 <div key={hike.id}>
