@@ -4,7 +4,9 @@ const router = express.Router();
 
 router.get('/:id', (req, res) => {
     const id = req.params.id;
-    let queryText = `SELECT * FROM "hike" WHERE "trip_id" = ${id};`;
+    let queryText = `SELECT *, 
+    to_char("date", 'Mon DD, YYYY') AS "pretty_date" 
+    FROM "hike" WHERE "trip_id" = ${id} ORDER BY "date" DESC;`;
     // console.log('req.params in hike router.get', req.params);
     // console.log('id in hike router.get', id);
     pool.query(queryText)

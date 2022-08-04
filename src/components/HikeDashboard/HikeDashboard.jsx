@@ -44,7 +44,7 @@ function HikeDashboard() {
 
             {hikesArray.map(hike => (
                 <div key={hike.id}>
-                    <h4>Date: {hike.date}</h4>
+                    <h4>Date: {hike.pretty_date}</h4>
                     <h4>Place: {hike.place}</h4>
                     <h4>Details: {hike.details}</h4>
                     <button onClick={() => handleHikeEdit(hike.id)}>Edit</button>
