@@ -2,8 +2,11 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    let queryText = `SELECT * FROM "hike";`;
+router.get('/:id', (req, res) => {
+    const id = req.params.id;
+    let queryText = `SELECT * FROM "hike" WHERE "trip_id" = ${id};`;
+    // console.log('req.params in hike router.get', req.params);
+    // console.log('id in hike router.get', id);
     pool.query(queryText)
     .then(result => {
         // console.log('result.rows in hikeRouter.get', result.rows)

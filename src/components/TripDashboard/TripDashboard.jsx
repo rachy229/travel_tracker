@@ -77,13 +77,14 @@ function TripDashboard() {
 
     useEffect(() => {
         dispatch({ type: 'GET_LODGING'})
-        dispatch({type: 'GET_HIKES'})
+        dispatch({type: 'GET_HIKES', payload: tripId})
         dispatch({type: 'GET_FLIGHTS'})
         dispatch({type: 'GET_OTHER'})
     }, [])
 
     return(
         <div>
+            <button onClick={() => history.push('/trips')}>Back</button>
             <h1>This is the dashboard!!</h1>
 
             <button onClick={handleAddNewClick}>Add Something New!</button>
