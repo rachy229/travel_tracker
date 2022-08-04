@@ -30,14 +30,14 @@ function FlightDashboard() {
     useEffect(() => {
         dispatch({type: 'GET_FLIGHTS', payload: tripId})
     }, [])
-    
+
     return(
         <div>
             <TripDashboard />
 
             {flightsArray.map(flight => (
                 <div key={flight.id}>
-                    <h4>Date: {flight.date}</h4>
+                    <h4>Date: {flight.pretty_date}</h4>
                     <h4>Airline: {flight.airline}</h4>
                     <h4>Arrival Time: {flight.arrival_time}</h4>
                     <h4>Departure Time: {flight.departure_time}</h4>
