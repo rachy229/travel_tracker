@@ -7,8 +7,6 @@ import Button from '@mui/material/Button'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { createTheme } from '@mui/material/styles';
-import { ThemeProvider } from '@emotion/react';
 import { pink, red, lime, amber } from '@mui/material/colors';
 import { CardMedia } from '@mui/material';
 import { styled } from '@mui/material/styles';
