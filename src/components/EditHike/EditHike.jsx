@@ -56,8 +56,6 @@ function EditHike() {
             <h4>Details:</h4>
             <input type="time" value={hikeToEdit.details} onChange={(event) => handleChange(event, 'details')} />
 
-            <h4>Latitude:</h4>
-
             <button type='submit' >Submit</button>
         </form>
     </div>
