@@ -3,6 +3,16 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 
+import Button from '@mui/material/Button'
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import { createTheme } from '@mui/material/styles';
+import { ThemeProvider } from '@emotion/react';
+import { pink, red, lime, amber } from '@mui/material/colors';
+import { CardMedia } from '@mui/material';
+import { styled } from '@mui/material/styles';
+
 import TripDashboard from "../TripDashboard/TripDashboard";
 
 function OtherDashboard() {
@@ -29,21 +39,41 @@ function OtherDashboard() {
         useEffect(() => {
         dispatch({type: 'GET_OTHER', payload: tripId})
     }, [])
+
+    const CustomizedButton = styled(Button)`
+    color: ##eeff41;
+
+    :hover {
+        color: ##c6ff00;
+    }
+    `;
     return(
         <div>
 
             <TripDashboard />
 
-            {otherArray.map(other => (
-                <div key={other.id}>
-                    <h4>Date: {other.pretty_date}</h4>
-                    <h4>Place: {other.place}</h4>
-                    <h4>Details: {other.details}</h4>
-                    <button onClick={() => handleOtherEdit(other)}>Edit</button>
-                    <button onClick={() => handleOtherDelete(other.id, tripId)}>Delete</button>
-                </div>
-                )
-            )}
+
+            <Card sx={{ maxWidth: 345, m:2, background: lime[300] }} >
+                {otherArray.map(other => (
+                    <div key={other.id}>
+                        <Typography fontWeight={'bold'} variant="body1" color="text.primary" align="center" marginTop={1}>
+                            {other.pretty_date}
+                        </Typography>
+                        <Typography fontWeight={'medium'} variant="body1" color="text.primary" align="center" margin={2}>
+                            {other.place}
+                        </Typography>
+                        <Typography variant="body2" color="text.primary" align="left" marginLeft={4}>
+                            {other.details}
+                        </Typography>
+
+                        <div align="center">
+                            <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => handleOtherEdit(other)}>Edit</Button>
+                            <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => handleOtherDelete(other.id, tripId)}>Delete</Button>
+                        </div>
+                    </div>
+                    )
+                )}
+            </Card>
         </div>
     )
 }
