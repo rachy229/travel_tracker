@@ -9,14 +9,11 @@ function EditTrip() {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const tripId = useSelector(store => store.trip.tripId);
+    
     const tripToEdit = useSelector(store => store.trip.tripToEdit);
     console.log('tripToEdit', tripToEdit);
 
-    //input local states
-    const [startDate, setStartDate] = useState('');
-    const [endDate, setEndDate] = useState('');
-    const [place, setPlace] = useState('');
+
 
     function handleChange(event, property) {
         dispatch({ 
