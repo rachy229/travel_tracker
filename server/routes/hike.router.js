@@ -52,4 +52,20 @@ router.delete('/:id', (req, res) => {
     
 })
 
+router.put('/:id', (req, res) => {
+    // Update this single hike
+    console.log('req.params', req.params)
+    const idToUpdate = req.params.id;
+    console.log('req.body', req.body);
+    const sqlText = `UPDATE "hike" SET "date" = $1, "place" = $2, "details" = $3 WHERE id = $4`;
+    pool.query(sqlText, [req.body.date, req.body.place, req.body.details, idToUpdate])
+        .then((result) => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log(`Error making database query ${sqlText}`, error);
+            res.sendStatus(500);
+        });
+});
+
 module.exports = router;
