@@ -3,6 +3,14 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 
+import Button from '@mui/material/Button'
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import { pink, red, lime, amber } from '@mui/material/colors';
+import { CardMedia } from '@mui/material';
+import { styled } from '@mui/material/styles';
+
 import TripDashboard from "../TripDashboard/TripDashboard";
 
 
@@ -38,16 +46,28 @@ function LodgingDashboard() {
 
             <TripDashboard />
 
-            {lodgingArray.map(lodgingItem => (
-                <div key={lodgingItem.id}>
-                    <h4>Date: {lodgingItem.pretty_date}</h4>
-                    <h4>Place: {lodgingItem.place}</h4>
-                    <h4>Details: {lodgingItem.details}</h4>
-                    <button onClick={() => handleLodgingEdit(lodgingItem)}>Edit</button>
-                    <button onClick={() => handleLodgingDelete(lodgingItem.id, tripId)}>Delete</button>
-                </div>
-                )
-            )}
+                {lodgingArray.map(lodgingItem => (
+                    <div key={lodgingItem.id}>
+                        <Card sx={{ maxWidth: 345, m:2, background: lime[300] }} >
+
+                            <Typography fontWeight={'bold'} variant="body1" color="text.primary" align="center" marginTop={1}>
+                                {lodgingItem.pretty_date}
+                            </Typography>
+                            <Typography fontWeight={'medium'} variant="body1" color="text.primary" align="center" margin={2}>
+                                {lodgingItem.place}
+                            </Typography>
+                            <Typography variant="body2" color="text.primary" align="left" marginLeft={4}>
+                                {lodgingItem.details}
+                            </Typography>
+
+                            <div align="center">
+                                <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => handleLodgingEdit(lodgingItem)}>Edit</Button>
+                                <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => handleLodgingDelete(lodgingItem.id, tripId)}>Delete</Button>
+                            </div>
+                        </Card>
+                    </div>
+                    )
+                )}
         </div>
     )
 }
