@@ -22,7 +22,7 @@ function EditHike() {
     
     }
 
-    const handleSubmit = () => {
+    const handleSubmit = (event) => {
         event.preventDefault;
         console.log('hikeToEdit in handleSubmit', hikeToEdit)
 
@@ -63,4 +63,4 @@ function EditHike() {
 
 }
 
-export default EditFlight;
+export default EditHike;

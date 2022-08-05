@@ -43,6 +43,7 @@ import TripForm from '../TripForm/TripForm';
 
 import EditTrip from '../EditTrip/EditTrip';
 import EditFlight from '../EditFlight/EditFlight';
+import EditHike from '../EditHike/EditHike';
 
 function App() {
   const dispatch = useDispatch();
@@ -155,6 +156,10 @@ function App() {
 
           <ProtectedRoute exact path="/hike">
             <HikeForm />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/edit-hike">
+            <EditHike />
           </ProtectedRoute>
 
           <ProtectedRoute exact path="/flight">

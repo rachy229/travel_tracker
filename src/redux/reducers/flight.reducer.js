@@ -25,22 +25,6 @@ const flightToEdit = (state = {}, action) => {
     }
 }
 
-const tripToEdit = (state = {}, action) => {
-    switch (action.type) {
-        case 'SET_EDIT_TRIP':
-            return action.payload;
-        case 'EDIT_TRIP_ONCHANGE':
-            return {
-                ...state,
-                [action.payload.property]: action.payload.value
-            }
-        case 'CLEAR_EDIT_TRIP':
-            return '';
-        default:
-            return state;
-    }
-}
-
 // export default (
 //     flightReducer
 // );
