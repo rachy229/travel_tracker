@@ -6,7 +6,8 @@ router.get('/:id', (req, res) => {
     const id = req.params.id;
     console.log('id in hike get', id)
     let queryText = `SELECT *, 
-    to_char("date", 'Mon DD, YYYY') AS "pretty_date" 
+    to_char("date", 'Mon DD, YYYY') AS "pretty_date",
+    to_char("date", 'yyyy-MM-dd') AS "put_date"
     FROM "hike" WHERE "trip_id" = ${id} ORDER BY "date" DESC;`;
     console.log('req.params in hike router.get', req.params);
     console.log('id in hike router.get', id);

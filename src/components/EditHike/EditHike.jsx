@@ -54,7 +54,7 @@ function EditHike() {
             <input placeholder="Airline" value={hikeToEdit.place} onChange={(event) => handleChange(event, 'place')} />
 
             <h4>Details:</h4>
-            <input type="time" value={hikeToEdit.details} onChange={(event) => handleChange(event, 'details')} />
+            <input value={hikeToEdit.details} onChange={(event) => handleChange(event, 'details')} />
 
             <button type='submit' >Submit</button>
         </form>
