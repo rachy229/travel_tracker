@@ -8,7 +8,8 @@ router.get('/:id', (req, res) => {
     const id = req.params.id;
     console.log('req.params in ldoging router get', req.params);
     let queryText = `SELECT * , 
-    to_char("date", 'Mon DD, YYYY') AS "pretty_date" 
+    to_char("date", 'Mon DD, YYYY') AS "pretty_date",
+    to_char("date", 'yyyy-MM-dd') AS "put_date" 
     FROM "lodging" WHERE "trip_id" = ${id} ORDER BY "date" DESC;`;
     pool.query(queryText)
     .then(result => {
@@ -21,20 +22,6 @@ router.get('/:id', (req, res) => {
         res.sendStatus(500);
     })
 });
-
-// router.get('/:id', (req, res) => {
-//     const id = req.params.id;
-//     const queryText = `SELECT * FROM "lodging" WHERE "id" = $1;`;
-//     pool.query(queryText, [id])
-//     .then(result => {
-//         // console.log('result.rows in lodgingRouter.get /:id', result.rows)
-//         res.send(result.rows);
-//     })
-//     .catch(error => {
-//         console.log('error in lodging router.get /:id', error);
-//         res.sendStatus(500);
-//     })
-// });
 
 
 router.post('/', (req, res) => {

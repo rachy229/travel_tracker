@@ -2,7 +2,6 @@ import { combineReducers } from 'redux';
 import errors from './errors.reducer';
 import user from './user.reducer';
 import lodging from './lodging.reducer';
-import specificLodging from './specific.lodging.reducer';
 import hike from './hike.reducer';
 import flight from './flight.reducer';
 import other from './other.reducer';
@@ -19,7 +18,6 @@ const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in
   lodging,
-  specificLodging,
   hike,
   flight,
   other,

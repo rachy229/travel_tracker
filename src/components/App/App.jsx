@@ -36,7 +36,6 @@ import OtherDashboard from '../OtherDashboard/OtherDashboard';
 import TripHeader from '../TripHeader/TripHeader';
 
 import './App.css';
-import EditLodging from '../EditLodging/EditLodging';
 import AddNewItem from '../AddNewItem/AddNewItem';
 import TripList from '../TripList/TripList';
 import TripForm from '../TripForm/TripForm';
@@ -45,6 +44,7 @@ import EditTrip from '../EditTrip/EditTrip';
 import EditFlight from '../EditFlight/EditFlight';
 import EditHike from '../EditHike/EditHike';
 import EditOther from '../EditOther/EditOther';
+import EditLodging from '../EditLodging/EditLodging';
 
 function App() {
   const dispatch = useDispatch();
@@ -153,6 +153,10 @@ function App() {
 
           <ProtectedRoute exact path="/lodging">
             <LodgingForm />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/edit-lodging">
+            <EditLodging />
           </ProtectedRoute>
 
           <ProtectedRoute exact path="/hike">

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-const lodgingReducer = (state = [], action) => {
+const lodgingArray = (state = [], action) => {
 
     // console.log('action.payload in lodgingReducer', action.payload);
     // console.log('action.type in lodgingReducer', action.type);
@@ -13,7 +13,28 @@ const lodgingReducer = (state = [], action) => {
     }
 }
 
+const lodgingToEdit = (state = {}, action) => {
+    switch (action.type) {
+        case 'SET_EDIT_LODGING':
+            return action.payload;
+        case 'EDIT_LODGING_ONCHANGE':
+            return {
+                ...state,
+                [action.payload.property]: action.payload.value
+            }
+        case 'CLEAR_EDIT_LODGING':
+            return '';
+        default:
+            return state;
+    }
+}
 
-export default (
-    lodgingReducer
-);
+
+// export default (
+//     lodgingReducer
+// );
+
+export default combineReducers({
+    lodgingArray,
+    lodgingToEdit
+});
