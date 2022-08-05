@@ -10,7 +10,7 @@ function OtherDashboard() {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const otherArray = useSelector(store => store.other);
+    const otherArray = useSelector(store => store.other.otherArray);
 
     const tripId = useSelector(store => store.trip.tripId);
 
@@ -19,11 +19,10 @@ function OtherDashboard() {
         dispatch({type: 'DELETE_OTHER', payload: {id, tripId}})
     }
 
-    const handleOtherEdit = (id) => {
-        // console.log('id in handleEdit', id)
-        // // dispatch({type: 'GET_THIS_HIKE', payload: id})
-        // dispatch({type: 'THIS_HIKE_ID', payload: id})
-        // history.push('/edit-hike')
+    const handleOtherEdit = (other) => {
+        dispatch({type: 'SET_EDIT_OTHER', payload: other})
+        
+        history.push('/edit-other')
     }
 
 
@@ -40,7 +39,7 @@ function OtherDashboard() {
                     <h4>Date: {other.pretty_date}</h4>
                     <h4>Place: {other.place}</h4>
                     <h4>Details: {other.details}</h4>
-                    <button onClick={() => handleOtherEdit(other.id)}>Edit</button>
+                    <button onClick={() => handleOtherEdit(other)}>Edit</button>
                     <button onClick={() => handleOtherDelete(other.id, tripId)}>Delete</button>
                 </div>
                 )
