@@ -54,10 +54,10 @@ function EditFlight() {
             <input placeholder="Airline" value={flightToEdit.airline} onChange={(event) => handleChange(event, 'airline')} />
 
             <h4>Departure Time:</h4>
-            <input type="time" value={flightToEdit.departure} onChange={(event) => handleChange(event, 'departure_time')} />
+            <input type="time" value={flightToEdit.put_departure} onChange={(event) => handleChange(event, 'put_departure')} />
 
             <h4>Arrival Time:</h4>
-            <input type="time" value={flightToEdit.arrival} onChange={(event) => handleChange(event, 'arrival_time')} />
+            <input type="time" value={flightToEdit.put_arrival} onChange={(event) => handleChange(event, 'put_arrival')} />
 
             <h4>Flight Number:</h4>
             <input placeholder="Flight Number" value={flightToEdit.flight_number} onChange={(event) => handleChange(event, 'flight_number')} />

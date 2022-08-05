@@ -47,5 +47,5 @@ export default combineReducers({
     tripReducer,
     tripId,
     thisTrip,
-    tripToEdit
+    tripToEdit,
 });

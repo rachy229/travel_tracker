@@ -6,7 +6,9 @@ router.get('/:id', (req, res) => {
     const id = req.params.id;
     console.log('id in flight router get', id)
     let queryText = `SELECT *, to_char("date", 'Mon DD, YYYY') AS "pretty_date",
-    to_char("date", 'yyyy-MM-dd') AS "put_date"
+    to_char("date", 'yyyy-MM-dd') AS "put_date",
+    to_char("arrival_time", 'HH:mm') AS put_arrival,
+    to_char("departure_time", 'HH:mm') AS "put_departure"
     FROM "flight" WHERE "trip_id" = ${id} ORDER BY "date" DESC;`;
     pool.query(queryText)
     .then(result => {
@@ -55,7 +57,7 @@ router.put('/:id', (req, res) => {
     const idToUpdate = req.params.id;
     // console.log('req.body', req.body);
     const sqlText = `UPDATE "flight" SET "date" = $1, "airline" = $2, "departure_time" = $3, "arrival_time" = $4, "flight_number" = $5 WHERE id = $6`;
-    pool.query(sqlText, [req.body.date, req.body.airline, req.body.departure_time, req.body.arrival_time, req.body.flight_number, idToUpdate])
+    pool.query(sqlText, [req.body.put_date, req.body.airline, req.body.put_departure, req.body.put_arrival, req.body.flight_number, idToUpdate])
         .then((result) => {
             res.sendStatus(200);
         })

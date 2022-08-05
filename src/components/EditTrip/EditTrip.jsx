@@ -9,7 +9,7 @@ function EditTrip() {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    
+
     const tripToEdit = useSelector(store => store.trip.tripToEdit);
     console.log('tripToEdit', tripToEdit);
 
@@ -47,10 +47,10 @@ function EditTrip() {
     <h1>Edit Trip to </h1>
     <form onSubmit={handleSubmit}>
         <h4>Start Date:</h4>
-        <input type="date" placeholder="date" value={tripToEdit.start_date} onChange={(event) => handleChange(event, 'start')} />
+        <input type="date" placeholder="date" value={tripToEdit.put_start_date} onChange={(event) => handleChange(event, 'put_start_date')} />
 
         <h4>End Date:</h4>
-        <input type="date" placeholder="date" value={tripToEdit.end_date} onChange={(event) => handleChange(event, 'end')} />
+        <input type="date" placeholder="date" value={tripToEdit.put_end_date} onChange={(event) => handleChange(event, 'put_end_date')} />
 
         <h4>Place:</h4>
         <input placeholder="place" value={tripToEdit.location} onChange={(event) => handleChange(event, 'location')} />

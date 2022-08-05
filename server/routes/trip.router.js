@@ -6,8 +6,8 @@ router.get('/', (req, res) => {
     let queryText = `SELECT id, location, 
     to_char("start_date", 'Mon DD, YYYY') AS "start", 
     to_char("end_date", 'Mon DD, YYYY') AS "end",
-    to_char("start_date", 'yyyy-MM-dd') AS "start_date",
-    to_char("start_date", 'yyyy-MM-dd') AS "end_date" from "trip" ORDER BY "start_date" DESC;`;
+    to_char("start_date", 'yyyy-MM-dd') AS "put_start_date",
+    to_char("start_date", 'yyyy-MM-dd') AS "put_end_date" from "trip" ORDER BY "start_date" DESC;`;
     pool.query(queryText)
     .then(result => {
         res.send(result.rows);
