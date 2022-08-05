@@ -5,7 +5,10 @@ const router = express.Router();
 router.get('/:id', (req, res) => {
     const id = req.params.id;
     console.log('id in flight router get', id)
-    let queryText = `SELECT *, to_char("date", 'Mon DD, YYYY') AS "pretty_date"
+    let queryText = `SELECT *, to_char("date", 'Mon DD, YYYY') AS "pretty_date",
+    to_char("date", 'yyyy-MM-dd') AS "put_date",
+    to_char("arrival_time", 'HH:mm') AS put_arrival,
+    to_char("departure_time", 'HH:mm') AS "put_departure"
     FROM "flight" WHERE "trip_id" = ${id} ORDER BY "date" DESC;`;
     pool.query(queryText)
     .then(result => {
@@ -47,5 +50,21 @@ router.delete('/:id', (req, res) => {
     })
     
 })
+
+router.put('/:id', (req, res) => {
+    // Update this single flight
+    // console.log('req.params', req.params)
+    const idToUpdate = req.params.id;
+    // console.log('req.body', req.body);
+    const sqlText = `UPDATE "flight" SET "date" = $1, "airline" = $2, "departure_time" = $3, "arrival_time" = $4, "flight_number" = $5 WHERE id = $6`;
+    pool.query(sqlText, [req.body.put_date, req.body.airline, req.body.put_departure, req.body.put_arrival, req.body.flight_number, idToUpdate])
+        .then((result) => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log(`Error making database query ${sqlText}`, error);
+            res.sendStatus(500);
+        });
+});
 
 module.exports = router;

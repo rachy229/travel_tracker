@@ -20,6 +20,12 @@ function TripList() {
             }
     }
 
+    const handleEdit = (trip) => {
+        dispatch({type: 'SET_EDIT_TRIP', payload: trip})
+        
+        history.push(`/edit-trip`)
+    }
+
     const handleTripClick = (trip) => {
         console.log('trip in handleTripClick', trip)
 
@@ -52,6 +58,7 @@ function TripList() {
                             <h4>{trip.start} - {trip.end}</h4>
                         </div>
                         <button type="delete" onClick={() => handleDelete(trip)}>Delete</button>
+                        <button onClick={() => handleEdit(trip)}>Edit</button>
                     </div>
                     )
                 )}

@@ -10,7 +10,7 @@ function FlightDashboard() {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const flightsArray = useSelector(store => store.flight);
+    const flightsArray = useSelector(store => store.flight.flightReducer);
 
     const tripId = useSelector(store => store.trip.tripId);
 
@@ -20,11 +20,10 @@ function FlightDashboard() {
         dispatch({type: 'DELETE_FLIGHT', payload: {id, tripId}})
     }
 
-    const handleFlightEdit = (id) => {
-        // console.log('id in handleEdit', id)
-        // // dispatch({type: 'GET_THIS_HIKE', payload: id})
-        // dispatch({type: 'THIS_HIKE_ID', payload: id})
-        // history.push('/edit-hike')
+    const handleFlightEdit = (flight) => {
+        dispatch({type: 'SET_EDIT_FLIGHT', payload: flight})
+        
+        history.push('/edit-flight')
     }
 
     useEffect(() => {
@@ -39,10 +38,10 @@ function FlightDashboard() {
                 <div key={flight.id}>
                     <h4>Date: {flight.pretty_date}</h4>
                     <h4>Airline: {flight.airline}</h4>
-                    <h4>Arrival Time: {flight.arrival_time}</h4>
-                    <h4>Departure Time: {flight.departure_time}</h4>
+                    <h4>Arrival Time: {flight.put_arrival}</h4>
+                    <h4>Departure Time: {flight.put_departure}</h4>
                     <h4>Flight Number: {flight.flight_number}</h4>
-                    <button onClick={() => handleFlightEdit(flight.id)}>Edit</button>
+                    <button onClick={() => handleFlightEdit(flight)}>Edit</button>
                     <button onClick={() => handleFlightDelete(flight.id, tripId)}>Delete</button>
                 </div>
                 )

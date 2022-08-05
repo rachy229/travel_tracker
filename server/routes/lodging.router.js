@@ -8,7 +8,8 @@ router.get('/:id', (req, res) => {
     const id = req.params.id;
     console.log('req.params in ldoging router get', req.params);
     let queryText = `SELECT * , 
-    to_char("date", 'Mon DD, YYYY') AS "pretty_date" 
+    to_char("date", 'Mon DD, YYYY') AS "pretty_date",
+    to_char("date", 'yyyy-MM-dd') AS "put_date" 
     FROM "lodging" WHERE "trip_id" = ${id} ORDER BY "date" DESC;`;
     pool.query(queryText)
     .then(result => {
@@ -21,20 +22,6 @@ router.get('/:id', (req, res) => {
         res.sendStatus(500);
     })
 });
-
-// router.get('/:id', (req, res) => {
-//     const id = req.params.id;
-//     const queryText = `SELECT * FROM "lodging" WHERE "id" = $1;`;
-//     pool.query(queryText, [id])
-//     .then(result => {
-//         // console.log('result.rows in lodgingRouter.get /:id', result.rows)
-//         res.send(result.rows);
-//     })
-//     .catch(error => {
-//         console.log('error in lodging router.get /:id', error);
-//         res.sendStatus(500);
-//     })
-// });
 
 
 router.post('/', (req, res) => {
@@ -65,5 +52,22 @@ router.delete('/:id', (req, res) => {
     })
     
 })
+
+router.put('/:id', (req, res) => {
+    // Update this single lodging item
+    console.log('req.params', req.params)
+    const idToUpdate = req.params.id;
+    console.log('req.body', req.body);
+    const sqlText = `UPDATE "lodging" SET "date" = $1, "place" = $2, "details" = $3, "latitude" = $4, "longitude" = $5 WHERE id = $6`;
+    pool.query(sqlText, [req.body.put_date, req.body.place, req.body.details, req.body.latitude, req.body.longitude, idToUpdate])
+        .then((result) => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log(`Error making database query ${sqlText}`, error);
+            res.sendStatus(500);
+        });
+});
+
 
 module.exports = router;

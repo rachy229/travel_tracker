@@ -36,10 +36,15 @@ import OtherDashboard from '../OtherDashboard/OtherDashboard';
 import TripHeader from '../TripHeader/TripHeader';
 
 import './App.css';
-import EditLodging from '../EditLodging/EditLodging';
 import AddNewItem from '../AddNewItem/AddNewItem';
 import TripList from '../TripList/TripList';
 import TripForm from '../TripForm/TripForm';
+
+import EditTrip from '../EditTrip/EditTrip';
+import EditFlight from '../EditFlight/EditFlight';
+import EditHike from '../EditHike/EditHike';
+import EditOther from '../EditOther/EditOther';
+import EditLodging from '../EditLodging/EditLodging';
 
 function App() {
   const dispatch = useDispatch();
@@ -138,6 +143,10 @@ function App() {
             <TripForm />
           </ProtectedRoute>
 
+          <ProtectedRoute exact path="/edit-trip">
+            <EditTrip />
+          </ProtectedRoute>
+
           <ProtectedRoute exact path="/new">
             <AddNewItem />
           </ProtectedRoute>
@@ -146,16 +155,32 @@ function App() {
             <LodgingForm />
           </ProtectedRoute>
 
+          <ProtectedRoute exact path="/edit-lodging">
+            <EditLodging />
+          </ProtectedRoute>
+
           <ProtectedRoute exact path="/hike">
             <HikeForm />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/edit-hike">
+            <EditHike />
           </ProtectedRoute>
 
           <ProtectedRoute exact path="/flight">
             <FlightForm />
           </ProtectedRoute>
 
+          <ProtectedRoute exact path="/edit-flight">
+            <EditFlight />
+          </ProtectedRoute>
+
           <ProtectedRoute exact path="/other">
             <OtherForm />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/edit-other">
+            <EditOther />
           </ProtectedRoute>
 
           {/* <ProtectedRoute exact path="/dashboard">
