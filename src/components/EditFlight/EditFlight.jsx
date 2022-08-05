@@ -48,7 +48,7 @@ function EditFlight() {
         <h1>Edit Flight!</h1>
         <form onSubmit={handleSubmit}>
             <h4>Date:</h4>
-            <input type="date" placeholder="date" value={flightToEdit.date} onChange={(event) => handleChange(event, 'date')} />
+            <input type="date" placeholder="date" value={flightToEdit.put_date} onChange={(event) => handleChange(event, 'date')} />
 
             <h4>Airline:</h4>
             <input placeholder="Airline" value={flightToEdit.airline} onChange={(event) => handleChange(event, 'airline')} />

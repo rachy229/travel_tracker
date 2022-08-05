@@ -5,7 +5,8 @@ const router = express.Router();
 router.get('/:id', (req, res) => {
     const id = req.params.id;
     console.log('id in flight router get', id)
-    let queryText = `SELECT *, to_char("date", 'Mon DD, YYYY') AS "pretty_date"
+    let queryText = `SELECT *, to_char("date", 'Mon DD, YYYY') AS "pretty_date",
+    to_char("date", 'yyyy-MM-dd') AS "put_date"
     FROM "flight" WHERE "trip_id" = ${id} ORDER BY "date" DESC;`;
     pool.query(queryText)
     .then(result => {
