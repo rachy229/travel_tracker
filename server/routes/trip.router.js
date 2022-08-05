@@ -51,7 +51,7 @@ router.put('/:id', (req, res) => {
     console.log('req.params', req.params)
     const idToUpdate = req.params.id;
     const sqlText = `UPDATE "trip" SET "start_date" = $1, "end_date" = $2, "location" = $3 WHERE id = $4`;
-    pool.query(sqlText, [req.body.start, req.body.end, req.body.location, idToUpdate])
+    pool.query(sqlText, [req.body.put_start_date, req.body.put_end_date, req.body.location, idToUpdate])
         .then((result) => {
             res.sendStatus(200);
         })
