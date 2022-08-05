@@ -48,4 +48,20 @@ router.delete('/:id', (req, res) => {
     
 })
 
+router.put('/:id', (req, res) => {
+    // Update this single flight
+    console.log('req.params', req.params)
+    const idToUpdate = req.params.id;
+    console.log('req.body', req.body);
+    const sqlText = `UPDATE "flight" SET "date" = $1, "airline" = $2, "departure_time" = $3, "arrival_time" = $4, "flight_number" = $5 WHERE id = $6`;
+    pool.query(sqlText, [req.body.date, req.body.airline, req.body.departure_time, req.body.arrival_time, req.body.flight_number, idToUpdate])
+        .then((result) => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log(`Error making database query ${sqlText}`, error);
+            res.sendStatus(500);
+        });
+});
+
 module.exports = router;

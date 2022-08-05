@@ -31,7 +31,7 @@ function EditFlight() {
             // clean up reducer data            
             dispatch({ type: 'EDIT_FLIGHT_CLEAR' });
 
-            history.push('/flight-dashboard'); // back to flight dashboard
+            history.push(`/flight-dashboard/${flightToEdit.id}`); // back to flight dashboard
         })
         .catch(error => {
             console.log('error in EditFlight handleSubmit: ', error);
@@ -42,7 +42,7 @@ function EditFlight() {
         <div>
             <TripHeader />
             
-            {/* go back to the add new item page */}
+            {/* go back to the flight dashboard for this specific trip */}
             <button onClick={() => history.push(`/flight-dashboard/${flightToEdit.id}}`)}>Back</button>
 
         <h1>Edit Flight!</h1>
@@ -51,16 +51,16 @@ function EditFlight() {
             <input type="date" placeholder="date" value={flightToEdit.date} onChange={(event) => handleChange(event, 'date')} />
 
             <h4>Airline:</h4>
-            <input placeholder="Airline" value={flightToEdit.airline} onChange={(event) => setAirline(event, 'airline')} />
+            <input placeholder="Airline" value={flightToEdit.airline} onChange={(event) => handleChange(event, 'airline')} />
 
             <h4>Departure Time:</h4>
-            <input type="time" value={flightToEdit.departure} onChange={(event) => setDeparture(event, 'departure_time')} />
+            <input type="time" value={flightToEdit.departure} onChange={(event) => handleChange(event, 'departure_time')} />
 
             <h4>Arrival Time:</h4>
-            <input type="time" value={flightToEdit.arrival} onChange={(event) => setArrival(event, 'arrival_time')} />
+            <input type="time" value={flightToEdit.arrival} onChange={(event) => handleChange(event, 'arrival_time')} />
 
             <h4>Flight Number:</h4>
-            <input placeholder="Flight Number" value={flightToEdit.flight_number} onChange={(event) => setFlightNum(event, 'flight_number')} />
+            <input placeholder="Flight Number" value={flightToEdit.flight_number} onChange={(event) => handleChange(event, 'flight_number')} />
 
             <button type='submit' >Submit</button>
         </form>
