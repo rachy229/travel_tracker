@@ -12,6 +12,7 @@ import { CardMedia } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 import TripDashboard from "../TripDashboard/TripDashboard";
+// import userReducer from "../../redux/reducers/user.reducer";
 
 function OtherDashboard() {
 
@@ -55,26 +56,26 @@ function OtherDashboard() {
 
                 {otherArray.map(other => (
                     <div key={other.id}>
-            <Card sx={{ maxWidth: 345, m:2, background: lime[300] }} >
-                        <Typography fontWeight={'bold'} variant="body1" color="text.primary" align="center" marginTop={1}>
-                            {other.pretty_date}
-                        </Typography>
-                        <Typography fontWeight={'medium'} variant="body1" color="text.primary" align="center" margin={2}>
-                            {other.place}
-                        </Typography>
-                        <Typography variant="body2" color="text.primary" align="left" marginLeft={4}>
-                            {other.details}
-                        </Typography>
+                        <Card sx={{ maxWidth: 345, m:2, background: lime[300] }} >
+                            <Typography fontWeight={'bold'} variant="body1" color="text.primary" align="center" marginTop={1}>
+                                {other.pretty_date}
+                            </Typography>
+                            <Typography fontWeight={'medium'} variant="body1" color="text.primary" align="center" margin={2}>
+                                {other.place}
+                            </Typography>
+                            <Typography variant="body2" color="text.primary" align="left" marginLeft={4}>
+                                {other.details}
+                            </Typography>
 
-                        {user.clearance === 2 ? (
-                            <div align="center">
-                                <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => handleOtherEdit(other)}>Edit</Button>
-                                <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => handleOtherDelete(other.id, tripId)}>Delete</Button>
-                            </div>
-                        ) : (
-                            <></>
-                        )}
-            </Card>
+                            {user.clearance === 2 ? (
+                                <div align="center">
+                                    <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => handleOtherEdit(other)}>Edit</Button>
+                                    <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => handleOtherDelete(other.id, tripId)}>Delete</Button>
+                                </div>
+                            ) : (
+                                <></>
+                            )}
+                        </Card>
 
                     </div>
                     )
