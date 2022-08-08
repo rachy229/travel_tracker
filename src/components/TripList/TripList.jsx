@@ -4,6 +4,14 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom"
 import { Link } from 'react-router-dom';
 
+import Button from '@mui/material/Button'
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import { pink, red, lime, amber } from '@mui/material/colors';
+import { CardMedia } from '@mui/material';
+import { styled } from '@mui/material/styles';
+
 function TripList() {
 
     const dispatch = useDispatch();
@@ -11,6 +19,8 @@ function TripList() {
 
     const tripArray = useSelector(store => store.trip.tripReducer);
     console.log('tripArray', tripArray);
+    const user = useSelector(store => store.user);
+    console.log('clearance', user.clearance)
 
     const handleDelete = (trip) => {
         let result = confirm(`Delete your trip to ${trip.location}?`)
@@ -43,15 +53,16 @@ function TripList() {
     //     history.push('/new-trip')
     // }
 
+
     return(
         <div>
             <h1>Trips!</h1>
             <div onClick={() => history.push('/new-trip')}>
-                <button>Create A New Trip</button>
+            <Button sx={{background: pink[400], m:2}} variant="contained" >Create A New Trip</Button>
             </div>
 
 
-                {tripArray.map(trip => (
+                {/* {tripArray.map(trip => (
                     <div key={trip.id} >
                         <div onClick={() => handleTripClick(trip)}>
                             <h2>{trip.location}</h2> 
@@ -61,7 +72,48 @@ function TripList() {
                         <button onClick={() => handleEdit(trip)}>Edit</button>
                     </div>
                     )
-                )}
+                )} */}
+
+                {tripArray.map((trip) => 
+
+                user.clearance === 2 ? (
+
+                    <div key={trip.id} >
+                        <Card sx={{ maxWidth: 345, m:2, background: lime[300] }} >
+
+                        <div onClick={() => handleTripClick(trip)}>
+                            <Typography fontWeight={'bold'} variant="body1" color="text.primary" align="center" marginTop={1}>
+                                {trip.location}
+                            </Typography>
+                            <Typography fontWeight={'medium'} variant="body1" color="text.primary" align="center" margin={2}>
+                                {trip.start} - {trip.end}
+                            </Typography>
+                        </div>
+
+                            <div align="center">
+                                <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => handleEdit(trip)}>Edit</Button>
+                                <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => handleDelete(trip)}>Delete</Button>
+                            </div>
+                        </Card>
+                    </div>
+
+				) : (
+
+                    <div key={trip.id} >
+                    <Card sx={{ maxWidth: 345, m:2, background: lime[300] }} >
+
+                    <div onClick={() => handleTripClick(trip)}>
+                        <Typography fontWeight={'bold'} variant="body1" color="text.primary" align="center" marginTop={1}>
+                            {trip.location}
+                        </Typography>
+                        <Typography fontWeight={'medium'} variant="body1" color="text.primary" align="center" margin={2}>
+                            {trip.start} - {trip.end}
+                        </Typography>
+                    </div>
+                    </Card>
+                    </div>
+                )
+    )}
         </div>
     )
 }

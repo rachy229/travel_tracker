@@ -75,8 +75,8 @@ function FlightDashboard() {
                             </Typography>
 
                             <div align="center">
-                                <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => handleHikeEdit(hike)}>Edit</Button>
-                                <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => handleHikeDelete(hike.id, tripId)}>Delete</Button>
+                                <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => handleFlightEdit(flight)}>Edit</Button>
+                                <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => handleFlightDelete(flight.id, tripId)}>Delete</Button>
                             </div>
                         </Card>
                     </div>

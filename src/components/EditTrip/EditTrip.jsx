@@ -44,7 +44,7 @@ function EditTrip() {
         {/* go back to the trip list */}
         <button onClick={() => history.push('/trips')}>Back</button>
 
-    <h1>Edit Trip to </h1>
+    <h1>Edit Trip to {tripToEdit.location}</h1>
     <form onSubmit={handleSubmit}>
         <h4>Start Date:</h4>
         <input type="date" placeholder="date" value={tripToEdit.put_start_date} onChange={(event) => handleChange(event, 'put_start_date')} />

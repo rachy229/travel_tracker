@@ -42,7 +42,7 @@ function LodgingForm() {
             <button onClick={() => history.push('/new')}>Back</button>
 
 
-            <h1>This is the lodging form</h1>
+            <h1>Add Where You're Sleeping</h1>
             <form onSubmit={handleSubmit}>
                 <h4>Date:</h4>
                 <input type="date" placeholder="date" value={date} onChange={(event) => setDate(event.target.value)} />

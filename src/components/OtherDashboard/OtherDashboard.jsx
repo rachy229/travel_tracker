@@ -51,9 +51,9 @@ function OtherDashboard() {
             <TripDashboard />
 
 
-            <Card sx={{ maxWidth: 345, m:2, background: lime[300] }} >
                 {otherArray.map(other => (
                     <div key={other.id}>
+            <Card sx={{ maxWidth: 345, m:2, background: lime[300] }} >
                         <Typography fontWeight={'bold'} variant="body1" color="text.primary" align="center" marginTop={1}>
                             {other.pretty_date}
                         </Typography>
@@ -68,10 +68,11 @@ function OtherDashboard() {
                             <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => handleOtherEdit(other)}>Edit</Button>
                             <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => handleOtherDelete(other.id, tripId)}>Delete</Button>
                         </div>
+            </Card>
+
                     </div>
                     )
                 )}
-            </Card>
         </div>
     )
 }

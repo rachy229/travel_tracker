@@ -4,6 +4,14 @@ import { useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 import TripHeader from "../TripHeader/TripHeader";
 
+import Button from '@mui/material/Button'
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import { pink, red, lime, amber } from '@mui/material/colors';
+import { CardMedia } from '@mui/material';
+import { styled } from '@mui/material/styles';
+
 function TripDashboard() {
 
     const dispatch = useDispatch();
@@ -19,9 +27,9 @@ function TripDashboard() {
 
             <TripHeader />
 
-            <button onClick={() => history.push('/trips')}>Back</button>
+            <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => history.push('/trips')}>Back</Button>
 
-            <button onClick={() => history.push('/new')}>Add Something New!</button>
+            <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => history.push('/new')}>Add Something New!</Button>
 
             <div className="nav">
                 <Link className="navLink" to="/hike-dashboard/:id">
