@@ -44,21 +44,9 @@ function FlightDashboard() {
         <div>
             <TripDashboard />
 
-
-                    {/* <h4>Date: {flight.pretty_date}</h4>
-                    <h4>Airline: {flight.airline}</h4>
-                    <h4>Arrival Time: {flight.put_arrival}</h4>
-                    <h4>Departure Time: {flight.put_departure}</h4>
-                    <h4>Flight Number: {flight.flight_number}</h4>
-                    <button onClick={() => handleFlightEdit(flight)}>Edit</button>
-                    <button onClick={() => handleFlightDelete(flight.id, tripId)}>Delete</button>
-                </div>
-                )
-            )} */}
-
             {flightsArray.map((flight) => 
                 
-                user.clearance === 2 ? (
+                // user.clearance === 2 ? (
 
                 <div key={flight.id}>
                         <Card sx={{ maxWidth: 345, m:2, background: lime[300] }} >
@@ -79,37 +67,19 @@ function FlightDashboard() {
                                 {flight.flight_number}
                             </Typography>
 
+                        {user.clearance === 2 ? (
                             <div align="center">
                                 <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => handleFlightEdit(flight)}>Edit</Button>
                                 <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => handleFlightDelete(flight.id, tripId)}>Delete</Button>
                             </div>
+                        ) : (
+                            <></>
+                        )}
+
+
                         </Card>
                     </div>
 
-				) : (
-
-                    <div key={flight.id}>
-                    <Card sx={{ maxWidth: 345, m:2, background: lime[300] }} >
-
-                        <Typography fontWeight={'bold'} variant="body1" color="text.primary" align="center" marginTop={1}>
-                            {flight.pretty_date}
-                        </Typography>
-                        <Typography fontWeight={'medium'} variant="body1" color="text.primary" align="center" margin={2}>
-                            {flight.airline}
-                        </Typography>
-                        <Typography variant="body2" color="text.primary" align="center">
-                            Departure:  {flight.put_departure}
-                        </Typography>
-                        <Typography variant="body2" color="text.primary" align="center">
-                        Arrival:  {flight.put_arrival}
-                        </Typography>
-                        <Typography variant="body2" color="text.primary" align="left" marginLeft={4}>
-                            {flight.flight_number}
-                        </Typography>
-                        </Card>
-                    </div>
-
-                    )
                 )}
         </div>
     )
