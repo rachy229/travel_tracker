@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 
 
-function Map() {
+function Map(lodgingItem) {
 
     const lodgingArray = useSelector(store => store.lodging.lodgingArray);
 

@@ -14,20 +14,20 @@ import { CardMedia } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 import TripDashboard from "../TripDashboard/TripDashboard";
-import LodgingItem from "../LodgingItem/LodgingItem";
 
+function LodgingItem(lodgingItem) {
 
-function LodgingDashboard() {
+    console.log('lodgingItem in LodgingItem', lodgingItem)
 
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const lodgingArray = useSelector(store => store.lodging.lodgingArray);
+    // const lodgingArray = useSelector(store => store.lodging.lodgingArray);
 
     const tripId = useSelector(store => store.trip.tripId);
     console.log('trip id in LodgingDashboard', tripId)
 
-    const lodgingToEdit = useSelector(store => store.lodging.lodgingToEdit);
+    // const lodgingToEdit = useSelector(store => store.lodging.lodgingToEdit);
 
     const user = useSelector(store => store.user);
 
@@ -42,18 +42,12 @@ function LodgingDashboard() {
         history.push('/edit-lodging');
     }
 
-        useEffect(() => {
-        dispatch({ type: 'GET_LODGING', payload: tripId});
-    }, [])
-
+    //     useEffect(() => {
+    //     dispatch({ type: 'GET_LODGING', payload: tripId});
+    // }, [])
 
     return(
-        <div>
-
-            <TripDashboard />
-
-                {lodgingArray.map(lodgingItem => (
-                    <div key={lodgingItem.id}>
+                            <div key={lodgingItem.id}>
                         <Card sx={{ maxWidth: 345, m:2, background: lime[300] }} >
 
                             <Typography fontWeight={'bold'} variant="body1" color="text.primary" align="center" marginTop={1}>
@@ -66,7 +60,7 @@ function LodgingDashboard() {
                                 {lodgingItem.details}
                             </Typography>
 
-                            <img src={`https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/static/pin-l+ff00ae(${lodgingItem.longitude},${Number(lodgingItem.latitude)})/${Number(lodgingItem.longitude)},${Number(lodgingItem.latitude)},9.04,0/300x200?access_token=pk.eyJ1IjoicmFjaHkyMjkiLCJhIjoiY2w2NTYwb3F5MnhuYjNjbzEyam84MzkzcCJ9.uLkhGXRBZOcb2rzrggZePQ`} />
+                            {/* <img src={`https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/static/pin-l+ff00ae(${lodgingItem.longitude},${Number(lodgingItem.latitude)})/${Number(lodgingItem.longitude)},${Number(lodgingItem.latitude)},9.04,0/300x200?access_token=pk.eyJ1IjoicmFjaHkyMjkiLCJhIjoiY2w2NTYwb3F5MnhuYjNjbzEyam84MzkzcCJ9.uLkhGXRBZOcb2rzrggZePQ`} /> */}
 
                             {user.clearance === 2 ? (
                                 <div align="center">
@@ -77,11 +71,9 @@ function LodgingDashboard() {
                                 <></>
                             )}
                         </Card>
-                    </div>  
-                    // <LodgingItem lodgingItem={lodgingItem} />
-                    )
-                )}
-        </div>
+                    </div>
+
     )
 }
-export default LodgingDashboard;
+
+export default LodgingItem;
