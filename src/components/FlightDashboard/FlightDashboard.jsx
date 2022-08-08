@@ -42,7 +42,7 @@ function FlightDashboard() {
 
     return(
         <div>
-            {/* <TripDashboard /> */}
+            <TripDashboard />
 
 
                     {/* <h4>Date: {flight.pretty_date}</h4>
