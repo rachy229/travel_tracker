@@ -9,7 +9,7 @@ import Button from '@mui/material/Button'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { pink, red, lime, amber } from '@mui/material/colors';
+import { pink, red, lime, amber, orange } from '@mui/material/colors';
 import { CardMedia } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
@@ -54,24 +54,28 @@ function LodgingDashboard() {
 
                 {lodgingArray.map(lodgingItem => (
                     <div key={lodgingItem.id}>
-                        <Card sx={{ maxWidth: 345, m:2, background: lime[300] }} >
+                        <Card sx={{ maxWidth: 345, m:2, background: lime[700] }} >
 
-                            <Typography fontWeight={'bold'} variant="body1" color="text.primary" align="center" marginTop={1}>
+                            <Typography sx={{borderRadius:2, m:2, p:2, background: amber[300]}} fontWeight={'bold'} variant="body1" color="text.primary" align="center" marginTop={1}>
                                 {lodgingItem.pretty_date}
                             </Typography>
                             <Typography fontWeight={'medium'} variant="body1" color="text.primary" align="center" margin={2}>
                                 {lodgingItem.place}
                             </Typography>
-                            <Typography variant="body2" color="text.primary" align="left" marginLeft={4}>
+
+
+                            <CardMedia sx={{p:2, background: amber[100]}} align="center" >
+                            <img src={`https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/static/pin-l+ff00ae(${lodgingItem.longitude},${Number(lodgingItem.latitude)})/${Number(lodgingItem.longitude)},${Number(lodgingItem.latitude)},9.04,0/300x200?access_token=pk.eyJ1IjoicmFjaHkyMjkiLCJhIjoiY2w2NTYwb3F5MnhuYjNjbzEyam84MzkzcCJ9.uLkhGXRBZOcb2rzrggZePQ`} />
+                            </CardMedia>
+
+                            <Typography sx={{borderRadius:2, m:2, p:2, background: amber[50]}} variant="body2" color="text.primary" align="left" marginLeft={4}>
                                 {lodgingItem.details}
                             </Typography>
 
-                            <img src={`https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/static/pin-l+ff00ae(${lodgingItem.longitude},${Number(lodgingItem.latitude)})/${Number(lodgingItem.longitude)},${Number(lodgingItem.latitude)},9.04,0/300x200?access_token=pk.eyJ1IjoicmFjaHkyMjkiLCJhIjoiY2w2NTYwb3F5MnhuYjNjbzEyam84MzkzcCJ9.uLkhGXRBZOcb2rzrggZePQ`} />
-
                             {user.clearance === 2 ? (
                                 <div align="center">
-                                    <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => handleLodgingEdit(lodgingItem)}>Edit</Button>
-                                    <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => handleLodgingDelete(lodgingItem.id, tripId)}>Delete</Button>
+                                    <Button sx={{background: orange[700], m:2}} variant="contained" onClick={() => handleLodgingEdit(lodgingItem)}>Edit</Button>
+                                    <Button sx={{background: orange[700], m:2}} variant="contained" onClick={() => handleLodgingDelete(lodgingItem.id, tripId)}>Delete</Button>
                                 </div>
                             ) : (
                                 <></>
