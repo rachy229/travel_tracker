@@ -19,6 +19,8 @@ function FlightDashboard() {
     const history = useHistory();
 
     const flightsArray = useSelector(store => store.flight.flightReducer);
+    const user = useSelector(store => store.user);
+
 
     const tripId = useSelector(store => store.trip.tripId);
 
@@ -40,7 +42,7 @@ function FlightDashboard() {
 
     return(
         <div>
-            <TripDashboard />
+            {/* <TripDashboard /> */}
 
 
                     {/* <h4>Date: {flight.pretty_date}</h4>
@@ -54,7 +56,10 @@ function FlightDashboard() {
                 )
             )} */}
 
-            {flightsArray.map(flight => (
+            {flightsArray.map((flight) => 
+                
+                user.clearance === 2 ? (
+
                 <div key={flight.id}>
                         <Card sx={{ maxWidth: 345, m:2, background: lime[300] }} >
 
@@ -80,6 +85,30 @@ function FlightDashboard() {
                             </div>
                         </Card>
                     </div>
+
+				) : (
+
+                    <div key={flight.id}>
+                    <Card sx={{ maxWidth: 345, m:2, background: lime[300] }} >
+
+                        <Typography fontWeight={'bold'} variant="body1" color="text.primary" align="center" marginTop={1}>
+                            {flight.pretty_date}
+                        </Typography>
+                        <Typography fontWeight={'medium'} variant="body1" color="text.primary" align="center" margin={2}>
+                            {flight.airline}
+                        </Typography>
+                        <Typography variant="body2" color="text.primary" align="center">
+                            Departure:  {flight.put_departure}
+                        </Typography>
+                        <Typography variant="body2" color="text.primary" align="center">
+                        Arrival:  {flight.put_arrival}
+                        </Typography>
+                        <Typography variant="body2" color="text.primary" align="left" marginLeft={4}>
+                            {flight.flight_number}
+                        </Typography>
+                        </Card>
+                    </div>
+
                     )
                 )}
         </div>

@@ -41,7 +41,6 @@ function HikeDashboard() {
         <div>
 
             <TripDashboard />
-            
                 {hikesArray.map(hike => (
                     <div key={hike.id}>
                         <Card sx={{ maxWidth: 345, m:2, background: lime[300] }} >
