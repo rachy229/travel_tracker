@@ -26,6 +26,8 @@ function LodgingDashboard() {
 
     const lodgingToEdit = useSelector(store => store.lodging.lodgingToEdit);
 
+    const user = useSelector(store => store.user);
+
     const handleLodgingDelete = (id, tripId) => {
         console.log('tripId in handleLodgingDelete', tripId);
         dispatch({type: 'DELETE_LODGING', payload: {id, tripId}});
@@ -60,10 +62,14 @@ function LodgingDashboard() {
                                 {lodgingItem.details}
                             </Typography>
 
-                            <div align="center">
-                                <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => handleLodgingEdit(lodgingItem)}>Edit</Button>
-                                <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => handleLodgingDelete(lodgingItem.id, tripId)}>Delete</Button>
-                            </div>
+                            {user.clearance === 2 ? (
+                                <div align="center">
+                                    <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => handleLodgingEdit(lodgingItem)}>Edit</Button>
+                                    <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => handleLodgingDelete(lodgingItem.id, tripId)}>Delete</Button>
+                                </div>
+                            ) : (
+                                <></>
+                            )}
                         </Card>
                     </div>
                     )
