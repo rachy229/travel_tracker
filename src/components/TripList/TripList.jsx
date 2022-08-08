@@ -57,9 +57,13 @@ function TripList() {
     return(
         <div>
             <h1>Trips!</h1>
+            {user.clearance === 2 ?(
             <div onClick={() => history.push('/new-trip')}>
             <Button sx={{background: pink[400], m:2}} variant="contained" >Create A New Trip</Button>
             </div>
+            ) : (
+                <></>
+            )}
 
 
                 {/* {tripArray.map(trip => (
@@ -76,7 +80,7 @@ function TripList() {
 
                 {tripArray.map((trip) => 
 
-                user.clearance === 2 ? (
+                // user.clearance === 2 ? (
 
                     <div key={trip.id} >
                         <Card sx={{ maxWidth: 345, m:2, background: lime[300] }} >
@@ -90,29 +94,34 @@ function TripList() {
                             </Typography>
                         </div>
 
+                        {user.clearance === 2 ? (
+
                             <div align="center">
                                 <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => handleEdit(trip)}>Edit</Button>
                                 <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => handleDelete(trip)}>Delete</Button>
                             </div>
+                        ) : (
+                            <></>
+                        )}
                         </Card>
                     </div>
 
-				) : (
+				// ) : (
 
-                    <div key={trip.id} >
-                    <Card sx={{ maxWidth: 345, m:2, background: lime[300] }} >
+                //     <div key={trip.id} >
+                //     <Card sx={{ maxWidth: 345, m:2, background: lime[300] }} >
 
-                    <div onClick={() => handleTripClick(trip)}>
-                        <Typography fontWeight={'bold'} variant="body1" color="text.primary" align="center" marginTop={1}>
-                            {trip.location}
-                        </Typography>
-                        <Typography fontWeight={'medium'} variant="body1" color="text.primary" align="center" margin={2}>
-                            {trip.start} - {trip.end}
-                        </Typography>
-                    </div>
-                    </Card>
-                    </div>
-                )
+                //     <div onClick={() => handleTripClick(trip)}>
+                //         <Typography fontWeight={'bold'} variant="body1" color="text.primary" align="center" marginTop={1}>
+                //             {trip.location}
+                //         </Typography>
+                //         <Typography fontWeight={'medium'} variant="body1" color="text.primary" align="center" margin={2}>
+                //             {trip.start} - {trip.end}
+                //         </Typography>
+                //     </div>
+                //     </Card>
+                //     </div>
+                // )
     )}
         </div>
     )
