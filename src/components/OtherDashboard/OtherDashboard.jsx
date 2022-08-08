@@ -22,6 +22,8 @@ function OtherDashboard() {
 
     const tripId = useSelector(store => store.trip.tripId);
 
+    const user = useSelector(store => store.user);
+
 
     const handleOtherDelete = (id, tripId) => {
         dispatch({type: 'DELETE_OTHER', payload: {id, tripId}})
@@ -64,10 +66,14 @@ function OtherDashboard() {
                             {other.details}
                         </Typography>
 
-                        <div align="center">
-                            <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => handleOtherEdit(other)}>Edit</Button>
-                            <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => handleOtherDelete(other.id, tripId)}>Delete</Button>
-                        </div>
+                        {user.clearance === 2 ? (
+                            <div align="center">
+                                <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => handleOtherEdit(other)}>Edit</Button>
+                                <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => handleOtherDelete(other.id, tripId)}>Delete</Button>
+                            </div>
+                        ) : (
+                            <></>
+                        )}
             </Card>
 
                     </div>
