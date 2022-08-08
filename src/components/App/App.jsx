@@ -46,6 +46,8 @@ import EditHike from '../EditHike/EditHike';
 import EditOther from '../EditOther/EditOther';
 import EditLodging from '../EditLodging/EditLodging';
 
+import Map from '../Map/Map';
+
 function App() {
   const dispatch = useDispatch();
 
@@ -134,6 +136,10 @@ function App() {
               <LandingPage />
             }
           </Route>
+
+          <ProtectedRoute exact path="/map">
+            <Map />
+          </ProtectedRoute>
 
           <ProtectedRoute exact path="/trips">
             <TripList />
