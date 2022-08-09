@@ -3,6 +3,14 @@ import { useSelector } from 'react-redux';
     import { useDispatch } from 'react-redux';
     import { useHistory } from 'react-router-dom';
 
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import { pink, red, lime, amber, orange } from '@mui/material/colors';
+
+
+    import './TripForm.css';
+
 function TripForm() {
 
     const dispatch = useDispatch();
@@ -28,21 +36,27 @@ function TripForm() {
 
     return(
         <div>
-        {/* go back to the trip list */}
-        <button onClick={() => history.push('/trips')}>Back</button>
+            <div className='form-header'>
+                {/* go back to the trip list */}
+                <Button sx={{background: orange[700], m:2}} variant="contained" onClick={() => history.push('/trips')}>Back</Button>
 
-    <h1>Add A New Trip!</h1>
+                <h1 className='form-title'>Add A New Trip!</h1>
+            </div>
     <form onSubmit={handleSubmit}>
         <h4>Start Date:</h4>
-        <input type="date" placeholder="date" value={startDate} onChange={(event) => setStartDate(event.target.value)} />
+        <input className='form-input' type="date" placeholder="date" value={startDate} onChange={(event) => setStartDate(event.target.value)} />
 
-        <h4>End Date:</h4>
-        <input type="date" placeholder="date" value={endDate} onChange={(event) => setEndDate(event.target.value)} />
+        <h4>End Date:</h4> 
+        <input className='form-input' type="date" placeholder="date" value={endDate} onChange={(event) => setEndDate(event.target.value)} />
+
 
         <h4>Place:</h4>
-        <input placeholder="place" value={place} onChange={(event) => setPlace(event.target.value)} />
+        <input size='small' placeholder="place" value={place} onChange={(event) => setPlace(event.target.value)} />
 
-        <button type='submit' >Submit</button>
+
+        <Button sx={{background: orange[700], m:2}} variant="contained" type='submit' >Submit</Button>
+
+
     </form>
 </div>
     )
