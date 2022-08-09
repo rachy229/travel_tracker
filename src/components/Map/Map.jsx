@@ -10,6 +10,8 @@ import { pink, red, lime, amber, orange } from '@mui/material/colors';
 import { CardMedia } from '@mui/material';
 import { useHistory } from 'react-router-dom';
 
+import TripHeader from '../TripHeader/TripHeader';
+
 
 
 
@@ -68,7 +70,11 @@ useEffect(() => {
 
     return (
         <>
+
             <Button onClick={() => history.push(`/lodging-dashboard/${thisLodging.id}`)}>Back</Button>
+
+            <TripHeader />
+
             <Typography sx={{borderRadius:2, m:2, p:2, background: amber[300]}} fontWeight={'bold'} variant="body1" color="text.primary" align="center" marginTop={1}>
                     {thisLodging.pretty_date}
                 </Typography>
