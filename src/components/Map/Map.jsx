@@ -3,6 +3,12 @@ import { useSelector } from 'react-redux';
 
 import mapboxgl from '!mapbox-gl'; 
 import Card from '@mui/material/Card';
+import Button from '@mui/material/Button'
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import { pink, red, lime, amber, orange } from '@mui/material/colors';
+import { CardMedia } from '@mui/material';
+import { useHistory } from 'react-router-dom';
 
 
 
@@ -13,6 +19,8 @@ function Map(lodgingItem) {
 
     const thisLodging = useSelector(store => store.lodging.thisLodging);
     console.log(thisLodging)
+
+    const history = useHistory();
 
 
 
@@ -60,6 +68,9 @@ useEffect(() => {
 
     return (
         <Card>
+
+    <Button onClick={() => history.push(`/lodging-dashboard/${thisLodging.id}`)}>Back</Button>
+
 
                 {/* lat and lng bar */}
                 <div className="sidebar">
