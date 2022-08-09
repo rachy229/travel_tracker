@@ -67,22 +67,33 @@ useEffect(() => {
         });
 
     return (
-        <Card>
+        <>
+            <Button onClick={() => history.push(`/lodging-dashboard/${thisLodging.id}`)}>Back</Button>
+            <Typography sx={{borderRadius:2, m:2, p:2, background: amber[300]}} fontWeight={'bold'} variant="body1" color="text.primary" align="center" marginTop={1}>
+                    {thisLodging.pretty_date}
+                </Typography>
 
-    <Button onClick={() => history.push(`/lodging-dashboard/${thisLodging.id}`)}>Back</Button>
+                <div sx={{background: lime[300]}} >
 
+                <Typography fontWeight={'medium'} variant="body1" color="text.primary" align="center" margin={2}>
+                    {thisLodging.place}
+                </Typography>
 
-                {/* lat and lng bar */}
-                <div className="sidebar">
-                    Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
                 </div>
 
-            <div>
-                <div ref={mapContainer} className="map-container" />
-            </div>
+            <Card sx={{background: lime[700]}}>
+                <CardMedia sx={{background: amber[50], p:2, m: 2}}>
+                    {/* lat and lng bar */}
+                    <div className="sidebar">
+                        Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
+                    </div>
 
-        </Card>
-
+                    <div>
+                        <div ref={mapContainer} className="map-container" />
+                    </div>
+                </CardMedia>
+            </Card>
+            </>
     );
 }
 

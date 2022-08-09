@@ -8,7 +8,7 @@ import Button from '@mui/material/Button'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { pink, red, lime, amber } from '@mui/material/colors';
+import { pink, red, lime, amber, orange } from '@mui/material/colors';
 import { CardMedia } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
@@ -59,7 +59,7 @@ function TripList() {
             <h1>Trips!</h1>
             {user.clearance === 2 ?(
             <div onClick={() => history.push('/new-trip')}>
-            <Button sx={{background: pink[400], m:2}} variant="contained" >Create A New Trip</Button>
+            <Button sx={{background: orange[700], m:2}} variant="contained" >Create A New Trip</Button>
             </div>
             ) : (
                 <></>
@@ -83,22 +83,24 @@ function TripList() {
                 // user.clearance === 2 ? (
 
                     <div key={trip.id} >
-                        <Card sx={{ maxWidth: 345, m:2, background: lime[300] }} >
+                        <Card sx={{ maxWidth: 345, m:2, background: lime[700] }} >
 
                         <div onClick={() => handleTripClick(trip)}>
-                            <Typography fontWeight={'bold'} variant="body1" color="text.primary" align="center" marginTop={1}>
+                            <Typography sx={{borderRadius:2, m:2, p:2, background: amber[300]}} fontWeight={'bold'} variant="body1" color="text.primary" align="center" marginTop={1}>
                                 {trip.location}
                             </Typography>
-                            <Typography fontWeight={'medium'} variant="body1" color="text.primary" align="center" margin={2}>
+                            <CardContent sx={{background: lime[100]}} >
+                            <Typography sx={{borderRadius:2, m:2, p:2, background: amber[50]}} fontWeight={'medium'} variant="body1" color="text.primary" align="center" margin={2}>
                                 {trip.start} - {trip.end}
                             </Typography>
+                            </CardContent>
                         </div>
 
                         {user.clearance === 2 ? (
 
                             <div align="center">
-                                <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => handleEdit(trip)}>Edit</Button>
-                                <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => handleDelete(trip)}>Delete</Button>
+                                <Button sx={{background: orange[700], m:2}} variant="contained" onClick={() => handleEdit(trip)}>Edit</Button>
+                                <Button sx={{background: orange[700], m:2}} variant="contained" onClick={() => handleDelete(trip)}>Delete</Button>
                             </div>
                         ) : (
                             <></>

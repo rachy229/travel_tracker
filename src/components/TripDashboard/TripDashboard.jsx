@@ -4,11 +4,16 @@ import { useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 import TripHeader from "../TripHeader/TripHeader";
 
-import Button from '@mui/material/Button'
+import './TripDashboard.css';
+
+import Button from '@mui/material/Button';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab'
+import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { pink, red, lime, amber } from '@mui/material/colors';
+import { pink, red, lime, amber, orange } from '@mui/material/colors';
 import { CardMedia } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
@@ -28,30 +33,32 @@ function TripDashboard() {
     return(
         <div>
 
-            <TripHeader />
 
             {user.clearance === 2 ? (
             
             <div>
-                <div>
-            <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => history.push('/trips')}>Back</Button>
+            <div className="trip-dashboard-buttons">
+                <Button sx={{background: lime[600], m:2}} variant="contained" onClick={() => history.push('/trips')}>Back</Button>
 
-            <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => history.push('/new')}>Add Something New!</Button>
+                <Button sx={{background: lime[600], m:2}} variant="contained" onClick={() => history.push('/new')}>Add Something New!</Button>
             </div>
-            <div className="nav">
-                <Link className="navLink" to="/hike-dashboard/:id">
+
+                <TripHeader />
+
+            <div className="category-nav">
+                <Link className="categoryLink" to="/hike-dashboard/:id">
                     Hikes
                 </Link>
 
-                <Link className="navLink" to="/flight-dashboard/:id">
+                <Link className="categoryLink" to="/flight-dashboard/:id">
                     Flights
                 </Link>
 
-                <Link className="navLink" to="/lodging-dashboard/:id">
+                <Link className="categoryLink" to="/lodging-dashboard/:id">
                     Lodging
                 </Link>
 
-                <Link className="navLink" to="/other-dashboard/:id">
+                <Link className="categoryLink" to="/other-dashboard/:id">
                     Other
                 </Link>
             </div>
@@ -59,23 +66,24 @@ function TripDashboard() {
 
             ) : (
                 <div>
-            <Button sx={{background: pink[400], m:2}} variant="contained" onClick={() => history.push('/trips')}>Back</Button>
+            <Button sx={{background: orange[700], m:2}} variant="contained" onClick={() => history.push('/trips')}>Back</Button>
 
+            <TripHeader />
 
                 <div className="nav">
-                <Link className="navLink" to="/hike-dashboard/:id">
+                <Link className="categoryLink" to="/hike-dashboard/:id">
                     Hikes
                 </Link>
 
-                <Link className="navLink" to="/flight-dashboard/:id">
+                <Link className="categoryLink" to="/flight-dashboard/:id">
                     Flights
                 </Link>
 
-                <Link className="navLink" to="/lodging-dashboard/:id">
+                <Link className="categoryLink" to="/lodging-dashboard/:id">
                     Lodging
                 </Link>
 
-                <Link className="navLink" to="/other-dashboard/:id">
+                <Link className="categoryLink" to="/other-dashboard/:id">
                     Other
                 </Link>
             </div>
