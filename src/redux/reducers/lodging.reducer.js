@@ -29,6 +29,15 @@ const lodgingToEdit = (state = {}, action) => {
     }
 }
 
+const thisLodging = (state = {}, action) => {
+    switch (action.type) {
+        case 'SET_THIS_LODGING':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
 
 // export default (
 //     lodgingReducer
@@ -36,5 +45,6 @@ const lodgingToEdit = (state = {}, action) => {
 
 export default combineReducers({
     lodgingArray,
-    lodgingToEdit
+    lodgingToEdit,
+    thisLodging
 });

@@ -1,6 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react';
-import mapboxgl from '!mapbox-gl'; 
 import { useSelector } from 'react-redux';
+
+import mapboxgl from '!mapbox-gl'; 
+import Card from '@mui/material/Card';
+
 
 
 
@@ -8,22 +11,42 @@ function Map(lodgingItem) {
 
     const lodgingArray = useSelector(store => store.lodging.lodgingArray);
 
+    const thisLodging = useSelector(store => store.lodging.thisLodging);
+    console.log(thisLodging)
+
+
+
+
 mapboxgl.accessToken = 'pk.eyJ1IjoicmFjaHkyMjkiLCJhIjoiY2w2NTYwb3F5MnhuYjNjbzEyam84MzkzcCJ9.uLkhGXRBZOcb2rzrggZePQ';
 
 const mapContainer = useRef(null);
 const map = useRef(null);
-const [lng, setLng] = useState(-70.9);
-const [lat, setLat] = useState(42.35);
+const [lng, setLng] = useState(thisLodging.longitude);
+const [lat, setLat] = useState(thisLodging.latitude);
 const [zoom, setZoom] = useState(9);
 
+// setLat(Number(thisLodging.lat));
+// console.log('lat:', lat);
+
+// setLng(Number(thisLodging.lng));
+// console.log('lng:', lng);
+// const marker = new mapboxgl.Marker({
+//     color: ('#eb34cc')
+
+//     })
+//     .setLngLat([Number(thisLodging.longitude), Number(thisLodging.latitude)])
+//     .addTo(map);
+
 useEffect(() => {
+
     if (map.current) return; // initialize map only once
     map.current = new mapboxgl.Map({
         container: mapContainer.current,
         style: 'mapbox://styles/mapbox/streets-v11',
         center: [lng, lat],
         zoom: zoom
-        });
+        })
+
     });
 
     useEffect(() => {
@@ -36,12 +59,18 @@ useEffect(() => {
         });
 
     return (
+        <Card>
+
+                {/* lat and lng bar */}
+                <div className="sidebar">
+                    Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
+                </div>
 
             <div>
                 <div ref={mapContainer} className="map-container" />
             </div>
 
-
+        </Card>
 
     );
 }

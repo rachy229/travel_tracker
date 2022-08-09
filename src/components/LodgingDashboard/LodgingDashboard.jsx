@@ -46,6 +46,12 @@ function LodgingDashboard() {
         dispatch({ type: 'GET_LODGING', payload: tripId});
     }, [])
 
+    const handleMapClick = (lodging) => {
+        dispatch({type: 'SET_THIS_LODGING', payload: lodging});
+
+        history.push('/map')
+    }
+
 
     return(
         <div>
@@ -64,8 +70,8 @@ function LodgingDashboard() {
                             </Typography>
 
 
-                            <CardMedia sx={{p:2, background: amber[100]}} align="center" >
-                            <img src={`https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/static/pin-l+ff00ae(${lodgingItem.longitude},${Number(lodgingItem.latitude)})/${Number(lodgingItem.longitude)},${Number(lodgingItem.latitude)},9.04,0/300x200?access_token=pk.eyJ1IjoicmFjaHkyMjkiLCJhIjoiY2w2NTYwb3F5MnhuYjNjbzEyam84MzkzcCJ9.uLkhGXRBZOcb2rzrggZePQ`} />
+                            <CardMedia sx={{p:2, background: lime[300]}} align="center" >
+                            <img onClick={() => handleMapClick(lodgingItem)} src={`https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/static/pin-l+ff00ae(${lodgingItem.longitude},${Number(lodgingItem.latitude)})/${Number(lodgingItem.longitude)},${Number(lodgingItem.latitude)},9.04,0/300x200?access_token=pk.eyJ1IjoicmFjaHkyMjkiLCJhIjoiY2w2NTYwb3F5MnhuYjNjbzEyam84MzkzcCJ9.uLkhGXRBZOcb2rzrggZePQ`} />
                             </CardMedia>
 
                             <Typography sx={{borderRadius:2, m:2, p:2, background: amber[50]}} variant="body2" color="text.primary" align="left" marginLeft={4}>
