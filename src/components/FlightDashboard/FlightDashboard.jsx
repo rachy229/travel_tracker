@@ -82,7 +82,7 @@ function FlightDashboard() {
                                 <Button sx={{background: "#6F1A07", m:2}} variant="contained" onClick={() => handleFlightDelete(flight.id, tripId)}>Delete</Button>
                             </div>
                         ) : (
-                            <></>
+                            <Box sx={{p: 2}}/>
                         )}
 
 

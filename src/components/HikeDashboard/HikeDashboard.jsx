@@ -54,7 +54,7 @@ function HikeDashboard() {
                                 {hike.pretty_date}
                             </Typography>
                         <CardContent sx={{background: "#FDF6C3"}} >
-                        <Box  sx={{borderRadius: 1, background: "#7ebea5"}} >
+                        <Box  sx={{m:2, borderRadius: 1, background: "#7ebea5"}} >
                             <Typography fontWeight={'medium'} variant="body1" color="text.primary" align="center" >
                                 {hike.place}
                             </Typography>
@@ -70,7 +70,7 @@ function HikeDashboard() {
                                 <Button sx={{background: "#6F1A07", m:2}} variant="contained" onClick={() => handleHikeDelete(hike.id, tripId)}>Delete</Button>
                             </div>
                             ) : (
-                                <></>
+                                <Box sx={{p: 2}}/>
                             )}
                         </Card>
                     </div>

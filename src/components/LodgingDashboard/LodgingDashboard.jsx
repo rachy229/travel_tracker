@@ -68,7 +68,9 @@ function LodgingDashboard() {
                                 <Typography fontWeight={'bold'} variant="body1" color="black" align="center" marginTop={1}>
                                     {lodgingItem.pretty_date}
                                 </Typography>
-                                <Typography fontWeight={'medium'} variant="body1" color="text.primary" align="center" margin={2}>
+                            </Box>
+                            <Box sx={{p: 1, background: "#FDF6C3"}}>
+                                <Typography sx={{borderRadius: 1, background: "#7ebea5"}} fontWeight={'medium'} variant="body1" color="text.primary" align="center" margin={2}>
                                     {lodgingItem.place}
                                 </Typography>
                             </Box>

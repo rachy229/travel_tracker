@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 import Button from '@mui/material/Button'
 import Card from '@mui/material/Card';
+import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { pink, red, lime, amber, orange } from '@mui/material/colors';
@@ -83,17 +84,21 @@ function TripList() {
                 // user.clearance === 2 ? (
 
                     <div key={trip.id} >
-                        <Card sx={{ maxWidth: 345, m:2, background: "#b74c22", border: "3px solid #6F1A07" }} >
+                        <Card sx={{ maxWidth: 345, m:2, background: "#b74c22"}} >
 
                         <div onClick={() => handleTripClick(trip)}>
-                            <Typography sx={{borderRadius:2, m:1, p:1, background: "#FDF6C3", border: "5px solid #FE5F55"}} fontWeight={'bold'} variant="body1" color="6F1A07" align="center" marginTop={1}>
+                            <Typography sx={{borderRadius:2, m:1, marginTop: 2, marginBottom: 2 , p:1, background: "#FDF6C3", border: "5px solid #FF9D0A"}} fontWeight={'bold'} variant="body1" color="6F1A07" align="center" marginTop={1}>
                                 {trip.location}
                             </Typography>
+
+                            <Box sx={{p: 1, background: "#FF9D0A"}}/>
+
                             <CardContent sx={{background: "#FDF6C3"}} >
-                            <Typography sx={{borderRadius:2, m:2, p:2, background: "#7ebea5"}} fontWeight={'medium'} variant="body1" color="text.primary" align="center" margin={2}>
-                                {trip.start} - {trip.end}
-                            </Typography>
+                                <Typography sx={{borderRadius:2, m: 2, p:2, background: "#7ebea5"}} fontWeight={'medium'} variant="body1" color="text.primary" align="center" margin={2}>
+                                    {trip.start} - {trip.end}
+                                </Typography>
                             </CardContent>
+                            {/* <Box sx={{p: 1, background: "#b74c22"}}/> */}
                         </div>
 
                         {user.clearance === 2 ? (

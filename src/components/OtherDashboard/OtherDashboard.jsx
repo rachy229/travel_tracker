@@ -5,6 +5,7 @@ import { useHistory, Link } from "react-router-dom";
 
 import Button from '@mui/material/Button'
 import Card from '@mui/material/Card';
+import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { pink, red, lime, amber, orange } from '@mui/material/colors';
@@ -56,27 +57,27 @@ function OtherDashboard() {
 
                 {otherArray.map(other => (
                     <div key={other.id}>
-                        <Card sx={{ maxWidth: 345, m:2, background: lime[700] }} >
-                            <Typography sx={{borderRadius:2, m:2, p:2, background: amber[300]}} fontWeight={'bold'} variant="body1" color="text.primary" align="center" marginTop={1}>
+                        <Card sx={{ maxWidth: 345, m:2, background: "#BB4711" }} >
+                            <Typography sx={{borderRadius:2, m:2, p:2, background: "#FDF6C3", border: "5px solid #FF9D0A"}} fontWeight={'bold'} variant="body1" color="text.primary" align="center" marginTop={1}>
                                 {other.pretty_date}
                             </Typography>
 
-                            <CardContent sx={{background: lime[300]}} >
-                                <Typography fontWeight={'medium'} variant="body1" color="text.primary" align="center" margin={2}>
+                            <CardContent sx={{background: "#FDF6C3"}} >
+                                <Typography sx={{borderRadius: 1, background: "#7ebea5", marginLeft: 2, marginRight: 2}} fontWeight={'medium'} variant="body1" color="text.primary" align="center" margin={2}>
                                     {other.place}
                                 </Typography>
-                                <Typography sx={{borderRadius:2, m:2, p:2, background: amber[50]}} variant="body2" color="text.primary" align="left" marginLeft={4}>
+                                <Typography sx={{borderRadius:2, m:2, p:2, background: "#FDF6C3", border: "8px double #FE5F55"}} variant="body2" color="text.primary" align="left" marginLeft={4}>
                                     {other.details}
                                 </Typography>
                             </CardContent>
 
                             {user.clearance === 2 ? (
                                 <div align="center">
-                                    <Button sx={{background: orange[700], m:2}} variant="contained" onClick={() => handleOtherEdit(other)}>Edit</Button>
-                                    <Button sx={{background: orange[700], m:2}} variant="contained" onClick={() => handleOtherDelete(other.id, tripId)}>Delete</Button>
+                                    <Button sx={{background: "#6F1A07", m:2}} variant="contained" onClick={() => handleOtherEdit(other)}>Edit</Button>
+                                    <Button sx={{background: "#6F1A07", m:2}} variant="contained" onClick={() => handleOtherDelete(other.id, tripId)}>Delete</Button>
                                 </div>
                             ) : (
-                                <></>
+                                <Box sx={{p: 2}}/>
                             )}
                         </Card>
 

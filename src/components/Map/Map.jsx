@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import mapboxgl from '!mapbox-gl'; 
 import Card from '@mui/material/Card';
 import Button from '@mui/material/Button'
+import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { pink, red, lime, amber, orange } from '@mui/material/colors';
@@ -11,6 +12,7 @@ import { CardMedia } from '@mui/material';
 import { useHistory } from 'react-router-dom';
 
 import TripHeader from '../TripHeader/TripHeader';
+import TripDashboard from '../TripDashboard/TripDashboard';
 
 
 
@@ -71,24 +73,33 @@ useEffect(() => {
     return (
         <>
 
-            <Button onClick={() => history.push(`/lodging-dashboard/${thisLodging.id}`)}>Back</Button>
+            <Box sx={{ background: "#b74c22"}} >
+                <Button sx={{background: "#6F1A07", m:2}} variant="contained" onClick={() => history.push(`/lodging-dashboard/${thisLodging.id}`)}>Back</Button>
+            </Box>
 
             <TripHeader />
 
-            <Typography sx={{borderRadius:2, m:2, p:2, background: amber[300]}} fontWeight={'bold'} variant="body1" color="text.primary" align="center" marginTop={1}>
+            <Box sx={{p: 2, background: "#6F1A07"}}>
+            </Box>
+
+            <Card sx={{m: 2, background: "#BB4711"}}>
+
+
+                <Typography sx={{borderRadius:2, m:2, p:2, background: "#FDF6C3", border: "5px solid #FF9D0A"}} fontWeight={'bold'} variant="body1" color="text.primary" align="center" marginTop={1}>
                     {thisLodging.pretty_date}
                 </Typography>
 
-                <div sx={{background: lime[300]}} >
 
-                <Typography fontWeight={'medium'} variant="body1" color="text.primary" align="center" margin={2}>
+
+
+
+                <CardMedia sx={{background: "#FDF6C3", p:2, m: 2}}>
+            <Box sx={{background: "#7ebea5", borderRadius:1, m: 2}}>
+            <Typography fontWeight={'medium'} variant="body1" color="text.primary" align="center" margin={2}>
                     {thisLodging.place}
                 </Typography>
+                </Box>
 
-                </div>
-
-            <Card sx={{background: lime[700]}}>
-                <CardMedia sx={{background: amber[50], p:2, m: 2}}>
                     {/* lat and lng bar */}
                     <div className="sidebar">
                         Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
@@ -98,6 +109,7 @@ useEffect(() => {
                         <div ref={mapContainer} className="map-container" />
                     </div>
                 </CardMedia>
+
             </Card>
             </>
     );
