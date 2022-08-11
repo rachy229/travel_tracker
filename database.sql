@@ -12,7 +12,7 @@ CREATE TABLE "hike" (
 "place" VARCHAR(100),
 "details" VARCHAR(450),
 "completed" BOOLEAN DEFAULT FALSE,
-"trip_id" INT REFERENCES "trip");
+"trip_id" INT REFERENCES "trip" ON DELETE CASCADE);
 
 CREATE TABLE "lodging" (
 "id" SERIAL PRIMARY KEY,
@@ -21,16 +21,23 @@ CREATE TABLE "lodging" (
 "details" VARCHAR(450),
 "latitude" INT,
 "longitude" INT,
-"trip_id" INT REFERENCES "trip");
+"trip_id" SERIAL REFERENCES "trip" ON DELETE CASCADE);
 
 CREATE TABLE "flight" (
 "id" SERIAL PRIMARY KEY,
 "date" DATE NOT NULL,
 "airline" VARCHAR(50),
-"departure_time" TIME WITH TIME ZONE,
-"arrival_time" TIME WITH TIME ZONE,
-"flight_number" INT,
-"trip_id" INT REFERENCES "trip");
+"departure_time" TIME,
+"arrival_time" TIME,
+"flight_number" VARCHAR(20),
+"trip_id" INT REFERENCES "trip" ON DELETE CASCADE);
+
+CREATE TABLE "other" (
+"id" SERIAL PRIMARY KEY,
+"date" DATE,
+"place" VARCHAR(80),
+"details" VARCHAR(200),
+"trip_id" SERIAL REFERENCES "trip" ON DELETE CASCADE);
 
 CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,
@@ -38,3 +45,4 @@ CREATE TABLE "user" (
     "password" VARCHAR (1000) NOT NULL,
     "clearance" INT DEFAULT 1
 );
+

@@ -15,7 +15,7 @@ function TripHeader() {
             <Typography variant="h4" align="center" >Trip to {thisTrip.location}</Typography>
             <Typography sx={{m: 2}} align="center" >{thisTrip.start} - {thisTrip.end}</Typography>
         </Box>
-        <Box sx={{p:1, background: "#FE5F55"}} />
+        <Box sx={{p:1, background: "#2A9D8F"}} />
         </>
     )
 }

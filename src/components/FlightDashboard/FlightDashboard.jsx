@@ -57,7 +57,7 @@ function FlightDashboard() {
                             </Typography>
 
                             <CardContent sx={{background: "#FDF6C3"}}>
-                                <Box sx={{borderRadius: 1, background: "#7ebea5", marginLeft: 2, marginRight: 2}} >
+                                <Box sx={{borderRadius: 1, background: "#2A9D8F", marginLeft: 2, marginRight: 2}} >
                                     <Typography fontWeight={'medium'} variant="body1" color="text.primary" align="center">
                                         {flight.airline}
                                     </Typography>
@@ -66,7 +66,7 @@ function FlightDashboard() {
                                     </Typography>
                                 </Box>
 
-                                <CardContent sx={{borderRadius:2, m:2, p:2, background: "#FDF6C3", border: "8px double #FE5F55"}}>
+                                <CardContent sx={{borderRadius:2, m:2, p:2, background: "#FDF6C3", border: "8px double #2A9D8F"}}>
                                     <Typography variant="body2" color="text.primary" align="center">
                                         Departure:  {flight.put_departure}
                                     </Typography>

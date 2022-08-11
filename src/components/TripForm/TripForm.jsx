@@ -3,7 +3,11 @@ import { useSelector } from 'react-redux';
     import { useDispatch } from 'react-redux';
     import { useHistory } from 'react-router-dom';
 
+import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import Input from '@mui/material/Input';
+import InputLabel from '@mui/material/InputLabel';
+import FormControl from '@mui/material/FormControl'
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { pink, red, lime, amber, orange } from '@mui/material/colors';
@@ -36,28 +40,33 @@ function TripForm() {
 
     return(
         <div>
-            <div className='form-header'>
+            <Box >
                 {/* go back to the trip list */}
-                <Button sx={{background: orange[700], m:2}} variant="contained" onClick={() => history.push('/trips')}>Back</Button>
+                <Button sx={{background: "#6F1A07", m:2}} variant="contained" onClick={() => history.push('/trips')}>Back</Button>
 
-                <h1 className='form-title'>Add A New Trip!</h1>
-            </div>
-    <form onSubmit={handleSubmit}>
-        <h4>Start Date:</h4>
-        <input className='form-input' type="date" placeholder="date" value={startDate} onChange={(event) => setStartDate(event.target.value)} />
+                <Typography sx={{background: "#FF9D0A"}} align='center' variant='h5'> Add A New Trip!</Typography>
+            </Box>
 
-        <h4>End Date:</h4> 
-        <input className='form-input' type="date" placeholder="date" value={endDate} onChange={(event) => setEndDate(event.target.value)} />
+        <form onSubmit={handleSubmit}>
+            <Box sx={{background: "#FDF6C3"}} >
+                <Box sx={{marginLeft: 2}}>
+                    <InputLabel >Start Date:</InputLabel>
+                    <Input className='form-input' type="date" placeholder="date" value={startDate} onChange={(event) => setStartDate(event.target.value)} />
 
-
-        <h4>Place:</h4>
-        <input size='small' placeholder="place" value={place} onChange={(event) => setPlace(event.target.value)} />
-
-
-        <Button sx={{background: orange[700], m:2}} variant="contained" type='submit' >Submit</Button>
+                    <InputLabel >End Date:</InputLabel> 
+                    <Input className='form-input' type="date" placeholder="date" value={endDate} onChange={(event) => setEndDate(event.target.value)} />
 
 
-    </form>
+                    <InputLabel >Place:</InputLabel>
+                    <Input placeholder="place" value={place} onChange={(event) => setPlace(event.target.value)} />
+                </Box>
+
+                <Box>
+                    <Button sx={{background: "#6F1A07", m:2}} variant="contained" type='submit' >Submit</Button>
+                </Box>
+            </Box>
+
+        </form>
 </div>
     )
 }

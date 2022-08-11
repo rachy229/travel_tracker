@@ -33,26 +33,29 @@ function TripDashboard() {
     return(
         <div>
 
-            <div>
-
+        <Box>
                 {user.clearance === 2 ? (
             
                     // If the user is an admin, show them the "Add New Trip Button"
-                        <Box sx={{background: "#b74c22"}}>
-                            <Button sx={{background: "#6F1A07", m:2}} variant="contained" onClick={() => history.push('/trips')}>Back</Button>
+                        <Box>
+                            <Button sx={{background: "#6F1A07", marginBottom:2}} variant="contained" onClick={() => history.push('/trips')}>Back</Button>
 
-                            <Button sx={{background: "#6F1A07", m:2}} variant="contained" onClick={() => history.push('/new')}>Add Something New!</Button>
+                            <Button sx={{background: "#6F1A07", marginBottom:2}} variant="contained" onClick={() => history.push('/new')}>Add Something New!</Button>
                         </Box>
 
                     ) : (
 
-                        <Box sx={{ background: "#b74c22"}} >
-                            <Button sx={{background: "#6F1A07", m:2}} variant="contained" onClick={() => history.push('/trips')}>Back</Button>
+                        <Box>
+                            <Button sx={{background: "#6F1A07", marginBottom:1, marginLeft:1}} variant="contained" onClick={() => history.push('/trips')}>Back</Button>
                         </Box>
                     )
                 }
+            <Typography sx={{marginTop:1}} variant="h6" align="center" >Trip to {thisTrip.location}</Typography>
+            <Typography sx={{m: 1}} align="center" >{thisTrip.start} - {thisTrip.end}</Typography>
+            </Box>
 
-                <TripHeader />
+                {/* <TripHeader /> */}
+
 
             <div className="category-nav">
                 <Link className="categoryLink" to="/hike-dashboard/:id">
@@ -70,7 +73,6 @@ function TripDashboard() {
                 <Link className="categoryLink" to="/other-dashboard/:id">
                     Other
                 </Link>
-            </div>
             </div>
         </div>
 

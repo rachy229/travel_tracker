@@ -70,7 +70,7 @@ function LodgingDashboard() {
                                 </Typography>
                             </Box>
                             <Box sx={{p: 1, background: "#FDF6C3"}}>
-                                <Typography sx={{borderRadius: 1, background: "#7ebea5"}} fontWeight={'medium'} variant="body1" color="text.primary" align="center" margin={2}>
+                                <Typography sx={{borderRadius: 1, background: "#2A9D8F"}} fontWeight={'medium'} variant="body1" color="text.primary" align="center" margin={2}>
                                     {lodgingItem.place}
                                 </Typography>
                             </Box>
@@ -80,7 +80,7 @@ function LodgingDashboard() {
                             <img className="map-image" onClick={() => handleMapClick(lodgingItem)} src={`https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/static/pin-l+ff00ae(${lodgingItem.longitude},${Number(lodgingItem.latitude)})/${Number(lodgingItem.longitude)},${Number(lodgingItem.latitude)},9.04,0/300x200?access_token=pk.eyJ1IjoicmFjaHkyMjkiLCJhIjoiY2w2NTYwb3F5MnhuYjNjbzEyam84MzkzcCJ9.uLkhGXRBZOcb2rzrggZePQ`} />
                             </CardMedia>
 
-                            <Typography sx={{borderRadius:2, m:2, p:2, background: "#FDF6C3", border: "5px solid #FE5F55"}} variant="body2" color="text.primary" align="left" marginLeft={4}>
+                            <Typography sx={{borderRadius:2, m:2, p:2, background: "#FDF6C3", border: "5px solid #2A9D8F"}} variant="body2" color="text.primary" align="left" marginLeft={4}>
                                 {lodgingItem.details}
                             </Typography>
 
