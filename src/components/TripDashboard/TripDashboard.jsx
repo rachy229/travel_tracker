@@ -37,11 +37,11 @@ function TripDashboard() {
             {user.clearance === 2 ? (
             
             <div>
-            <div className="trip-dashboard-buttons">
-                <Button sx={{background: lime[600], m:2}} variant="contained" onClick={() => history.push('/trips')}>Back</Button>
+            <Box sx={{background: "#b74c22"}}>
+                <Button sx={{background: "#6F1A07", m:2}} variant="contained" onClick={() => history.push('/trips')}>Back</Button>
 
-                <Button sx={{background: lime[600], m:2}} variant="contained" onClick={() => history.push('/new')}>Add Something New!</Button>
-            </div>
+                <Button sx={{background: "#6F1A07", m:2}} variant="contained" onClick={() => history.push('/new')}>Add Something New!</Button>
+            </Box>
 
                 <TripHeader />
 
