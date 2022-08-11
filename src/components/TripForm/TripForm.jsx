@@ -44,24 +44,29 @@ function TripForm() {
                 {/* go back to the trip list */}
                 <Button sx={{background: "#6F1A07", m:2}} variant="contained" onClick={() => history.push('/trips')}>Back</Button>
 
-                <Typography sx={{background: "#FF9D0A"}} align='center' variant='h5'> Add A New Trip!</Typography>
+                <Typography sx={{background: "#FF9D0A", p: 2}} align='center' variant='h5'> Add A New Trip!</Typography>
             </Box>
 
         <form onSubmit={handleSubmit}>
-            <Box sx={{background: "#FDF6C3"}} >
+            <Box sx={{background: "#FDF6C3", p:4}} >
                 <Box sx={{marginLeft: 2}}>
-                    <InputLabel >Start Date:</InputLabel>
-                    <Input className='form-input' type="date" placeholder="date" value={startDate} onChange={(event) => setStartDate(event.target.value)} />
+                    <Box sx={{marginTop: 4}}>
+                        <InputLabel >Start Date:</InputLabel>
+                        <Input className='form-input' type="date" placeholder="date" value={startDate} onChange={(event) => setStartDate(event.target.value)} />
+                    </Box>
+                    
+                    <Box sx={{marginTop: 4}}>
+                        <InputLabel >End Date:</InputLabel> 
+                        <Input className='form-input' type="date" placeholder="date" value={endDate} onChange={(event) => setEndDate(event.target.value)} />
+                    </Box>
 
-                    <InputLabel >End Date:</InputLabel> 
-                    <Input className='form-input' type="date" placeholder="date" value={endDate} onChange={(event) => setEndDate(event.target.value)} />
+                    <Box sx={{marginTop: 4}}>
+                        <InputLabel >Place:</InputLabel>
+                        <Input placeholder="place" value={place} onChange={(event) => setPlace(event.target.value)} />
+                    </Box>
+                    </Box>
 
-
-                    <InputLabel >Place:</InputLabel>
-                    <Input placeholder="place" value={place} onChange={(event) => setPlace(event.target.value)} />
-                </Box>
-
-                <Box>
+                <Box sx={{marginTop: 4}}>
                     <Button sx={{background: "#6F1A07", m:2}} variant="contained" type='submit' >Submit</Button>
                 </Box>
             </Box>
