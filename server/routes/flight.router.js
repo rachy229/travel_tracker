@@ -1,8 +1,11 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const {
+    rejectUnauthenticated,
+} = require('../modules/authentication-middleware');
 
-router.get('/:id', (req, res) => {
+router.get('/:id', rejectUnauthenticated, (req, res) => {
     const id = req.params.id;
     console.log('id in flight router get', id)
     let queryText = `SELECT *, to_char("date", 'Mon DD, YYYY') AS "pretty_date",
@@ -21,7 +24,10 @@ router.get('/:id', (req, res) => {
     })
 });
 
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
+
+    if (req.user.clearance === 2) {
+
     const { date, airline, departure, arrival, flightNum, tripId} = req.body
     // console.log('req.body in flight router', req.body)
     // console.log('departure_time, arrival_time, flight_number om flight router',departure, arrival, flightNum)
@@ -34,9 +40,15 @@ router.post('/', (req, res) => {
     }).catch(error => {
         console.log('error in flight router.post', error);
     })
+}else {
+    res.sendStatus(403);
+}
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
+    console.log('req.user.clearance', req.user.clearance)
+
+    if (req.user.clearance === 2) {
     const id = req.params.id;
     const queryText = `DELETE FROM "flight" WHERE "id" = $1`;
     pool
@@ -48,10 +60,13 @@ router.delete('/:id', (req, res) => {
         console.log('error in flight router.delete', error);
         res.sendStatus(500);
     })
-    
+} else {
+    res.sendStatus(403);
+}
 })
 
-router.put('/:id', (req, res) => {
+router.put('/:id', rejectUnauthenticated, (req, res) => {
+    if (req.user.clearance === 2) {
     // Update this single flight
     // console.log('req.params', req.params)
     const idToUpdate = req.params.id;
@@ -65,6 +80,9 @@ router.put('/:id', (req, res) => {
             console.log(`Error making database query ${sqlText}`, error);
             res.sendStatus(500);
         });
+    }else {
+        res.sendStatus(403);
+    }
 });
 
 module.exports = router;

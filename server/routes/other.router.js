@@ -19,33 +19,42 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    const { date, place, details, tripId} = req.body
-    // console.log('req.body in hike router.post', req.body);
-    let queryText = `INSERT INTO "other" 
-        ("date", "place", "details", "trip_id")
-        VALUES ($1, $2, $3, $4);`;
-    pool.query(queryText, [date, place, details, tripId])
-    .then(() => {
-        res.sendStatus(200);
-    }).catch(error => {
-        console.log('error in other router.post', error);
-    })
+    //if the user is an admin, allow them to post
+    if (req.user.clearance === 2) {
+        const { date, place, details, tripId} = req.body
+        // console.log('req.body in hike router.post', req.body);
+        let queryText = `INSERT INTO "other" 
+            ("date", "place", "details", "trip_id")
+            VALUES ($1, $2, $3, $4);`;
+        pool.query(queryText, [date, place, details, tripId])
+        .then(() => {
+            res.sendStatus(200);
+        }).catch(error => {
+            console.log('error in other router.post', error);
+        })
+    } else {
+        res.sendStatus(403);
+    }
 });
 
 router.delete('/:id', (req, res) => {
-    const id = req.params.id;
-    console.log('id in other router delete', id)
-    const queryText = `DELETE FROM "other" WHERE "id" = $1`;
-    pool
-    .query(queryText, [id])
-    .then(() => {
-        res.sendStatus(201);
-    })
-    .catch((error) => {
-        console.log('error in other router.delete', error);
-        res.sendStatus(500);
-    })
-    
+    //if the user is an admin, allow them to post
+    if (req.user.clearance === 2) {
+        const id = req.params.id;
+        console.log('id in other router delete', id)
+        const queryText = `DELETE FROM "other" WHERE "id" = $1`;
+        pool
+        .query(queryText, [id])
+        .then(() => {
+            res.sendStatus(201);
+        })
+        .catch((error) => {
+            console.log('error in other router.delete', error);
+            res.sendStatus(500);
+        })
+    } else {
+        res.sendStatus(403);
+    }
 })
 
 router.put('/:id', (req, res) => {

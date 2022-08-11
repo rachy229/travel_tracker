@@ -1,0 +1,11 @@
+/* form title and button */
+.form-header {
+    background-color: #afb42b;
+    padding-bottom: 8px;
+}
+
+/* just the title */
+.form-title {
+    text-align: center;
+    color: white;
+}

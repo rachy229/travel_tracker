@@ -34,7 +34,7 @@ function OtherForm() {
             {/* go back to the add new item page */}
             <button onClick={() => history.push('/new')}>Back</button>
 
-        <h1>Add Something Cool!</h1>
+        <h1>Add Something Else!</h1>
         <form onSubmit={handleSubmit}>
             <h4>Date:</h4>
             <input type="date" placeholder="date" value={date} onChange={(event) => setDate(event.target.value)} />
