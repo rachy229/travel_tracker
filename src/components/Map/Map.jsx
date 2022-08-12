@@ -24,6 +24,8 @@ function Map(lodgingItem) {
     const thisLodging = useSelector(store => store.lodging.thisLodging);
     console.log(thisLodging)
 
+    const thisTrip = useSelector(store => store.trip.thisTrip);
+
     const history = useHistory();
 
 
@@ -73,14 +75,17 @@ useEffect(() => {
     return (
         <>
 
-            <Box sx={{ background: "#b74c22"}} >
+            <Box >
                 <Button sx={{background: "#6F1A07", m:2}} variant="contained" onClick={() => history.push(`/lodging-dashboard/${thisLodging.id}`)}>Back</Button>
             </Box>
 
-            <TripHeader />
+            {/* <TripHeader /> */}
 
-            <Box sx={{p: 2, background: "#6F1A07"}}>
-            </Box>
+            {/* <Box sx={{p: 2, background: "#6F1A07"}}>
+            </Box> */}
+                        {/* Date and Place of current trip */}
+                        <Typography sx={{marginTop:1}} variant="h6" align="center" >Trip to {thisTrip.location}</Typography>
+            <Typography sx={{m: 1}} align="center" >{thisTrip.start} - {thisTrip.end}</Typography>
 
             <Card sx={{m: 2, background: "#BB4711"}}>
 

@@ -5,6 +5,12 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import TripHeader from '../TripHeader/TripHeader';
 
+import Button from '@mui/material/Button'
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Input from '@mui/material/Input';
+import InputLabel from '@mui/material/InputLabel';
+
 function EditFlight() {
 
     const dispatch = useDispatch();
@@ -12,6 +18,8 @@ function EditFlight() {
 
     const flightToEdit = useSelector(store => store.flight.flightToEdit);
     console.log('flightToEdit', flightToEdit);
+
+    const thisTrip = useSelector(store => store.trip.thisTrip);
 
 
     function handleChange(event, property) {
@@ -40,33 +48,51 @@ function EditFlight() {
 
     return(
         <div>
-            <TripHeader />
-            
+
             {/* go back to the flight dashboard for this specific trip */}
-            <button onClick={() => history.push(`/flight-dashboard/${flightToEdit.id}}`)}>Back</button>
+            <Button sx={{background: "#6F1A07", m:2}} variant="contained"  onClick={() => history.push(`/flight-dashboard/${flightToEdit.id}}`)}>Back</Button>
 
-        <h1>Edit Flight!</h1>
-        <form onSubmit={handleSubmit}>
-            <h4>Date:</h4>
-            <input type="date" placeholder="date" value={flightToEdit.put_date} onChange={(event) => handleChange(event, 'put_date')} />
+            <Typography sx={{marginTop:1}} variant="h6" align="center" >Trip to {thisTrip.location}</Typography>
+            <Typography sx={{m: 1}} align="center" >{thisTrip.start} - {thisTrip.end}</Typography>
 
-            <h4>Airline:</h4>
-            <input placeholder="Airline" value={flightToEdit.airline} onChange={(event) => handleChange(event, 'airline')} />
+            <Typography sx={{background: "#FF9D0A", p: 2}} align='center' variant='h5'>Edit Flight!</Typography>
 
-            <h4>Departure Time:</h4>
-            <input type="time" value={flightToEdit.put_departure} onChange={(event) => handleChange(event, 'put_departure')} />
+            <Box sx={{background: "#FDF6C3", p:4}}>
+                <form onSubmit={handleSubmit}>
 
-            <h4>Arrival Time:</h4>
-            <input type="time" value={flightToEdit.put_arrival} onChange={(event) => handleChange(event, 'put_arrival')} />
+                    <Box sx={{marginTop: 4}}>
+                        <InputLabel>Date:</InputLabel>
+                        <Input type="date" placeholder="date" value={flightToEdit.put_date} onChange={(event) => handleChange(event, 'put_date')} />
+                    </Box>
 
-            <h4>Flight Number:</h4>
-            <input placeholder="Flight Number" value={flightToEdit.flight_number} onChange={(event) => handleChange(event, 'flight_number')} />
+                    <Box sx={{marginTop: 4}}>
+                        <InputLabel>Airline:</InputLabel>
+                        <Input placeholder="Airline" value={flightToEdit.airline} onChange={(event) => handleChange(event, 'airline')} />
+                    </Box>
 
-            <button type='submit' >Submit</button>
-        </form>
-    </div>
+                    <Box sx={{marginTop: 4}}>
+                        <InputLabel>Departure Time:</InputLabel>
+                        <Input type="time" value={flightToEdit.put_departure} onChange={(event) => handleChange(event, 'put_departure')} />
+                    </Box>
+
+                    <Box sx={{marginTop: 4}}>
+                        <InputLabel>Arrival Time:</InputLabel>
+                        <Input type="time" value={flightToEdit.put_arrival} onChange={(event) => handleChange(event, 'put_arrival')} />
+                    </Box>
+
+                    <Box sx={{marginTop: 4}}>
+                        <InputLabel>Flight Number:</InputLabel>
+                        <Input placeholder="Flight Number" value={flightToEdit.flight_number} onChange={(event) => handleChange(event, 'flight_number')} />
+                    </Box>
+
+                    <Box sx={{marginTop: 4}}>
+                        <Button sx={{background: "#2E4057", m:2}} variant="contained"  type='submit' >Submit</Button>
+                    </Box>
+
+                </form>
+            </Box>
+        </div>
     )
-
 }
 
 export default EditFlight;

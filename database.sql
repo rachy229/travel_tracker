@@ -19,9 +19,9 @@ CREATE TABLE "lodging" (
 "date" DATE NOT NULL,
 "place" VARCHAR(100),
 "details" VARCHAR(450),
-"latitude" INT,
-"longitude" INT,
-"trip_id" SERIAL REFERENCES "trip" ON DELETE CASCADE);
+"latitude" DECIMAL,
+"longitude" DECIMAL,
+"trip_id" INT REFERENCES "trip" ON DELETE CASCADE);
 
 CREATE TABLE "flight" (
 "id" SERIAL PRIMARY KEY,

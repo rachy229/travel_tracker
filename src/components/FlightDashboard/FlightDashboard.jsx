@@ -62,7 +62,7 @@ function FlightDashboard() {
                                         {flight.airline}
                                     </Typography>
                                     <Typography variant="body2" color="text.primary" align="center">
-                                        {flight.flight_number}
+                                        Flight Number {flight.flight_number}
                                     </Typography>
                                 </Box>
 
