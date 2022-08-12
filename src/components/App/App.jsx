@@ -47,6 +47,8 @@ import EditOther from '../EditOther/EditOther';
 import EditLodging from '../EditLodging/EditLodging';
 
 import Map from '../Map/Map';
+import NavDrawer from '../Drawer/Drawer';
+import MenuAppBar from '../AppBar/AppBar';
 
 function App() {
   const dispatch = useDispatch();
@@ -60,7 +62,9 @@ function App() {
   return (
     <Router>
       <div>
-        <Nav />
+        <MenuAppBar />
+        {/* <Nav /> */}
+        {/* <NavDrawer /> */}
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />

@@ -30,7 +30,7 @@ function EditFlight() {
     
     }
 
-    const handleSubmit = () => {
+    const handleSubmit = (event) => {
         event.preventDefault;
         console.log('flightToEdit in handleSubmit', flightToEdit)
 

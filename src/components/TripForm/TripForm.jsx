@@ -24,7 +24,9 @@ function TripForm() {
     const [endDate, setEndDate] = useState('');
     const [place, setPlace] = useState('');
 
-    const handleSubmit = () => {
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
         dispatch({type: 'POST_TRIP', payload: {startDate, endDate, place}});
 
         history.push(`/trips`)

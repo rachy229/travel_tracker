@@ -25,7 +25,9 @@ function LodgingForm() {
     const [lng, setLng] = useState('');
     const [details, setDetails] = useState('');
 
-    const handleSubmit = () => {
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
         dispatch({type: 'POST_LODGING', payload: {date, place, details, lat, lng, tripId}});
 
         //send back to the dashboard

@@ -57,7 +57,6 @@ function TripList() {
 
     return(
         <div>
-            <Typography variant="h5" align="center">Trips!</Typography>
             {user.clearance === 2 ?(
             <div onClick={() => history.push('/new-trip')}>
             <Button sx={{background: "#2E4057", m:2}} variant="contained" >Create A New Trip</Button>
@@ -78,6 +77,9 @@ function TripList() {
                     </div>
                     )
                 )} */}
+
+                <Typography variant="h5" align="center">Trips!</Typography>
+
 
                 {tripArray.map((trip) => 
 

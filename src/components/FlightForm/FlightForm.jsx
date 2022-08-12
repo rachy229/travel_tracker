@@ -25,7 +25,9 @@ function FlightForm() {
     const [arrival, setArrival]= useState('');
     const [flightNum, setFlightNum] = useState('');
 
-    const handleSubmit = () => {
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
         console.log('departure in handleSubmit', departure);
         console.log('arrival in handleSubmit', arrival);
 

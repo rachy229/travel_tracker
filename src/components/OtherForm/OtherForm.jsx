@@ -22,7 +22,9 @@ function OtherForm() {
     const [place, setPlace] = useState('');
     const [details, setDetails] = useState('');
 
-    const handleSubmit = () => {
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
         dispatch({type: 'POST_OTHER', payload: {date, place, details, tripId}});
 
         //send back to the dashboard
