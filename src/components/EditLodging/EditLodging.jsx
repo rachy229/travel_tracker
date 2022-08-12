@@ -3,6 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
+import Button from '@mui/material/Button'
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Input from '@mui/material/Input';
+import InputLabel from '@mui/material/InputLabel';
+
 import TripHeader from '../TripHeader/TripHeader';
 
 function EditLodging() {
@@ -11,6 +17,7 @@ function EditLodging() {
     const history = useHistory();
 
     const lodgingToEdit = useSelector(store => store.lodging.lodgingToEdit);
+    const thisTrip = useSelector(store => store.trip.thisTrip);
 
     function handleChange(event, property) {
         dispatch({ 
@@ -39,30 +46,49 @@ function EditLodging() {
 
     return(
         <div>
-            <TripHeader />
             
             {/* go back to the flight dashboard for this specific trip */}
-            <button onClick={() => history.push(`/lodging-dashboard/${lodgingToEdit.id}}`)}>Back</button>
+            <Button sx={{background: "#6F1A07", m:2}} variant="contained" onClick={() => history.push(`/lodging-dashboard/${lodgingToEdit.id}}`)}>Back</Button>
 
-            <h1>Edit Lodging!</h1>
-            <form onSubmit={handleSubmit}>
-                <h4>Date:</h4>
-                <input type="date" placeholder="date" value={lodgingToEdit.put_date} onChange={(event) => handleChange(event, 'put_date')} />
+            {/* Date and Place of current trip */}
+            <Typography sx={{marginTop:1}} variant="h6" align="center" >Trip to {thisTrip.location}</Typography>
+            <Typography sx={{m: 1}} align="center" >{thisTrip.start} - {thisTrip.end}</Typography>
 
-                <h4>Place:</h4>
-                <input placeholder="place" value={lodgingToEdit.place} onChange={(event) => handleChange(event, 'place')} />
+            <Typography sx={{background: "#FF9D0A", p: 2}} align='center' variant='h5'>Edit Lodging!</Typography>
 
-                <h4>Latitude:</h4>
-                <input placeholder="latitude" value={lodgingToEdit.latitude} onChange={(event) => handleChange(event, 'latitude')} />
+            <Box sx={{background: "#FDF6C3", p:4}} >
+                <form onSubmit={handleSubmit}>
+                    <Box sx={{marginTop: 4}}>
+                        <InputLabel>Date:</InputLabel>
+                        <Input type="date" placeholder="date" value={lodgingToEdit.put_date} onChange={(event) => handleChange(event, 'put_date')} />
+                    </Box>
 
-                <h4>Longitude:</h4>
-                <input placeholder="longitude" value={lodgingToEdit.longitude} onChange={(event) => handleChange(event, 'longitude')} />
+                    <Box sx={{marginTop: 4}}>
+                        <InputLabel>Place:</InputLabel>
+                        <Input placeholder="place" value={lodgingToEdit.place} onChange={(event) => handleChange(event, 'place')} />
+                    </Box>
 
-                <h4>Details:</h4>
-                <input placeholder="details" value={lodgingToEdit.details} onChange={(event) => handleChange(event, 'details')} />
+                    <Box sx={{marginTop: 4}}>
+                        <InputLabel>Latitude:</InputLabel>
+                        <Input placeholder="latitude" value={lodgingToEdit.latitude} onChange={(event) => handleChange(event, 'latitude')} />
+                    </Box>
 
-                <button type='submit' >Submit</button>
-            </form>
+                    <Box sx={{marginTop: 4}}>
+                        <InputLabel>Longitude:</InputLabel>
+                        <Input placeholder="longitude" value={lodgingToEdit.longitude} onChange={(event) => handleChange(event, 'longitude')} />
+                    </Box>
+
+                    <Box sx={{marginTop: 4}}>
+                        <InputLabel>Details:</InputLabel>
+                        <Input placeholder="details" value={lodgingToEdit.details} onChange={(event) => handleChange(event, 'details')} />
+                    </Box>
+
+                    <Box sx={{marginTop: 4}}>
+                        <Button sx={{background: "#2E4057", m:2}} variant="contained" type='submit' >Submit</Button>
+                    </Box>
+
+                </form>
+            </Box>
         </div>
     )
 }
