@@ -5,6 +5,12 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import TripHeader from '../TripHeader/TripHeader';
 
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Input from '@mui/material/Input';
+import InputLabel from '@mui/material/InputLabel';
+
 function EditOther() {
 
     const dispatch = useDispatch();
@@ -13,6 +19,7 @@ function EditOther() {
     const otherToEdit = useSelector(store => store.other.otherToEdit);
     console.log('otherToEdit', otherToEdit);
 
+    const thisTrip = useSelector(store => store.trip.thisTrip);
 
     function handleChange(event, property) {
         dispatch({ 
@@ -40,27 +47,41 @@ function EditOther() {
 
     return(
         <div>
-            <TripHeader />
             
             {/* go back to the flight dashboard for this specific trip */}
-            <button onClick={() => history.push(`/other-dashboard/${otherToEdit.id}}`)}>Back</button>
+            <Button sx={{background: "#6F1A07", m:2}} variant="contained" onClick={() => history.push(`/other-dashboard/${otherToEdit.id}}`)}>Back</Button>
 
-        <h1>Edit Other!</h1>
-        <form onSubmit={handleSubmit}>
-            <h4>Date:</h4>
-            <input type="date" placeholder="date" value={otherToEdit.put_date} onChange={(event) => handleChange(event, 'put_date')} />
+            {/* Date and Place of current trip */}
+            <Typography sx={{marginTop:1}} variant="h6" align="center" >Trip to {thisTrip.location}</Typography>
+            <Typography sx={{m: 1}} align="center" >{thisTrip.start} - {thisTrip.end}</Typography>
 
-            <h4>Place:</h4>
-            <input placeholder="Other" value={otherToEdit.place} onChange={(event) => handleChange(event, 'place')} />
 
-            <h4>Details:</h4>
-            <input value={otherToEdit.details} onChange={(event) => handleChange(event, 'details')} />
+            <Typography sx={{background: "#FF9D0A", p: 2}} align='center' variant='h5'>Edit Other!</Typography>
 
-            <button type='submit' >Submit</button>
-        </form>
+            <Box sx={{background: "#FDF6C3", p:4}}>
+                <form onSubmit={handleSubmit}>
+                    <Box sx={{marginTop: 4}}>
+                        <InputLabel>Date:</InputLabel>
+                        <Input type="date" placeholder="date" value={otherToEdit.put_date} onChange={(event) => handleChange(event, 'put_date')} />
+                    </Box>
+
+                    <Box sx={{marginTop: 4}}>
+                        <InputLabel>Place:</InputLabel>
+                        <Input placeholder="Other" value={otherToEdit.place} onChange={(event) => handleChange(event, 'place')} />
+                    </Box>
+
+                    <Box sx={{marginTop: 4}}>
+                        <InputLabel>Details:</InputLabel>
+                        <Input value={otherToEdit.details} onChange={(event) => handleChange(event, 'details')} />
+                    </Box>
+
+                    <Box sx={{marginTop: 4}}>
+                        <Button type='submit' >Submit</Button>
+                    </Box>
+                </form>
+            </Box>
     </div>
     )
-
 }
 
 export default EditOther;
