@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-    import { useDispatch } from 'react-redux';
-    import { useHistory } from 'react-router-dom';
-    import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
+
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Input from '@mui/material/Input';
+import InputLabel from '@mui/material/InputLabel';
+import Typography from '@mui/material/Typography';
 
 function EditTrip() {
 
@@ -41,23 +47,39 @@ function EditTrip() {
 
     return(
         <div>
-        {/* go back to the trip list */}
-        <button onClick={() => history.push('/trips')}>Back</button>
+            {/* go back to the trip list */}
+            <Button sx={{background: "#6F1A07", m:2}} variant="contained" onClick={() => history.push('/trips')}>Back</Button>
 
-    <h1>Edit Trip to {tripToEdit.location}</h1>
-    <form onSubmit={handleSubmit}>
-        <h4>Start Date:</h4>
-        <input type="date" placeholder="date" value={tripToEdit.put_start_date} onChange={(event) => handleChange(event, 'put_start_date')} />
+            <Typography sx={{background: "#FF9D0A", p: 2}} align='center' variant='h5'>Edit Trip to {tripToEdit.location}</Typography>
+            
+            <form onSubmit={handleSubmit}>
+                
+                <Box sx={{background: "#FDF6C3", p:4}} >
 
-        <h4>End Date:</h4>
-        <input type="date" placeholder="date" value={tripToEdit.put_end_date} onChange={(event) => handleChange(event, 'put_end_date')} />
+                    <Box sx={{marginLeft: 2}}>
+                    <Box sx={{marginTop: 4}}>
+                        <InputLabel >Start Date:</InputLabel>
+                        <Input type="date" placeholder="date" value={tripToEdit.put_start_date} onChange={(event) => handleChange(event, 'put_start_date')} />
+                    </Box>
+        
+                    <Box sx={{marginTop: 4}}>
+                        <InputLabel >End Date:</InputLabel> 
+                        <Input type="date" placeholder="date" value={tripToEdit.put_end_date} onChange={(event) => handleChange(event, 'put_end_date')} />
+                    </Box>
+        
+                    <Box sx={{marginTop: 4}}>
+                        <InputLabel >Place:</InputLabel>
+                        <Input placeholder="place" value={tripToEdit.location} onChange={(event) => handleChange(event, 'location')} />
+                    </Box>
+        
+                    <Box sx={{marginTop: 4}}>
+                        <Button sx={{background: "#2E4057", m:2}} variant="contained" type='submit' >Submit</Button>
+                    </Box>
+                </Box>
+                </Box>
 
-        <h4>Place:</h4>
-        <input placeholder="place" value={tripToEdit.location} onChange={(event) => handleChange(event, 'location')} />
-
-        <button type='submit' >Submit</button>
-    </form>
-</div>
+            </form>
+        </div>
     )
 }
 

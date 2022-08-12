@@ -44,8 +44,8 @@ function AddNewItem() {
 
             <Box sx={{p:2, background: "#FDF6C3"}}>
                 <Button sx={{background: "#2E4057", m:1}} variant="contained" onClick={goToHike}>Hike</Button>
-                <Button sx={{background: "#2E4057", m:1}} variant="contained" onClick={goToLodging}>Lodging</Button>
                 <Button sx={{background: "#2E4057", m:1}} variant="contained" onClick={goToFlight}>Flight</Button>
+                <Button sx={{background: "#2E4057", m:1}} variant="contained" onClick={goToLodging}>Lodging</Button>
                 <Button sx={{background: "#2E4057", m:1}} variant="contained" onClick={goToOther}>Other</Button>
             </Box>
         </div>

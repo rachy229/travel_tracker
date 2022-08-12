@@ -7,10 +7,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
-import FormControl from '@mui/material/FormControl'
-import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import { pink, red, lime, amber, orange } from '@mui/material/colors';
 
 
     import './TripForm.css';
@@ -38,13 +35,19 @@ function TripForm() {
         setPlace('');
     }
 
+    const fillData = () => {
+        setStartDate('2022-09-18');
+        setEndDate('2022-10-03');
+        setPlace('Utah');
+    }
+
     return(
         <div>
             <Box >
                 {/* go back to the trip list */}
                 <Button sx={{background: "#6F1A07", m:2}} variant="contained" onClick={() => history.push('/trips')}>Back</Button>
 
-                <Typography sx={{background: "#FF9D0A", p: 2}} align='center' variant='h5'> Add A New Trip!</Typography>
+                <Typography onClick={fillData} sx={{background: "#FF9D0A", p: 2}} align='center' variant='h5'> Add A New Trip!</Typography>
             </Box>
 
         <form onSubmit={handleSubmit}>

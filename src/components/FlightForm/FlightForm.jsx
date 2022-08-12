@@ -42,6 +42,14 @@ function FlightForm() {
         setFlightNum('');
     }
 
+    const fillData = () => {
+        setDate('2022-09-18');
+        setAirline('Spirit');
+        setDeparture('07:00');
+        setArrival('08:26');
+        setFlightNum('S224');
+    }
+
     return(
         <div>
             {/* <TripHeader /> */}
@@ -53,7 +61,7 @@ function FlightForm() {
             <Typography sx={{marginTop:1}} variant="h6" align="center" >Trip to {thisTrip.location}</Typography>
             <Typography sx={{m: 1}} align="center" >{thisTrip.start} - {thisTrip.end}</Typography>
 
-        <Typography sx={{background: "#FF9D0A", p: 2}} align='center' variant='h5'>Add A New Flight!</Typography>
+        <Typography onClick={fillData} sx={{background: "#FF9D0A", p: 2}} align='center' variant='h5'>Add A New Flight!</Typography>
         <Box sx={{background: "#FDF6C3", p:4}}>
             <form onSubmit={handleSubmit}>
 

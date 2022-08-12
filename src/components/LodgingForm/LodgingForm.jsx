@@ -38,6 +38,14 @@ function LodgingForm() {
         setLng('');
         setDetails('');
     }
+    
+    const fillData = () => {
+        setDate('2022-09-19');
+        setPlace('Lone Mesa');
+        setLat('38.644');
+        setLng('-109.82');
+        setDetails('dispersed camping outside Moab. Stayed here several times');
+    }
 
 
 
@@ -52,7 +60,7 @@ function LodgingForm() {
             <Typography sx={{marginTop:1}} variant="h6" align="center" >Trip to {thisTrip.location}</Typography>
             <Typography sx={{m: 1}} align="center" >{thisTrip.start} - {thisTrip.end}</Typography>
 
-            <Typography sx={{background: "#FF9D0A", p: 2}} align='center' variant='h5'>Add New Lodging!</Typography>
+            <Typography onClick={fillData} sx={{background: "#FF9D0A", p: 2}} align='center' variant='h5'>Add New Lodging!</Typography>
 
             <Box sx={{background: "#FDF6C3", p:4}} >
                 <form onSubmit={handleSubmit}>
