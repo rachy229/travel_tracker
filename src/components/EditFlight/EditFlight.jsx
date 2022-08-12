@@ -48,7 +48,6 @@ function EditFlight() {
 
     return(
         <div>
-
             {/* go back to the flight dashboard for this specific trip */}
             <Button sx={{background: "#6F1A07", m:2}} variant="contained"  onClick={() => history.push(`/flight-dashboard/${flightToEdit.id}}`)}>Back</Button>
 
