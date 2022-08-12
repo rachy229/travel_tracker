@@ -38,9 +38,9 @@ function TripDashboard() {
             
                     // If the user is an admin, show them the "Add New Trip Button"
                         <Box>
-                            <Button sx={{background: "#6F1A07", marginBottom:2}} variant="contained" onClick={() => history.push('/trips')}>Back</Button>
+                            <Button sx={{background: "#6F1A07", m:2}} variant="contained" onClick={() => history.push('/trips')}>Back</Button>
 
-                            <Button sx={{background: "#6F1A07", marginBottom:2}} variant="contained" onClick={() => history.push('/new')}>Add Something New!</Button>
+                            <Button sx={{background: "#2E4057", m: 2}} variant="contained" onClick={() => history.push('/new')}>Add Something New!</Button>
                         </Box>
 
                     ) : (

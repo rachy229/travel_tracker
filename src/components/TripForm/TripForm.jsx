@@ -67,7 +67,7 @@ function TripForm() {
                     </Box>
 
                 <Box sx={{marginTop: 4}}>
-                    <Button sx={{background: "#6F1A07", m:2}} variant="contained" type='submit' >Submit</Button>
+                    <Button sx={{background: "#2E4057", m:2}} variant="contained" type='submit' >Submit</Button>
                 </Box>
             </Box>
 

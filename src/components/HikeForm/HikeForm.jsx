@@ -4,13 +4,20 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import TripHeader from '../TripHeader/TripHeader';
 
+import Button from '@mui/material/Button'
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Input from '@mui/material/Input';
+import InputLabel from '@mui/material/InputLabel';
+
 function HikeForm() {
 
     const dispatch = useDispatch();
     const history = useHistory();
 
     const tripId = useSelector(store => store.trip.tripId);
-    console.log('tripId in HikeForm', tripId);
+    // console.log('tripId in HikeForm', tripId);
+    const thisTrip = useSelector(store => store.trip.thisTrip);
 
     //input local states
     const [date, setDate] = useState('');
@@ -31,24 +38,40 @@ function HikeForm() {
 
     return(
         <div>
-            <TripHeader />
+            {/* <TripHeader /> */}
 
             {/* go back to the add new item page */}
-            <button onClick={() => history.push('/new')}>Back</button>
+            <Button sx={{background: "#6F1A07", m:2}} variant="contained" onClick={() => history.push('/new')}>Back</Button>
 
-        <h1>Add A New Hike!</h1>
-        <form onSubmit={handleSubmit}>
-            <h4>Date:</h4>
-            <input type="date" placeholder="date" value={date} onChange={(event) => setDate(event.target.value)} />
+            {/* Date and Place of current trip */}
+            <Typography sx={{marginTop:1}} variant="h6" align="center" >Trip to {thisTrip.location}</Typography>
+            <Typography sx={{m: 1}} align="center" >{thisTrip.start} - {thisTrip.end}</Typography>
 
-            <h4>Place:</h4>
-            <input placeholder="place" value={place} onChange={(event) => setPlace(event.target.value)} />
+        <Typography sx={{background: "#FF9D0A", p: 2}} align='center' variant='h5' >Add A New Hike!</Typography>
+        
+        <Box sx={{background: "#FDF6C3", p:4}} >
+            <form onSubmit={handleSubmit}>
 
-            <h4>Details:</h4>
-            <input placeholder="details" value={details} onChange={(event) => setDetails(event.target.value)} />
+                <Box sx={{marginTop: 4}}>
+                    <InputLabel>Date:</InputLabel>
+                    <Input type="date" placeholder="date" value={date} onChange={(event) => setDate(event.target.value)} />
+                </Box>
 
-            <button type='submit' >Submit</button>
-        </form>
+                <Box sx={{marginTop: 4}}>
+                    <InputLabel>Place:</InputLabel>
+                    <Input placeholder="place" value={place} onChange={(event) => setPlace(event.target.value)} />
+                </Box>
+
+                <Box sx={{marginTop: 4}}>
+                    <InputLabel>Details:</InputLabel>
+                    <Input placeholder="details" value={details} onChange={(event) => setDetails(event.target.value)} />
+                </Box>
+
+                <Box sx={{marginTop: 4}}>
+                    <Button sx={{background: "#2E4057", m:2}} variant="contained" type='submit' >Submit</Button>
+                </Box>
+            </form>
+        </Box>
     </div>
     )
 

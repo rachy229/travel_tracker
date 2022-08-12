@@ -4,12 +4,19 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import TripHeader from '../TripHeader/TripHeader';
 
+import Button from '@mui/material/Button'
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Input from '@mui/material/Input';
+import InputLabel from '@mui/material/InputLabel';
+
 function FlightForm() {
 
     const dispatch = useDispatch();
     const history = useHistory();
 
     const tripId = useSelector(store => store.trip.tripId);
+    const thisTrip = useSelector(store => store.trip.thisTrip);
 
     //input local states
     const [date, setDate] = useState('');
@@ -37,30 +44,50 @@ function FlightForm() {
 
     return(
         <div>
-            <TripHeader />
+            {/* <TripHeader /> */}
             
             {/* go back to the add new item page */}
-            <button onClick={() => history.push('/new')}>Back</button>
+            <Button sx={{background: "#6F1A07", m:2}} variant="contained" onClick={() => history.push('/new')}>Back</Button>
 
-        <h1>Add A New Flight!</h1>
-        <form onSubmit={handleSubmit}>
-            <h4>Date:</h4>
-            <input type="date" placeholder="date" value={date} onChange={(event) => setDate(event.target.value)} />
+            {/* Date and place of current trip */}
+            <Typography sx={{marginTop:1}} variant="h6" align="center" >Trip to {thisTrip.location}</Typography>
+            <Typography sx={{m: 1}} align="center" >{thisTrip.start} - {thisTrip.end}</Typography>
 
-            <h4>Airline:</h4>
-            <input placeholder="Airline" value={airline} onChange={(event) => setAirline(event.target.value)} />
+        <Typography sx={{background: "#FF9D0A", p: 2}} align='center' variant='h5'>Add A New Flight!</Typography>
+        <Box sx={{background: "#FDF6C3", p:4}}>
+            <form onSubmit={handleSubmit}>
 
-            <h4>Departure Time:</h4>
-            <input type="time" value={departure} onChange={(event) => setDeparture(event.target.value)} />
+                <Box sx={{marginTop: 4}}>
+                    <InputLabel>Date:</InputLabel>
+                    <Input type="date" placeholder="date" value={date} onChange={(event) => setDate(event.target.value)} />
+                </Box>
 
-            <h4>Arrival Time:</h4>
-            <input type="time" value={arrival} onChange={(event) => setArrival(event.target.value)} />
+                <Box sx={{marginTop: 4}}>
+                    <InputLabel>Airline:</InputLabel>
+                    <Input placeholder="Airline" value={airline} onChange={(event) => setAirline(event.target.value)} />
+                </Box>
 
-            <h4>Flight Number:</h4>
-            <input placeholder="Flight Number" value={flightNum} onChange={(event) => setFlightNum(event.target.value)} />
+                <Box sx={{marginTop: 4}}>
+                    <InputLabel>Departure Time:</InputLabel>
+                    <Input type="time" value={departure} onChange={(event) => setDeparture(event.target.value)} />
+                </Box>
 
-            <button type='submit' >Submit</button>
-        </form>
+                <Box sx={{marginTop: 4}}>
+                    <InputLabel>Arrival Time:</InputLabel>
+                    <Input type="time" value={arrival} onChange={(event) => setArrival(event.target.value)} />
+                </Box>
+
+                <Box sx={{marginTop: 4}}>
+                    <InputLabel>Flight Number:</InputLabel>
+                    <Input placeholder="Flight Number" value={flightNum} onChange={(event) => setFlightNum(event.target.value)} />
+                </Box>
+
+                <Box sx={{marginTop: 4}}>
+                    <Button sx={{background: "#2E4057", m:2}} variant="contained" type='submit' >Submit</Button>
+                </Box>
+
+            </form>
+        </Box>
     </div>
     )
 
