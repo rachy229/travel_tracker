@@ -63,10 +63,10 @@ function OtherDashboard() {
                             </Typography>
 
                             <CardContent sx={{background: "#FDF6C3"}} >
-                                <Typography sx={{borderRadius: 1, background: "#2A9D8F", marginLeft: 2, marginRight: 2}} fontWeight={'medium'} variant="body1" color="text.primary" align="center" margin={2}>
+                                <Typography sx={{borderRadius: 1, background: "#BBDDD6", marginLeft: 2, marginRight: 2}} fontWeight={'medium'} variant="body1" color="text.primary" align="center" margin={2}>
                                     {other.place}
                                 </Typography>
-                                <Typography sx={{borderRadius:2, m:2, p:2, background: "#FDF6C3", border: "8px double #2A9D8F"}} variant="body2" color="text.primary" align="left" marginLeft={4}>
+                                <Typography sx={{borderRadius:2, m:2, p:2, background: "#FDF6C3", border: "2px solid #BBDDD6"}} variant="body2" color="text.primary" align="left" marginLeft={4}>
                                     {other.details}
                                 </Typography>
                             </CardContent>

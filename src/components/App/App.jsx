@@ -47,7 +47,6 @@ import EditOther from '../EditOther/EditOther';
 import EditLodging from '../EditLodging/EditLodging';
 
 import Map from '../Map/Map';
-import NavDrawer from '../Drawer/Drawer';
 import MenuAppBar from '../AppBar/AppBar';
 
 function App() {
@@ -64,7 +63,7 @@ function App() {
       <div>
         <MenuAppBar />
         {/* <Nav /> */}
-        {/* <NavDrawer /> */}
+
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />
@@ -86,7 +85,7 @@ function App() {
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact
-            path="/user"
+            path="/trip"
           >
             <UserPage />
           </ProtectedRoute>
@@ -106,7 +105,7 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/trip" />
               :
               // Otherwise, show the login page
               <LoginPage />
@@ -120,7 +119,7 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect them to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/trip" />
               :
               // Otherwise, show the registration page
               <RegisterPage />
@@ -134,7 +133,7 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect them to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/trip" />
               :
               // Otherwise, show the Landing page
               <LandingPage />
