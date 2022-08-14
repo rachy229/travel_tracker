@@ -96,7 +96,7 @@ function TripList() {
                             <Box sx={{p: 1, background: "#FF9D0A"}}/>
 
                             <CardContent sx={{background: "#FDF6C3"}} >
-                                <Typography sx={{borderRadius:2, m: 2, p:2, background: "#2A9D8F"}} fontWeight={'medium'} variant="body1" color="text.primary" align="center" margin={2}>
+                                <Typography sx={{borderRadius:2, m: 2, p:2, background: "#BBDDD6"}} fontWeight={'medium'} variant="body1" color="text.primary" align="center" margin={2}>
                                     {trip.start} - {trip.end}
                                 </Typography>
                             </CardContent>

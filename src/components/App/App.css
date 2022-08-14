@@ -2,7 +2,7 @@ html,
 body,
 #react-root {
   height: 100%;
-  background-color: #E4F1EF;
+  background-color: #fffbeb;
   /* background-color: #E63746; */
 
 }
@@ -35,7 +35,7 @@ Button
   border-color: #014041;
   border-width: 1px 1px 3px;
   border-radius: 4px;
-  background-color: #00acb0;
+  background-color: #2E4057;
   color: #f8f8f8;
   font-size: 1.1rem;
   outline: 0;
@@ -58,7 +58,7 @@ Button
 }
 
 .btn:hover {
-  background-color: #008183;
+  background-color: #1e2734;
   text-decoration: none;
 }
 

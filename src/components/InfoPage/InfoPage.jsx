@@ -9,16 +9,11 @@ function InfoPage() {
   return (
     <div className="container">
         <div>
-        <h1>Technologies used</h1>
-        <h4>Node</h4>
-        <h4>Express</h4>
-        <h4>React with hooks</h4>
-        <h4>Redux</h4>
-        <h4>Redux-Sagas</h4>
-        <h4>Postgresql</h4>
-        <h4>Material UI</h4>
-        <h4>Mapbox GL JS</h4>
-        <h4>Mapbox Static Images API</h4>
+          <h2> Thank You!</h2>
+          <h5>Prime Digital Academy</h5>
+          <h5>Jemisin Cohort</h5>
+          <h5>Our instructor, Liz</h5>
+          <h5>My support system at home</h5>
       </div>
     </div>
   );
