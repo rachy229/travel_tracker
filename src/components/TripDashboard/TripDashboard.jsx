@@ -1,34 +1,29 @@
-import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
-import TripHeader from "../TripHeader/TripHeader";
 
-import './TripDashboard.css';
-
+//MUI Imports
 import Button from '@mui/material/Button';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab'
 import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { pink, red, lime, amber, orange } from '@mui/material/colors';
-import { CardMedia } from '@mui/material';
-import { styled } from '@mui/material/styles';
+
+//imported components
+import './TripDashboard.css';
 
 function TripDashboard() {
 
     const dispatch = useDispatch();
     const history = useHistory();
 
+    //info for selected trip, used for header
     const thisTrip = useSelector(store => store.trip.thisTrip);
-    console.log('thisTrip in TripDashboard', thisTrip);
+    // console.log('thisTrip in TripDashboard', thisTrip);
 
     const tripId = useSelector(store => store.trip.tripId);
 
+    // info of logged in user, used to conditonally render edit and delete buttons
     const user = useSelector(store => store.user);
-    console.log('user in tripdashboard', user);
+    // console.log('user in tripdashboard', user);
 
     return(
         <div>
@@ -50,11 +45,10 @@ function TripDashboard() {
                         </Box>
                     )
                 }
-            <Typography sx={{marginTop:1}} variant="h6" align="center" >Trip to {thisTrip.location}</Typography>
-            <Typography sx={{m: 1}} align="center" >{thisTrip.start} - {thisTrip.end}</Typography>
+                
+                <Typography sx={{marginTop:1}} variant="h6" align="center" >Trip to {thisTrip.location}</Typography>
+                <Typography sx={{m: 1}} align="center" >{thisTrip.start} - {thisTrip.end}</Typography>
             </Box>
-
-                {/* <TripHeader /> */}
 
 
             <div className="category-nav">

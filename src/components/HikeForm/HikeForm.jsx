@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import TripHeader from '../TripHeader/TripHeader';
 
+// MUI imports
 import Button from '@mui/material/Button'
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -15,8 +15,11 @@ function HikeForm() {
     const dispatch = useDispatch();
     const history = useHistory();
 
+    //id of selected trip, using to set foreign key
     const tripId = useSelector(store => store.trip.tripId);
     // console.log('tripId in HikeForm', tripId);
+
+    // info for selected trip, using for header
     const thisTrip = useSelector(store => store.trip.thisTrip);
 
     //input local states

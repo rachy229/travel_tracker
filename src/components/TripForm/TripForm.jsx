@@ -1,24 +1,24 @@
-    import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-    import { useDispatch } from 'react-redux';
-    import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
+// MUI Imports
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
 import Typography from '@mui/material/Typography';
 
-
-    import './TripForm.css';
+// imported components
+import './TripForm.css';
 
 function TripForm() {
 
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const tripId = useSelector(store => store.trip.tripId);
-
+    
     //input local states
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');

@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
+// MUI imports
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Input from '@mui/material/Input';
@@ -15,9 +16,9 @@ function EditTrip() {
     const dispatch = useDispatch();
     const history = useHistory();
 
-
+    // selected trip, from store
     const tripToEdit = useSelector(store => store.trip.tripToEdit);
-    console.log('tripToEdit', tripToEdit);
+    // console.log('tripToEdit', tripToEdit);
 
 
 
@@ -29,6 +30,7 @@ function EditTrip() {
     
     }
 
+    // updating this trip, based on id
     const handleSubmit = (event) => {
         event.preventDefault;
         console.log('tripToEdit in handleSubmit', tripToEdit)

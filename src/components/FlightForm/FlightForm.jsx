@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import TripHeader from '../TripHeader/TripHeader';
 
+// MUI imports
 import Button from '@mui/material/Button'
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -15,7 +15,9 @@ function FlightForm() {
     const dispatch = useDispatch();
     const history = useHistory();
 
+    // id for the selected trip, sets the foreign key of the new flight
     const tripId = useSelector(store => store.trip.tripId);
+    // info for the selected trip, used for the heading
     const thisTrip = useSelector(store => store.trip.thisTrip);
 
     //input local states
@@ -44,6 +46,7 @@ function FlightForm() {
         setFlightNum('');
     }
 
+    //used during presentation to prefill form.
     const fillData = () => {
         setDate('2022-09-18');
         setAirline('Spirit');
@@ -63,6 +66,7 @@ function FlightForm() {
             <Typography sx={{marginTop:1}} variant="h6" align="center" >Trip to {thisTrip.location}</Typography>
             <Typography sx={{m: 1}} align="center" >{thisTrip.start} - {thisTrip.end}</Typography>
 
+        {/* onClick used to prefill data during presentation */}
         <Typography onClick={fillData} sx={{background: "#FF9D0A", p: 2}} align='center' variant='h5'>Add A New Flight!</Typography>
         <Box sx={{background: "#FDF6C3", p:4}}>
             <form onSubmit={handleSubmit}>

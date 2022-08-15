@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
-import TripHeader from '../TripHeader/TripHeader';
 
+// MUI Imports
 import Button from '@mui/material/Button'
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -16,9 +16,11 @@ function EditFlight() {
     const dispatch = useDispatch();
     const history = useHistory();
 
+    // selected flight from the store
     const flightToEdit = useSelector(store => store.flight.flightToEdit);
     console.log('flightToEdit', flightToEdit);
 
+    // selected trip from the store
     const thisTrip = useSelector(store => store.trip.thisTrip);
 
 
@@ -30,11 +32,12 @@ function EditFlight() {
     
     }
 
+    // updating the specific flight based on id
     const handleSubmit = (event) => {
         event.preventDefault;
-        console.log('flightToEdit in handleSubmit', flightToEdit)
+        // console.log('flightToEdit in handleSubmit', flightToEdit)
 
-        axios.put(`/api/flight/${flightToEdit.id}`, flightToEdit)
+        axios.put(`/api/flight/${flightToEdit.id}`, flightToEdit) 
         .then( response => {
             // clean up reducer data            
             dispatch({ type: 'EDIT_FLIGHT_CLEAR' });
@@ -51,6 +54,7 @@ function EditFlight() {
             {/* go back to the flight dashboard for this specific trip */}
             <Button sx={{background: "#6F1A07", m:2}} variant="contained"  onClick={() => history.push(`/flight-dashboard/${flightToEdit.id}}`)}>Back</Button>
 
+            {/* Name and dates of current trip */}
             <Typography sx={{marginTop:1}} variant="h6" align="center" >Trip to {thisTrip.location}</Typography>
             <Typography sx={{m: 1}} align="center" >{thisTrip.start} - {thisTrip.end}</Typography>
 

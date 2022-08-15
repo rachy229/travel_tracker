@@ -3,20 +3,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
+// MUI imports
 import Button from '@mui/material/Button'
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
 
-import TripHeader from '../TripHeader/TripHeader';
 
 function EditLodging() {
 
     const dispatch = useDispatch();
     const history = useHistory();
 
+    // selected lodgiing from store
     const lodgingToEdit = useSelector(store => store.lodging.lodgingToEdit);
+    // selected trip from store
     const thisTrip = useSelector(store => store.trip.thisTrip);
 
     function handleChange(event, property) {
@@ -27,6 +29,7 @@ function EditLodging() {
     
     }
 
+    // updating this lodging item, based on id
     const handleSubmit = (event) => {
         event.preventDefault;
         console.log('lodgingToEdit in handleSubmit', lodgingToEdit)

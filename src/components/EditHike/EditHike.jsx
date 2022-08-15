@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
-import TripHeader from '../TripHeader/TripHeader';
 
+// MUI Imports
 import Button from '@mui/material/Button'
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -16,9 +16,12 @@ function EditHike() {
     const dispatch = useDispatch();
     const history = useHistory();
 
+    // selected hike from store
     const hikeToEdit = useSelector(store => store.hike.hikeToEdit);
     console.log('hikeToEdit', hikeToEdit);
 
+    // selected trip from store
+    // used for headings
     const thisTrip = useSelector(store => store.trip.thisTrip);
 
 
@@ -30,6 +33,7 @@ function EditHike() {
     
     }
 
+    // updating this hike in the database, based on id
     const handleSubmit = (event) => {
         event.preventDefault;
         console.log('hikeToEdit in handleSubmit', hikeToEdit)

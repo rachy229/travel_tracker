@@ -3,15 +3,14 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 
+// MUI imports
 import Button from '@mui/material/Button'
 import Card from '@mui/material/Card';
 import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { pink, red, lime, amber, orange } from '@mui/material/colors';
-import { CardMedia } from '@mui/material';
-import { styled } from '@mui/material/styles';
 
+// Components
 import TripDashboard from "../TripDashboard/TripDashboard";
 
 function FlightDashboard() {
@@ -19,21 +18,29 @@ function FlightDashboard() {
     const dispatch = useDispatch();
     const history = useHistory();
 
+    // array of flights from the store
     const flightsArray = useSelector(store => store.flight.flightReducer);
+
+    // info for the user logged in, from the store
+    // used for conditional rendering of edit and delete buttons
     const user = useSelector(store => store.user);
 
-
+    // id of the selected trip, used to get flights for this specific trip
     const tripId = useSelector(store => store.trip.tripId);
 
 
     const handleFlightDelete = (id, tripId) => {
         // console.log('id in handleHikeDelete', id)
+        
+        //using id to know which flight to delete
+        //using tripId when calling get in the delete saga
         dispatch({type: 'DELETE_FLIGHT', payload: {id, tripId}})
     }
 
     const handleFlightEdit = (flight) => {
         dispatch({type: 'SET_EDIT_FLIGHT', payload: flight})
         
+        // sends user to the edit view for this flight
         history.push('/edit-flight')
     }
 
@@ -43,12 +50,11 @@ function FlightDashboard() {
 
     return(
         <div>
+            {/* header with current trip info and nav bar */}
             <TripDashboard />
 
             {flightsArray.map((flight) => 
                 
-                // user.clearance === 2 ? (
-
                 <div key={flight.id}>
                         <Card sx={{ maxWidth: 345, m:2, background: "#BB4711" }} >
 
@@ -76,6 +82,8 @@ function FlightDashboard() {
                                 </CardContent>
                             </CardContent>
 
+                        {/* conditionally rendering edit and delete buttons based on user clearance */}
+                        {/* admin user has a clearance of 2 */}
                         {user.clearance === 2 ? (
                             <div align="center">
                                 <Button sx={{background: "#6F1A07", m:2}} variant="contained" onClick={() => handleFlightEdit(flight)}>Edit</Button>

@@ -3,24 +3,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 import TripDashboard from "../TripDashboard/TripDashboard";
 
+// MUI imports
 import Button from '@mui/material/Button'
 import Card from '@mui/material/Card';
 import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { pink, red, lime, amber, orange } from '@mui/material/colors';
-import { CardMedia } from '@mui/material';
-import { styled } from '@mui/material/styles';
-import userReducer from "../../redux/reducers/user.reducer";
 
 function HikeDashboard() {
 
     const dispatch = useDispatch();
     const history = useHistory();
 
+    // array of hikes from store
     const hikesArray = useSelector(store => store.hike.hikesArray);
-    console.log('hikesArray in TripDashboard', hikesArray);
+    // console.log('hikesArray in TripDashboard', hikesArray);
 
+    //id of the selected trip, used to get hikes for this specific trip
     const tripId = useSelector(store => store.trip.tripId);
 
     const user = useSelector(store => store.user);
@@ -28,6 +27,9 @@ function HikeDashboard() {
 
     const handleHikeDelete = (id, tripId) => {
         // console.log('id in handleHikeDelete', id)
+
+        //using id to delete a specific hike
+        //using tripId when calling get in the hike saga
         dispatch({type: 'DELETE_HIKE', payload: {id, tripId}})
     }
 

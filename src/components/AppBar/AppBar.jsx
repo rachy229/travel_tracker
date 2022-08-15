@@ -64,9 +64,16 @@ function MenuAppBar() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
+                {/* go to the trip list */}
                 <MenuItem onClick={() => history.push('/trips')}>Home</MenuItem>
+
+                {/* go to the about page */}
                 <MenuItem onClick={() => history.push('/about')}>About</MenuItem>
+
+                {/* go to the info page */}
                 <MenuItem onClick={() => history.push('/info')}>Info</MenuItem>
+
+                {/* log out button */}
                 <MenuItem >
                 <LogOutButton />
                 </MenuItem>

@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
-import TripHeader from '../TripHeader/TripHeader';
 
+// MUI imports
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -16,9 +16,11 @@ function EditOther() {
     const dispatch = useDispatch();
     const history = useHistory();
 
+    //  selected other item, from store
     const otherToEdit = useSelector(store => store.other.otherToEdit);
-    console.log('otherToEdit', otherToEdit);
+    // console.log('otherToEdit', otherToEdit);
 
+    // selected trip, from store
     const thisTrip = useSelector(store => store.trip.thisTrip);
 
     function handleChange(event, property) {
@@ -29,6 +31,7 @@ function EditOther() {
     
     }
 
+    // updating this other item, based on id
     const handleSubmit = (event) => {
         event.preventDefault;
         console.log('otherToEdit in handleSubmit', otherToEdit)

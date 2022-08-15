@@ -3,15 +3,15 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 
+// MUI imports
 import Button from '@mui/material/Button'
 import Card from '@mui/material/Card';
 import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { pink, red, lime, amber, orange } from '@mui/material/colors';
-import { CardMedia } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
+// imported components
 import TripDashboard from "../TripDashboard/TripDashboard";
 // import userReducer from "../../redux/reducers/user.reducer";
 
@@ -20,14 +20,19 @@ function OtherDashboard() {
     const dispatch = useDispatch();
     const history = useHistory();
 
+    //array of other items
     const otherArray = useSelector(store => store.other.otherArray);
 
+    //id of selected trip, used to get other items for selected trip
     const tripId = useSelector(store => store.trip.tripId);
 
+    //info for user that is logged in, used for conditional rendering of edit and delete buttons
     const user = useSelector(store => store.user);
 
 
     const handleOtherDelete = (id, tripId) => {
+        // id is used to delete a specific other item
+        // tripId is used when calling get in the other saga
         dispatch({type: 'DELETE_OTHER', payload: {id, tripId}})
     }
 
@@ -42,13 +47,7 @@ function OtherDashboard() {
         dispatch({type: 'GET_OTHER', payload: tripId})
     }, [])
 
-    const CustomizedButton = styled(Button)`
-    color: ##eeff41;
-
-    :hover {
-        color: ##c6ff00;
-    }
-    `;
+    
     return(
         <div>
 
