@@ -10,10 +10,10 @@ function InfoPage() {
     <div className="container">
         <div>
           <h2> Thank You!</h2>
-          <h5>Prime Digital Academy</h5>
-          <h5>Jemisin Cohort</h5>
-          <h5>Our instructor, Liz</h5>
-          <h5>My support system at home</h5>
+          <li>Prime Digital Academy</li>
+          <li>Jemisin Cohort</li>
+          <li>Our instructor, Liz</li>
+          <li>My support system at home</li>
       </div>
     </div>
   );

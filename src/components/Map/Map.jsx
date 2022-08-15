@@ -99,7 +99,7 @@ useEffect(() => {
 
 
                 <CardMedia sx={{background: "#FDF6C3", p:2, m: 2}}>
-            <Box sx={{background: "#2BA191", borderRadius:1, m: 2}}>
+            <Box sx={{background: "#BBDDD6", borderRadius:1, m: 2}}>
             <Typography fontWeight={'medium'} variant="body1" color="text.primary" align="center" margin={2}>
                     {thisLodging.place}
                 </Typography>
