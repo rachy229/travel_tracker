@@ -18,7 +18,7 @@ function TripForm() {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    
+
     //input local states
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
@@ -37,11 +37,11 @@ function TripForm() {
         setPlace('');
     }
 
-    const fillData = () => {
-        setStartDate('2022-09-18');
-        setEndDate('2022-10-03');
-        setPlace('Utah');
-    }
+    // const fillData = () => {
+    //     setStartDate('2022-09-18');
+    //     setEndDate('2022-10-03');
+    //     setPlace('Utah');
+    // }
 
     return(
         <div>
@@ -49,7 +49,9 @@ function TripForm() {
                 {/* go back to the trip list */}
                 <Button sx={{background: "#6F1A07", m:2}} variant="contained" onClick={() => history.push('/trips')}>Back</Button>
 
-                <Typography onClick={fillData} sx={{background: "#FF9D0A", p: 2}} align='center' variant='h5'> Add A New Trip!</Typography>
+                {/* onClick used to prefill data during presentation */}
+                {/* <Typography onClick={fillData} sx={{background: "#FF9D0A", p: 2}} align='center' variant='h5'> Add A New Trip!</Typography> */}
+                <Typography sx={{background: "#FF9D0A", p: 2}} align='center' variant='h5'> Add A New Trip!</Typography>
             </Box>
 
         <form onSubmit={handleSubmit}>
