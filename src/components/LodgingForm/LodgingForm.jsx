@@ -67,7 +67,7 @@ function LodgingForm() {
 
             {/* on click used to prefill data during presentation */}
             {/* <Typography onClick={fillData} sx={{background: "#FF9D0A", p: 2}} align='center' variant='h5'>Add New Lodging!</Typography> */}
-            <Typography onClick={fillData} sx={{background: "#FF9D0A", p: 2}} align='center' variant='h5'>Add New Lodging!</Typography>
+            <Typography sx={{background: "#FF9D0A", p: 2}} align='center' variant='h5'>Add New Lodging!</Typography>
 
             <Box sx={{background: "#FDF6C3", p:4}} >
                 <form onSubmit={handleSubmit}>
