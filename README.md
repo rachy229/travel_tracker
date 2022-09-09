@@ -53,8 +53,6 @@ Logging in as an admin user will allow you to do everything that a regular user 
 
 HTML, CSS, Node, Express, React with Hooks, Redux, Redux-sagas, Prostgresql, Material UI, Mapbox GL JS, Mapbox Static Images API
 
-## License
-
 ## Acknowledgement
 Thanks to my friends and family, The Jemisin Cohort, Liz and all of the other wonderful folks over at [Prime Digital Academy](www.primeacademy.io) for all of the knowledge and support.
 
